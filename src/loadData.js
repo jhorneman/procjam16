@@ -43,8 +43,7 @@ function loadDataFromTabletop(sheets, tabletop) {
     };
 
     let questSheetNames = tabletop.foundSheetNames.filter(sheetName =>
-        // return blacklistedSheetNames.indexOf(sheetName) === -1;
-        sheetName === 'Deaths'
+        blacklistedSheetNames.indexOf(sheetName) === -1
     );
 
     questSheetNames.forEach(sheetName => loadDataFromQuestSheet(result, tabletop.sheets(sheetName)));
