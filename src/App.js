@@ -7,8 +7,8 @@ function loadData() {
     if (process.env.NODE_ENV === 'development') {
         // '1AHirIj1eUn8ofGamkkCgu2XWXweM4byqrcu9FAg-j48',     // Simple test doc
         let dataLoadPromise = loadDataFromGoogleSpreadsheet('1rDndDW7cebpGy9fnDZqvfcsLN1CB_pTb4n28W140O04');        // Copy of game doc
-        dataLoadPromise.then(function(data) {
-            console.log(data);
+        dataLoadPromise.then(function(result) {
+            console.log(result);
         });
     } else {
         // loadDataFromJSONFile();
