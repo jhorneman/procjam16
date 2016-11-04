@@ -66,7 +66,7 @@ function loadDataFromQuestSheet(result, sheet) {
         }
 
         // Make sure the field name is not empty.
-        if (rowName.length == 0) return;
+        if (rowName.length === 0) return;
 
         // Make sure this is a valid field name.
         if (questFieldNames.indexOf(rowName) === -1) return;
@@ -123,8 +123,17 @@ function loadDataFromQuestSheet(result, sheet) {
         let newQuest = {};
         questFieldNames.forEach(fieldName => newQuest[fieldName] = data[fieldName][i]);
         delete newQuest[doneFieldName];     // Easier to do this than not read it.
-        result.data.quests.push(newQuest);
+        newQuest.SheetName = sheet.name;
+        newQuest = processQuest(newQuest, result.warnings);
+        if (newQuest) {
+            result.data.quests.push(newQuest);
+        }
     }
+}
+
+
+function processQuest(newQuest, messages) {
+    return newQuest;
 }
 
 
