@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import Tabletop from 'tabletop';
 import './App.css';
+import loadDataFromGoogleSpreadsheet from './loadData';
 
 
-function loadDataFromGoogleSpreadsheet() {
-    Tabletop.init({
-        key: '1AHirIj1eUn8ofGamkkCgu2XWXweM4byqrcu9FAg-j48',
-        callback: dataFromGoogleSpreadsheetHasLoaded,
-        simpleSheet: true
-    });
-}
-
-function dataFromGoogleSpreadsheetHasLoaded(data, tabletop) {
-    console.log(data);
-}
-
-function loadQuests() {
+function loadData() {
     if (process.env.NODE_ENV === 'development') {
-        loadDataFromGoogleSpreadsheet();        
+        // '1AHirIj1eUn8ofGamkkCgu2XWXweM4byqrcu9FAg-j48',     // Simple test doc
+        let dataLoadPromise = loadDataFromGoogleSpreadsheet('1rDndDW7cebpGy9fnDZqvfcsLN1CB_pTb4n28W140O04');        // Copy of game doc
+        dataLoadPromise.then(function(data) {
+            console.log(data);
+        });
     } else {
         // loadDataFromJSONFile();
     }
@@ -26,7 +18,7 @@ function loadQuests() {
 
 class App extends Component {
     componentDidMount() {
-        loadQuests();
+        loadData();
     }
 
     render() {
@@ -41,5 +33,6 @@ class App extends Component {
         );
     }
 }
+
 
 export default App;
