@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { QuestStore } from '../questStore';
+import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 
 
@@ -15,18 +15,18 @@ class App extends Component {
 
     onChange() {
         this.setState({
-            isLoading: QuestStore.isLoading(),
-            quests: QuestStore.all(),
-            loadWarnings: QuestStore.loadWarnings(),
+            isLoading: GameStore.isLoading(),
+            quests: GameStore.quests(),
+            loadWarnings: GameStore.loadWarnings(),
         });
     }
 
     componentDidMount() {
-        QuestStore.addChangeListener(this.onChange);
+        GameStore.addChangeListener(this.onChange);
     }
 
     componentWillUnmount() {
-        QuestStore.removeChangeListener(this.onChange);
+        GameStore.removeChangeListener(this.onChange);
     }
 
     render() {

@@ -159,6 +159,8 @@ function splitIntoUnparsedStatements(rawText) {
 const binaryConditions = [
     [ '<', 'lessThan' ],
     [ '>', 'greaterThan' ],
+    [ '<=', 'lessThanOrEqual' ],
+    [ '>=', 'greaterThanOrEqual' ],
     [ '=', 'equals' ],
 ];
 

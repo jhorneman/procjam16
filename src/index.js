@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import { QuestStoreMutator } from './questStore';
+import { GameStoreMutator } from './gameStore';
 import './index.css';
 
-QuestStoreMutator.init();
+GameStoreMutator.init();
 
 ReactDOM.render(
   <App />,
