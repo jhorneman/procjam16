@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
+import StatsView from './StatsView';
 
 
 class App extends Component {
@@ -16,8 +17,9 @@ class App extends Component {
     onChange() {
         this.setState({
             isLoading: GameStore.isLoading(),
-            quests: GameStore.quests(),
-            loadWarnings: GameStore.loadWarnings(),
+            statNames: GameStore.statNames(),
+            stats: GameStore.stats(),
+            currentQuest: GameStore.currentQuest(),
         });
     }
 
@@ -32,9 +34,10 @@ class App extends Component {
     render() {
         const view = this.state.isLoading ? (
             <p>Loading...</p>
-        ) : (
-            <QuestView quest={this.state.quests[0]} />
-        );
+        ) : (<div>
+            <StatsView statNames={this.state.statNames} stats={this.state.stats} />
+            <QuestView quest={this.state.currentQuest} />
+        </div>);
         return (<div className='app'>
             {view}
         </div>);
