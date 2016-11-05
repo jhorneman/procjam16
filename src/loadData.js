@@ -124,7 +124,7 @@ function loadDataFromQuestSheet(result, sheet) {
         questFieldNames.forEach(fieldName => newQuest[fieldName] = data[fieldName][i]);
         delete newQuest[doneFieldName];     // Easier to do this than not read it.
         newQuest.SheetName = sheet.name;
-        newQuest = processQuest(newQuest, result.warnings);
+        newQuest = processQuest(newQuest, w => result.warnings.push(`${w} (quest '${newQuest['QuestName']}' in sheet '${sheet.name}')`));
         if (newQuest) {
             result.data.quests.push(newQuest);
         }
@@ -132,8 +132,103 @@ function loadDataFromQuestSheet(result, sheet) {
 }
 
 
-function processQuest(newQuest, messages) {
+function processQuest(newQuest, reportFn) {
+    let parsedConditions = splitIntoUnparsedStatements(newQuest['Conditions']);
+    parsedConditions = parsedConditions.map(c => parseCondition(c, w => reportFn(`Conditions: ${w}`)));
+    if (parsedConditions.some(c => c.length === 0)) return null;
+    newQuest['Conditions'] = parsedConditions;
+
+    let parsedChoiceData = splitIntoUnparsedStatements(newQuest['ChoiceAData']);
+    parsedChoiceData = parsedChoiceData.map(c => parseOperation(c, w => reportFn(`ChoiceAData: ${w}`)));
+    if (parsedChoiceData.some(c => c.length === 0)) return null;
+    newQuest['ChoiceAData'] = parsedChoiceData;
+
+    parsedChoiceData = splitIntoUnparsedStatements(newQuest['ChoiceBData']);
+    parsedChoiceData = parsedChoiceData.map(c => parseOperation(c, w => reportFn(`ChoiceBData: ${w}`)));
+    if (parsedChoiceData.some(c => c.length === 0)) return null;
+    newQuest['ChoiceBData'] = parsedChoiceData;
+
     return newQuest;
+}
+
+
+function splitIntoUnparsedStatements(rawText) {
+    return rawText.split(',').map(b => b.trim()).filter(b => b.length > 0);
+}
+
+const binaryConditions = [
+    [ '<', 'lessThan' ],
+    [ '>', 'greaterThan' ],
+    [ '=', 'equals' ],
+];
+
+const unaryConditions = [
+    [ '!', 'doesntHaveTag' ],
+];
+
+const binaryOperations = [
+    [ '+', 'add' ],
+    [ '-', 'subtract' ],
+];
+
+const unaryOperations = [
+    [ '+', 'addTag' ],
+    [ '-', 'removeTag' ],
+];
+
+
+function parseCondition(condition, reportFn) {
+    return parseStatement(binaryConditions, unaryConditions, 'hasTag', condition, reportFn);
+}
+
+
+function parseOperation(operation, reportFn) {
+    return parseStatement(binaryOperations, unaryOperations, 'command', operation, reportFn);
+}
+
+
+function parseStatement(binaryOperators, unaryOperators, defaultOperator, statement, reportFn) {
+    let result = null;
+
+    // Check for binary operators.
+    binaryOperators.forEach(([token, operator]) => {
+        let bits = statement.split(token);
+        if ((bits.length === 2) && (bits[0] !== '')) {
+            bits = bits.map(b => b.trim());
+            const rightOperandAsNumber = tryToConvertToNumber(bits[1]);
+            if (rightOperandAsNumber !== undefined) {
+                result = [operator, bits[0], rightOperandAsNumber];
+            } else {
+                reportFn(`'${bits[1]}' is not a number`);
+                result = [];
+            }
+            return;
+        }
+    });
+    if (result !== null) return result;
+
+    // Check for unary operators.
+    unaryOperators.forEach(([token, operator]) => {
+        let bits = statement.split(token);
+        if ((bits.length === 2) && (bits[0] === '')) {
+            result = [operator, bits[1].trim()];
+            return;
+        }
+        if (bits.length !== 1) {
+            reportFn(`Can't parse '${statement}'`);
+            result = [];
+            return;
+        }
+    });
+    if (result !== null) return result;
+
+    return [defaultOperator, statement];
+}
+
+
+function tryToConvertToNumber(operand) {
+    let operandAsNumber = parseInt(operand, 10);
+    return (operandAsNumber !== operandAsNumber) ? undefined : operandAsNumber;
 }
 
 
