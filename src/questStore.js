@@ -4,7 +4,7 @@ import loadDataFromGoogleSpreadsheet from './loadData';
 
 let isLoading = true;
 let quests = [];
-let questLoadWarnings = [];
+let loadWarnings = [];
 
 
 export let QuestStore = createStore({
@@ -16,8 +16,8 @@ export let QuestStore = createStore({
         return quests;
     },
 
-    warnings: function() {
-        return questLoadWarnings;
+    loadWarnings: function() {
+        return loadWarnings;
     },
 }, 'questStore');
 
@@ -29,7 +29,7 @@ export let QuestStoreMutator = createStoreMutator(QuestStore, {
             let dataLoadPromise = loadDataFromGoogleSpreadsheet();
             dataLoadPromise.then(function(result) {
                 quests = result.data.quests;
-                questLoadWarnings = result.warnings;
+                loadWarnings = result.warnings;
                 isLoading = false;
                 that.emitChange();
             });
