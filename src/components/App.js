@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { QuestStore } from '../questStore';
+import QuestView from './QuestView';
 
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
         const view = this.state.isLoading ? (
             <p>Loading...</p>
         ) : (
-            <p>Data has loaded.</p>
+            <QuestView quest={this.state.quests[0]} />
         );
         return (<div className='app'>
             {view}
