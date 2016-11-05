@@ -135,7 +135,7 @@ function resetGameState() {
 
     stats = {};
     for (let statName of statNames) {
-        stats[statName] = 0;
+        stats[statName] = 5;
     }
 
     tags = new Set();
