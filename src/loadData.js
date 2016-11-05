@@ -228,7 +228,7 @@ function parseStatement(binaryOperators, unaryOperators, defaultOperator, statem
 
 function tryToConvertToNumber(operand) {
     let operandAsNumber = parseInt(operand, 10);
-    return (operandAsNumber !== operandAsNumber) ? undefined : operandAsNumber;
+    return (operandAsNumber !== operandAsNumber) ? undefined : operandAsNumber;     // eslint-disable-line no-self-compare
 }
 
 
