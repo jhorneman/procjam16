@@ -78,7 +78,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     executeChoice: function(choiceIndex) {
-        const whichResult = choiceIndex ? 'ChoiceBResult' : 'ChoiceAResult';
+        const whichResult = choiceIndex ? 'ChoiceBData' : 'ChoiceAData';
         const outcome = currentQuest[whichResult];
         outcome.forEach(([operator, param0, param1]) => {
             switch (operator) {
@@ -120,9 +120,13 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             }
             }
         });
+        this.emitChange();
+    },
+
+    pickNextQuest: function() {
         pickNextQuest();
         this.emitChange();
-    }
+    },
 });
 
 
