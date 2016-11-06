@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
+import TagsView from './TagsView';
 import WarningList from './WarningList';
 
 
@@ -12,6 +13,7 @@ function getState() {
         warnings: GameStore.warnings(),
         statNames: GameStore.statNames(),
         stats: GameStore.stats(),
+        tags: GameStore.tags(),
     };
 }
 
@@ -49,6 +51,7 @@ class App extends Component {
         case 'playing': {
             view = <div>
                 <StatsView statNames={this.state.statNames} stats={this.state.stats} />
+                <TagsView tags={this.state.tags} />
                 <QuestView />
             </div>;
             break;
