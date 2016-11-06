@@ -15,9 +15,11 @@ const questFieldNames = [
     'ChoiceAText',
     'ChoiceAResult',
     'ChoiceAData',
+    'DeathTypeA',
     'ChoiceBText',
     'ChoiceBResult',
     'ChoiceBData',
+    'DeathTypeB',
 ];
 
 
@@ -124,6 +126,7 @@ function loadDataFromQuestSheet(result, sheet) {
         questFieldNames.forEach(fieldName => newQuest[fieldName] = data[fieldName][i]);
         delete newQuest[doneFieldName];     // Easier to do this than not read it.
         newQuest.SheetName = sheet.name;
+        newQuest.IsDeathQuest = (sheet.name === 'Deaths');
         newQuest = processQuest(newQuest, w => result.warnings.push(`${w} (quest '${newQuest['QuestName']}' in sheet '${sheet.name}')`));
         if (newQuest) {
             result.data.quests.push(newQuest);
@@ -155,6 +158,7 @@ function processQuest(newQuest, reportFn) {
 function splitIntoUnparsedStatements(rawText) {
     return rawText.split(',').map(b => b.trim()).filter(b => b.length > 0);
 }
+
 
 const binaryConditions = [
     [ '<', 'lessThan' ],
