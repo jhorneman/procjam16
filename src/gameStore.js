@@ -25,10 +25,6 @@ let tags;
 
 
 export let GameStore = createStore({
-    isLoading: function() {
-        return (state === 'uninitialized') || (state === 'loading');
-    },
-
     state: function() {
         return state;
     },
