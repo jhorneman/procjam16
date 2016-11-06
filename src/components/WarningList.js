@@ -1,5 +1,4 @@
 import React from 'react';
-import './WarningList.css';
 
 
 function WarningList(props) {
