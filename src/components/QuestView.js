@@ -1,38 +1,51 @@
 import React, { Component } from 'react';
+import { GameStore, GameStoreMutator } from '../gameStore';
 
 
 class QuestView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            quest: GameStore.currentQuest(),
             playerHasChosen: false,
             playerChoice: undefined
         };
-        this.onAClick = this.onClick.bind(this, 0);
-        this.onBClick = this.onClick.bind(this, 1);
+        this.onAClick = this.onChoiceClick.bind(this, 0);
+        this.onBClick = this.onChoiceClick.bind(this, 1);
+        this.onContinueClick = this.onContinueClick.bind(this);
     }
 
-    onClick(choiceIndex) {
+    onChoiceClick(choiceIndex) {
         this.setState({
             playerHasChosen: true,
             playerChoice: choiceIndex,
         });
     }
 
+    onContinueClick() {
+        this.props.onContinue();
+    }
+
     render() {
-        return this.state.playerHasChosen ? (<div className='questView'>
-            <div className='resultText'>{this.state.playerChoice ? this.props.quest.ChoiceAResult : this.props.quest.ChoiceBResult}</div>
-        </div>) : (<div className='questView'>
-            <div className='questText'>{this.props.quest.QuestText}</div>
-            <button onClick={this.onAClick}>{this.props.quest.ChoiceAText}</button>
-            <button onClick={this.onBClick}>{this.props.quest.ChoiceBText}</button>
-        </div>);
+        const quest = this.state.quest;
+        console.log(quest);
+        let view;
+        if (!this.state.playerHasChosen) {
+            view = (<div className='questView'>
+                <div className='questText'>{quest.QuestText}</div>
+                <button onClick={this.onAClick}>{quest.ChoiceAText}</button>
+                <button onClick={this.onBClick}>{quest.ChoiceBText}</button>
+            </div>); 
+        } else {
+            view = (<div className='questView'>
+                <div className='resultText'>{this.state.playerChoice ? quest.ChoiceAResult : quest.ChoiceBResult}</div>
+                <button onClick={this.onContinueClick}>Continue...</button>
+            </div>)
+        }
+
+        return view;
     }
 }
-
-QuestView.propTypes = {
-    quest: React.PropTypes.object.isRequired,
-};
 
 
 export default QuestView;

@@ -2,42 +2,70 @@ import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
+import WarningList from './WarningList';
+
+
+function getState() {
+    return {
+        state: GameStore.state(),
+        errorMessage: GameStore.errorMessage(),
+        loadWarnings: GameStore.loadWarnings(),
+        statNames: GameStore.statNames(),
+        stats: GameStore.stats(),
+    };
+}
 
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isLoading: true,
-            quests: [],
-        };
-        this.onChange = this.onChange.bind(this);
+        this.state = getState();
+        this._onChange = this._onChange.bind(this);
     }
 
-    onChange() {
-        this.setState({
-            isLoading: GameStore.isLoading(),
-            statNames: GameStore.statNames(),
-            stats: GameStore.stats(),
-            currentQuest: GameStore.currentQuest(),
-        });
+    _onChange() {
+        this.setState(getState());
     }
 
     componentDidMount() {
-        GameStore.addChangeListener(this.onChange);
+        GameStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount() {
-        GameStore.removeChangeListener(this.onChange);
+        GameStore.removeChangeListener(this._onChange);
     }
 
     render() {
-        const view = this.state.isLoading ? (
-            <p>Loading...</p>
-        ) : (<div>
-            <StatsView statNames={this.state.statNames} stats={this.state.stats} />
-            <QuestView quest={this.state.currentQuest} />
-        </div>);
+        let view;
+        switch (this.state.state) {
+        case 'uninitialized': {
+            view = (<p>...</p>);
+            break;
+        }
+        case 'loading': {
+            view = (<p>Loading...</p>);
+            break;
+        }
+        case 'playing': {
+            view = <div>
+                <StatsView statNames={this.state.statNames} stats={this.state.stats} />
+                <QuestView />
+            </div>;
+            break;
+        }
+        case 'error': {
+            view = (<div>
+                <p>Error: {this.state.errorMessage}.</p>
+                <WarningList warnings={this.state.loadWarnings} />
+            </div>);
+            break;
+        }
+        default: {
+            view = (<p>Unknown state '{this.state.state}'.</p>);
+            break;
+        }
+        }
+
         return (<div className='app'>
             {view}
         </div>);
