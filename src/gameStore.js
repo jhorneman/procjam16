@@ -4,7 +4,9 @@ import loadDataFromGoogleSpreadsheet from './loadData';
 
 export const validCommands = [
     'restart',
+    'go',
 ];
+
 export const statNames = [
     'health',
     'luck',
