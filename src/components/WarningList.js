@@ -11,7 +11,7 @@ function WarningList(props) {
         </ul>
     ) : null;
     return (<div className='warningList'>
-        <p>Data load warnings: {props.warnings.length}.</p>
+        <p>Warnings: {props.warnings.length}.</p>
         {list}
     </div>);
 }
