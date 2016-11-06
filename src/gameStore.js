@@ -87,19 +87,16 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     executeChoice: function(choiceIndex) {
-        const whichResult = choiceIndex ? 'ChoiceBData' : 'ChoiceAData';
-        const outcome = currentQuest[whichResult];
-
         let nextQuestSetByGoCommand = null;
 
-        outcome.forEach(([operator, param0, param1]) => {
+        currentQuest.Outcomes[choiceIndex].forEach(([operator, param0, param1]) => {
             switch (operator) {
             case 'add': {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] += param1;
                     if (stats[param0] > statMaxValue) stats[param0] = statMaxValue;
                 } else {
-                    reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
+                    reportError(`Unknown stat '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
                 }
                 break;
             }
@@ -108,12 +105,11 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                     stats[param0] -= param1;
                     if (stats[param0] < 0) {
                         stats[param0] = 0;
-                        const whichDeathTag = choiceIndex ? 'DeathTypeB' : 'DeathTypeA';
-                        const deathTag = (currentQuest[whichDeathTag] !== '') ? currentQuest[whichDeathTag] : defaultDeathTag;
-                        tags.add(deathTag);
+                        const deathTags = (currentQuest.DeathTags[choiceIndex].length > 0) ? currentQuest.DeathTags[choiceIndex] : [defaultDeathTag];
+                        deathTags.forEach(t => tags.add(t));
                     }
                 } else {
-                    reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
+                    reportError(`Unknown stat '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
                 }
                 break;
             }
@@ -136,19 +132,19 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                     if (nextQuest !== undefined) {
                         nextQuestSetByGoCommand = nextQuest;
                     } else {
-                        reportError(`Go command in ${whichResult} of quest '${currentQuest.QuestName}': could not find a quest named '${param1}'`);
+                        reportError(`Go command in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}': could not find a quest named '${param1}'`);
                     }
                     break;
                 }
                 default: {
-                    reportError(`Unknown command '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
+                    reportError(`Unknown command '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
                     break;
                 }
                 }
                 break;
             }
             default: {
-                reportError(`Unknown operator '${operator}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
+                reportError(`Unknown operator '${operator}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
                 break;
             }
             }

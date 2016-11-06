@@ -39,12 +39,12 @@ class QuestView extends Component {
         if (!this.state.playerHasChosen) {
             view = (<div className='questView'>
                 <div className='questText'>{quest.QuestText}</div>
-                <button onClick={this.onAClick}>{quest.ChoiceAText}</button>
-                <button onClick={this.onBClick}>{quest.ChoiceBText}</button>
+                <button onClick={this.onAClick}>{quest.ChoiceTexts[0]}</button>
+                <button onClick={this.onBClick}>{quest.ChoiceTexts[1]}</button>
             </div>); 
         } else {
             view = (<div className='questView'>
-                <div className='resultText'>{this.state.playerChoice ? quest.ChoiceBResult : quest.ChoiceAResult}</div>
+                <div className='resultText'>{quest.ResultTexts[this.state.playerChoice]}</div>
                 <button onClick={this.onContinueClick}>Continue...</button>
             </div>)
         }

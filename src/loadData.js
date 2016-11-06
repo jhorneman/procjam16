@@ -124,12 +124,12 @@ function loadDataFromQuestSheet(result, sheet) {
     // Read quest data.
     for (let i=0; i<nrColumns; i++) {
         if (data[doneFieldName][i] !== 'x') continue;
-        let newQuest = {};
-        questFieldNames.forEach(fieldName => newQuest[fieldName] = data[fieldName][i]);
-        delete newQuest[doneFieldName];     // Easier to do this than not read it.
-        newQuest.SheetName = sheet.name;
-        newQuest.IsDeathQuest = (sheet.name === 'Deaths');
-        newQuest = processQuest(newQuest, w => result.warnings.push(`${w} (quest '${newQuest['QuestName']}' in sheet '${sheet.name}')`));
+
+        let rawQuestData = {};
+        questFieldNames.forEach(fieldName => rawQuestData[fieldName] = data[fieldName][i]);
+        rawQuestData.SheetName = sheet.name;
+
+        const newQuest = processQuest(rawQuestData, w => result.warnings.push(`${w} (quest '${rawQuestData['QuestName']}' in sheet '${sheet.name}')`));
         if (newQuest) {
             result.data.quests.push(newQuest);
         }
@@ -137,27 +137,44 @@ function loadDataFromQuestSheet(result, sheet) {
 }
 
 
-function processQuest(newQuest, reportFn) {
-    let parsedConditions = splitIntoUnparsedStatements(newQuest['Conditions']);
+function processQuest(rawQuestData, reportFn) {
+    let newQuest = {};
+    ['QuestName', 'QuestText', 'SheetName'].forEach(n => newQuest[n] = rawQuestData[n]);
+
+    newQuest.IsDeathQuest = (newQuest.SheetName === 'Deaths');
+
+    let parsedConditions = splitIntoParts(rawQuestData['Conditions']);
     parsedConditions = parsedConditions.map(c => parseCondition(c, w => reportFn(`Conditions: ${w}`)));
     if (parsedConditions.some(c => c.length === 0)) return null;
     newQuest['Conditions'] = parsedConditions;
 
-    let parsedChoiceData = splitIntoUnparsedStatements(newQuest['ChoiceAData']);
-    parsedChoiceData = parsedChoiceData.map(c => parseOperation(c, w => reportFn(`ChoiceAData: ${w}`)));
-    if (parsedChoiceData.some(c => c.length === 0)) return null;
-    newQuest['ChoiceAData'] = parsedChoiceData;
+    newQuest.ChoiceTexts = [rawQuestData['ChoiceAText'], rawQuestData['ChoiceBText']];
+    newQuest.ResultTexts = [rawQuestData['ChoiceAResult'], rawQuestData['ChoiceBResult']];
+    newQuest.Outcomes = [null, null];
+    newQuest.DeathTags = [null, null];
 
-    parsedChoiceData = splitIntoUnparsedStatements(newQuest['ChoiceBData']);
-    parsedChoiceData = parsedChoiceData.map(c => parseOperation(c, w => reportFn(`ChoiceBData: ${w}`)));
-    if (parsedChoiceData.some(c => c.length === 0)) return null;
-    newQuest['ChoiceBData'] = parsedChoiceData;
+    function copyChoiceData(choiceIndex) {
+        const choice = 'AB'[choiceIndex];
+
+        let fieldName = `Choice${choice}Data`;
+        let parsedChoiceData = splitIntoParts(rawQuestData[fieldName]);
+        parsedChoiceData = parsedChoiceData.map(c => parseOperation(c, w => reportFn(`${fieldName}: ${w}`)));
+        if (parsedChoiceData.some(c => c.length === 0)) return false;
+        newQuest.Outcomes[choiceIndex] = parsedChoiceData;
+
+        fieldName = `DeathType${choice}`;
+        newQuest.DeathTags[choiceIndex] = splitIntoParts(rawQuestData[fieldName]);
+        return true;
+    }
+
+    if (!copyChoiceData(0)) return null;
+    if (!copyChoiceData(1)) return null;
 
     return newQuest;
 }
 
 
-function splitIntoUnparsedStatements(rawText) {
+function splitIntoParts(rawText) {
     return rawText.split(',').map(b => b.trim()).filter(b => b.length > 0);
 }
 
