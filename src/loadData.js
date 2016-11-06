@@ -192,6 +192,7 @@ const unaryConditions = [
 ];
 
 const binaryOperations = [
+    [ '=', 'set' ],
     [ '+', 'add' ],
     [ '-', 'subtract' ],
 ];

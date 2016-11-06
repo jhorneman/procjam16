@@ -11,7 +11,7 @@ function getState() {
         state: GameStore.state(),
         errorMessage: GameStore.errorMessage(),
         warnings: GameStore.warnings(),
-        statNames: GameStore.statNames(),
+        statNames: GameStore.allStatNames(),
         stats: GameStore.stats(),
         tags: GameStore.tags(),
     };
