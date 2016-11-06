@@ -14,6 +14,7 @@ export const statNames = [
     'rations',
 ];
 
+const statStartValue = 5;
 const statMaxValue = 10;
 const defaultDeathTag = 'death';
 
@@ -24,7 +25,7 @@ let warnings = [];
 
 let currentQuest;
 let stats;
-let tags;
+let tags = new Set();
 let possibleNextQuests;
 
 
@@ -59,7 +60,11 @@ export let GameStore = createStore({
 
     stats: function() {
         return stats;
-    }
+    },
+
+    tags: function() {
+        return [...tags];
+    },
 
 }, 'gameStore');
 
@@ -103,10 +108,15 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             case 'subtract': {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] -= param1;
-                    if (stats[param0] < 0) {
+                    if (stats[param0] <= 0) {
                         stats[param0] = 0;
-                        const deathTags = (currentQuest.DeathTags[choiceIndex].length > 0) ? currentQuest.DeathTags[choiceIndex] : [defaultDeathTag];
-                        deathTags.forEach(t => tags.add(t));
+                        const deathTags = currentQuest.DeathTags[choiceIndex];
+                        if (deathTags.length > 0) {
+                            const deathTagIndex = Math.floor(Math.random() * deathTags.length);
+                            tags.add(deathTags[deathTagIndex]);
+                        } else {
+                            tags.add(defaultDeathTag);
+                        };
                     }
                 } else {
                     reportError(`Unknown stat '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
@@ -179,10 +189,10 @@ function resetGameState() {
 
     stats = {};
     for (let statName of statNames) {
-        stats[statName] = 5;
+        stats[statName] = statStartValue;
     }
 
-    tags = new Set();
+    tags.clear();
 
     possibleNextQuests = [];
 }
