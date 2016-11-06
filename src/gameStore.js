@@ -16,12 +16,13 @@ export const statNames = [
 
 let state = 'uninitialized';
 let errorMessage;
-let quests = [];
-let loadWarnings = [];
+let allQuests = [];
+let warnings = [];
 
 let currentQuest;
 let stats;
 let tags;
+let possibleNextQuests;
 
 
 export let GameStore = createStore({
@@ -33,16 +34,20 @@ export let GameStore = createStore({
         return errorMessage;
     },
 
-    quests: function() {
-        return quests;
+    allQuests: function() {
+        return allQuests;
     },
 
-    loadWarnings: function() {
-        return loadWarnings;
+    warnings: function() {
+        return warnings;
     },
 
     currentQuest: function() {
         return currentQuest;
+    },
+
+    possibleNextQuests: function() {
+        return possibleNextQuests;
     },
 
     statNames: function() {
@@ -62,8 +67,8 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         if (process.env.NODE_ENV === 'development') {
             let dataLoadPromise = loadDataFromGoogleSpreadsheet();
             dataLoadPromise.then(function(result) {
-                quests = result.data.quests;
-                loadWarnings = result.warnings;
+                allQuests = result.data.quests;
+                warnings = result.warnings;
                 that.restartGame();
             });
         } else {
@@ -73,6 +78,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
 
     restartGame: function() {
         resetGameState();
+        possibleNextQuests = getPossibleNextQuests();
         pickNextQuest();
         this.emitChange();
     },
@@ -80,13 +86,16 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     executeChoice: function(choiceIndex) {
         const whichResult = choiceIndex ? 'ChoiceBData' : 'ChoiceAData';
         const outcome = currentQuest[whichResult];
+
+        let nextQuestSetByGoCommand = null;
+
         outcome.forEach(([operator, param0, param1]) => {
             switch (operator) {
             case 'add': {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] += param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'.`);
+                    reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
                 }
                 break;
             }
@@ -94,7 +103,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] -= param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'.`);
+                    reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
                 }
                 break;
             }
@@ -107,19 +116,40 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                 break;
             }
             case 'command': {
-                if (param0 === 'restart') {
+                switch (param0) {
+                case 'restart': {
                     resetGameState();
-                } else {
-                    console.log(`Unknown command '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'.`);
+                    break;
+                }
+                case 'go': {
+                    const nextQuest = allQuests.find(q => q.QuestName === param1);
+                    if (nextQuest !== undefined) {
+                        nextQuestSetByGoCommand = nextQuest;
+                    } else {
+                        reportError(`Go command in ${whichResult} of quest '${currentQuest.QuestName}': could not find a quest named '${param1}'`);
+                    }
+                    break;
+                }
+                default: {
+                    reportError(`Unknown command '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
+                    break;
+                }
                 }
                 break;
             }
             default: {
-                console.log(`Unknown operator '${operator}' in ${whichResult} of quest '${currentQuest.QuestName}'.`);
+                reportError(`Unknown operator '${operator}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
                 break;
             }
             }
         });
+
+        if (nextQuestSetByGoCommand === null) {
+            possibleNextQuests = getPossibleNextQuests();
+        } else {
+            possibleNextQuests = [ nextQuestSetByGoCommand ];
+        }
+
         this.emitChange();
     },
 
@@ -128,6 +158,12 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         this.emitChange();
     },
 });
+
+
+function reportError(message) {
+    warnings.push(message);
+    console.log(message);
+}
 
 
 function resetGameState() {
@@ -144,15 +180,15 @@ function resetGameState() {
 }
 
 
-function pickNextQuest() {
-    const eligibleQuests = quests.filter(q => {
+function getPossibleNextQuests() {
+    return allQuests.filter(q => {
         return q.Conditions.every(([operator, param0, param1]) => {
             switch (operator) {
             case 'lessThan': {
                 if (stats.hasOwnProperty(param0)) {
                     return stats[param0] < param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'.`);
+                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
                 }
                 break;
             }
@@ -160,7 +196,7 @@ function pickNextQuest() {
                 if (stats.hasOwnProperty(param0)) {
                     return stats[param0] > param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'.`);
+                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
                 }
                 break;
             }
@@ -168,7 +204,7 @@ function pickNextQuest() {
                 if (stats.hasOwnProperty(param0)) {
                     return stats[param0] <= param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'.`);
+                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
                 }
                 break;
             }
@@ -176,7 +212,7 @@ function pickNextQuest() {
                 if (stats.hasOwnProperty(param0)) {
                     return stats[param0] >= param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'.`);
+                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
                 }
                 break;
             }
@@ -184,7 +220,7 @@ function pickNextQuest() {
                 if (stats.hasOwnProperty(param0)) {
                     return stats[param0] === param1;
                 } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'.`);
+                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
                 }
                 break;
             }
@@ -195,20 +231,23 @@ function pickNextQuest() {
                 return !tags.has(param0);
             }
             default: {
-                console.log(`Unknown operator '${operator}' in conditions of quest '${q.QuestName}'.`);
+                console.log(`Unknown operator '${operator}' in conditions of quest '${q.QuestName}'`);
                 break;
             }
             }
             return false;
         });
     });
+}
 
-    if (eligibleQuests.length > 0) {
-        const newQuestIndex = Math.floor(Math.random() * eligibleQuests.length);
-        currentQuest = eligibleQuests[newQuestIndex];
+
+function pickNextQuest() {
+    if (possibleNextQuests.length > 0) {
+        const newQuestIndex = Math.floor(Math.random() * possibleNextQuests.length);
+        currentQuest = possibleNextQuests[newQuestIndex];
     } else {
         state = 'error';
-        errorMessage = 'No eligible quests available';
+        errorMessage = 'No eligible next quests exist';
         currentQuest = null;
     }
 }

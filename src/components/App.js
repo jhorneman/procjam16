@@ -9,7 +9,7 @@ function getState() {
     return {
         state: GameStore.state(),
         errorMessage: GameStore.errorMessage(),
-        loadWarnings: GameStore.loadWarnings(),
+        warnings: GameStore.warnings(),
         statNames: GameStore.statNames(),
         stats: GameStore.stats(),
     };
@@ -56,7 +56,7 @@ class App extends Component {
         case 'error': {
             view = (<div>
                 <p>Error: {this.state.errorMessage}.</p>
-                <WarningList warnings={this.state.loadWarnings} />
+                <WarningList warnings={this.state.warnings} />
             </div>);
             break;
         }
