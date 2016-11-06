@@ -14,6 +14,9 @@ export const statNames = [
     'rations',
 ];
 
+const statMaxValue = 10;
+const defaultDeathTag = 'death';
+
 let state = 'uninitialized';
 let errorMessage;
 let allQuests = [];
@@ -94,6 +97,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             case 'add': {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] += param1;
+                    if (stats[param0] > statMaxValue) stats[param0] = statMaxValue;
                 } else {
                     reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
                 }
@@ -102,6 +106,12 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             case 'subtract': {
                 if (stats.hasOwnProperty(param0)) {
                     stats[param0] -= param1;
+                    if (stats[param0] < 0) {
+                        stats[param0] = 0;
+                        const whichDeathTag = choiceIndex ? 'DeathTypeB' : 'DeathTypeA';
+                        const deathTag = (currentQuest[whichDeathTag] !== '') ? currentQuest[whichDeathTag] : defaultDeathTag;
+                        tags.add(deathTag);
+                    }
                 } else {
                     reportError(`Unknown stat '${param0}' in ${whichResult} of quest '${currentQuest.QuestName}'`);
                 }
@@ -177,68 +187,76 @@ function resetGameState() {
     }
 
     tags = new Set();
+
+    possibleNextQuests = [];
 }
 
 
 function getPossibleNextQuests() {
+    const playerIsDead = [...tags].some(tag => tag.startsWith('death'));
     return allQuests.filter(q => {
-        return q.Conditions.every(([operator, param0, param1]) => {
-            switch (operator) {
-            case 'lessThan': {
-                if (stats.hasOwnProperty(param0)) {
-                    return stats[param0] < param1;
-                } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
-                }
-                break;
-            }
-            case 'greaterThan': {
-                if (stats.hasOwnProperty(param0)) {
-                    return stats[param0] > param1;
-                } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
-                }
-                break;
-            }
-            case 'lessThanOrEqual': {
-                if (stats.hasOwnProperty(param0)) {
-                    return stats[param0] <= param1;
-                } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
-                }
-                break;
-            }
-            case 'greaterThanOrEqual': {
-                if (stats.hasOwnProperty(param0)) {
-                    return stats[param0] >= param1;
-                } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
-                }
-                break;
-            }
-            case 'equals': {
-                if (stats.hasOwnProperty(param0)) {
-                    return stats[param0] === param1;
-                } else {
-                    console.log(`Unknown stat '${param0}' in conditions of quest '${q.QuestName}'`);
-                }
-                break;
-            }
-            case 'hasTag': {
-                return tags.has(param0);
-            }
-            case 'doesntHaveTag': {
-                return !tags.has(param0);
-            }
-            default: {
-                console.log(`Unknown operator '${operator}' in conditions of quest '${q.QuestName}'`);
-                break;
-            }
-            }
-            return false;
-        });
+        if (playerIsDead && !q.IsDeathQuest) return false;
+        const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
+        return q.Conditions.every(evaluateConditionForThisQuest);
     });
 }
+
+
+function evaluateCondition(quest, [operator, param0, param1]) {
+    switch (operator) {
+    case 'lessThan': {
+        if (stats.hasOwnProperty(param0)) {
+            return stats[param0] < param1;
+        } else {
+            console.log(`Unknown stat '${param0}' in conditions of quest '${quest.QuestName}'`);
+        }
+        break;
+    }
+    case 'greaterThan': {
+        if (stats.hasOwnProperty(param0)) {
+            return stats[param0] > param1;
+        } else {
+            console.log(`Unknown stat '${param0}' in conditions of quest '${quest.QuestName}'`);
+        }
+        break;
+    }
+    case 'lessThanOrEqual': {
+        if (stats.hasOwnProperty(param0)) {
+            return stats[param0] <= param1;
+        } else {
+            console.log(`Unknown stat '${param0}' in conditions of quest '${quest.QuestName}'`);
+        }
+        break;
+    }
+    case 'greaterThanOrEqual': {
+        if (stats.hasOwnProperty(param0)) {
+            return stats[param0] >= param1;
+        } else {
+            console.log(`Unknown stat '${param0}' in conditions of quest '${quest.QuestName}'`);
+        }
+        break;
+    }
+    case 'equals': {
+        if (stats.hasOwnProperty(param0)) {
+            return stats[param0] === param1;
+        } else {
+            console.log(`Unknown stat '${param0}' in conditions of quest '${quest.QuestName}'`);
+        }
+        break;
+    }
+    case 'hasTag': {
+        return tags.has(param0);
+    }
+    case 'doesntHaveTag': {
+        return !tags.has(param0);
+    }
+    default: {
+        console.log(`Unknown operator '${operator}' in conditions of quest '${quest.QuestName}'`);
+        break;
+    }
+    }
+    return false;
+};
 
 
 function pickNextQuest() {
