@@ -209,7 +209,7 @@ function resetGameState() {
 function getPossibleNextQuests() {
     const playerIsDead = [...tags].some(tag => tag.startsWith('death'));
     return allQuests.filter(q => {
-        if (playerIsDead && !q.IsDeathQuest) return false;
+        if (playerIsDead !== q.IsDeathQuest) return false;
         const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
         return q.Conditions.every(evaluateConditionForThisQuest);
     });
