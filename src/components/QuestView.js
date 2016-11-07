@@ -38,6 +38,7 @@ class QuestView extends Component {
         const quest = this.state.quest;
         let view;
         if (!this.state.playerHasChosen) {
+            const questText = GameStore.processText(quest.QuestText);
             let buttons = this.state.playerIsDead ? (
                 <button className='death' onClick={this.onAClick}>Rest In Peace</button>
             ) : [
@@ -46,14 +47,15 @@ class QuestView extends Component {
             ];
 
             view = (<div className='questView'>
-                <div className='text'>{quest.QuestText}</div>
+                <div className='text'>{questText}</div>
                 <div className='flex-container buttonBar'>
                     {buttons}
                 </div>
             </div>); 
         } else {
+            const resultText = GameStore.processText(quest.ResultTexts[this.state.playerChoice]);
             view = (<div className='questView'>
-                <div className='text'>{quest.ResultTexts[this.state.playerChoice]}</div>
+                <div className='text'>{resultText}</div>
                 <div className='flex-container buttonBar'>
                     <button className='continue' onClick={this.onContinueClick}>Continue...</button>
                 </div>

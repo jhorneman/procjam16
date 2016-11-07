@@ -69,6 +69,21 @@ export let GameStore = createStore({
         return isPlayerDead();
     },
 
+    processText: function(rawText) {
+        const parts = rawText.split('#');
+        if ((parts.length % 2) === 0) {
+            return '<text substitution error - unmatched hash signs>';            
+        }
+        for (let i=1; i<parts.length; i += 2) {
+            if (stats.hasOwnProperty(parts[i])) {
+                parts[i] = stats[parts[i]];
+            } else {
+                parts[i] = `<unknown stat '${parts[i]}'>`;
+            }
+        }
+        return parts.join('');
+    }
+
 }, 'gameStore');
 
 
