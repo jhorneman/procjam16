@@ -12,6 +12,7 @@ export const visibleStatNames = [
 const statStartValue = 5;
 const statMaxValue = 10;
 const defaultDeathTag = 'death';
+const startTag = 'start';
 
 let state = 'uninitialized';
 let errorMessage;
@@ -106,6 +107,10 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     executeChoice: function(choiceIndex) {
+        // Automatically delete start tag.
+        if (tags.has(startTag)) tags.delete(startTag);
+
+        // If this is a death quest, don't execute quest logic, just restart the game.
         if (currentQuest.IsDeathQuest) {
             resetGameState();
             possibleNextQuests = getPossibleNextQuests();
@@ -209,6 +214,7 @@ function resetGameState() {
     }
 
     tags.clear();
+    tags.add(startTag);
 
     possibleNextQuests = [];
 }
