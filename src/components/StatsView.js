@@ -19,9 +19,7 @@ StatsView.propTypes = {
 
 
 function StatView(props) {
-    return (<div className='statView'>
-        <p>{props.name}: {props.value}</p>
-    </div>);
+    return (<li>{props.name}: {props.value}</li>);
 }
 
 StatView.propTypes = {

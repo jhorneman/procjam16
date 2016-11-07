@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
+import ClickableLink from './ClickableLink';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import TagsView from './TagsView';
@@ -21,7 +22,9 @@ function getState() {
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = getState();
+        this.state = Object.assign({}, getState(), {
+            debugViewIsOn: (process.env.NODE_ENV === 'development'),
+        });
         this._onChange = this._onChange.bind(this);
     }
 
@@ -38,39 +41,57 @@ class App extends Component {
     }
 
     render() {
-        let view;
+        let sidebarContents = null;
+        let mainContents = null;
+        let debugHeader = this.state.debugViewIsOn ? (<header>
+            Debug buttons!
+        </header>) : null;
+
         switch (this.state.state) {
         case 'uninitialized': {
-            view = (<p>...</p>);
+            mainContents = (<p>...</p>);
             break;
         }
         case 'loading': {
-            view = (<p>Loading...</p>);
+            mainContents = (<p>Loading...</p>);
             break;
         }
         case 'playing': {
-            view = <div>
-                <StatsView statNames={this.state.statNames} stats={this.state.stats} />
-                <TagsView tags={this.state.tags} />
+            mainContents = [
+                <StatsView statNames={this.state.statNames} stats={this.state.stats} />,
                 <QuestView />
-            </div>;
+            ];
+            sidebarContents = (<TagsView tags={this.state.tags} />);
             break;
         }
         case 'error': {
-            view = (<div>
+            mainContents = (<div>
                 <p>Error: {this.state.errorMessage}.</p>
                 <WarningList warnings={this.state.warnings} />
             </div>);
             break;
         }
         default: {
-            view = (<p>Unknown state '{this.state.state}'.</p>);
+            mainContents = (<p>Unknown state '{this.state.state}'.</p>);
             break;
         }
         }
 
-        return (<div className='app'>
-            {view}
+        return (<div className='flex-container page'>
+            {debugHeader}
+            <div className='flex-container content'>
+                <div className='sidebar' />
+                <div className='flex-container main'>
+                    {mainContents}
+                    <footer>
+                        <ClickableLink onClick={undefined}>About this game</ClickableLink>
+                        &copy; 2016 Liz England &amp; Jurie Horneman
+                    </footer>
+                </div>
+                <div className='sidebar'>
+                    {sidebarContents}
+                </div>
+            </div>
         </div>);
     }
 }
