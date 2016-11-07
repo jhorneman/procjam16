@@ -21,7 +21,6 @@ body {
 }
 
 .content {
-    flex-direction: row;
     justify-content: center;
 }
 
@@ -61,16 +60,32 @@ body {
     padding-bottom: 20px;
 }
 
-.questView .button {
-    margin-right: 10px;
+.questView .buttonBar {
+    justify-content: space-around;
 }
 
-.btn {
+.questView button {
+    flex-bases: 0;
+    width: 200px;
+}
+
+.clickableLink {
     display: inline-block;
+}
+
+.main footer .clickableLink {
     margin-right: 10px;
 }
 
-.button {
+.main footer a {
+    color: #333;
+}
+
+.main footer a:hover {
+    color: white;
+}
+
+button {
     display: inline-block;
     font-weight: normal;
     line-height: 1.25;

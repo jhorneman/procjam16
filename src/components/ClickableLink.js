@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function ClickableLink(props) {
-    return (<div className='btn'>
+    return (<div className='clickableLink'>
         <a href='#' onClick={props.onClick}>
             {props.children}
         </a>
