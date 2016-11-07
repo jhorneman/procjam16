@@ -27,8 +27,8 @@ function StatView(props) {
     }
 
     return (<div className={className}>
-        <span className='statValue'>{props.value}</span>
-        <span className='statName'>{props.name}</span>
+        <span className='statValue' key='value'>{props.value}</span>
+        <span className='statName' key='name'>{props.name}</span>
     </div>);
 }
 

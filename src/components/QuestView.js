@@ -41,8 +41,8 @@ class QuestView extends Component {
             let buttons = this.state.playerIsDead ? (
                 <button className='death' onClick={this.onAClick}>Rest In Peace</button>
             ) : [
-                <button className='choice' onClick={this.onAClick}>{quest.ChoiceTexts[0]}</button>,
-                <button className='choice' onClick={this.onBClick}>{quest.ChoiceTexts[1]}</button>
+                <button className='choice' onClick={this.onAClick} key='choiceA'>{quest.ChoiceTexts[0]}</button>,
+                <button className='choice' onClick={this.onBClick} key='choiceB'>{quest.ChoiceTexts[1]}</button>
             ];
 
             view = (<div className='questView'>

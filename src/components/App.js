@@ -57,13 +57,13 @@ class App extends Component {
         }
         case 'playing': {
             mainContents = [
-                <StatsView statNames={this.state.statNames} stats={this.state.stats} />,
-                <QuestView />
+                <StatsView statNames={this.state.statNames} stats={this.state.stats} key='stats' />,
+                <QuestView key='quest' />
             ];
             sidebarContents = [
-                <DebugTagsView />,
-                <DebugStatsView />,
-                <WarningList />
+                <DebugTagsView key='tags' />,
+                <DebugStatsView key='stats' />,
+                <WarningList key='warnings' />
             ];
             break;
         }
