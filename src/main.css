@@ -95,7 +95,13 @@ button {
     border-radius: 0.25rem;
 }
 
-.tagsView ul {
+.debugTagsView ul {
+    margin-top: 0px;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.debugStatsView ul {
     margin-top: 0px;
     list-style-type: none;
     padding: 0px;

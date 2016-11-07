@@ -4,12 +4,13 @@ import { GameStore } from '../gameStore';
 
 function getState() {
     return {
-        tags: GameStore.tags(),
+        statNames: GameStore.allStatNames(),
+        stats: GameStore.stats(),
     };
 }
 
 
-class DebugTagsView extends Component {
+class DebugStatsView extends Component {
     constructor(props) {
         super(props);
         this.state = getState();
@@ -29,12 +30,12 @@ class DebugTagsView extends Component {
     }
 
     render() {
-        const tagViews = this.state.tags.map((tag, index) => {
-            return <li key={index}>{tag}</li>;
+        const tagViews = this.state.statNames.map((statName, index) => {
+            return <li key={index}>{statName}: {this.state.stats[statName]}</li>;
         });
 
-        return (<div className='debugTagsView'>
-            <h3>Player tags:</h3>
+        return (<div className='debugStatsView'>
+            <h3>Player stats:</h3>
             <ul>
                 {tagViews}
             </ul>
@@ -43,4 +44,4 @@ class DebugTagsView extends Component {
 }
 
 
-export default DebugTagsView;
+export default DebugStatsView;

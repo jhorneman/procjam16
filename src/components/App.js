@@ -4,6 +4,7 @@ import ClickableLink from './ClickableLink';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import DebugTagsView from './DebugTagsView';
+import DebugStatsView from './DebugStatsView';
 import WarningList from './WarningList';
 
 
@@ -11,7 +12,7 @@ function getState() {
     return {
         state: GameStore.state(),
         errorMessage: GameStore.errorMessage(),
-        statNames: GameStore.allStatNames(),
+        statNames: GameStore.visibleStatNames(),
         stats: GameStore.stats(),
     };
 }
@@ -61,6 +62,7 @@ class App extends Component {
             ];
             sidebarContents = [
                 <DebugTagsView />,
+                <DebugStatsView />,
                 <WarningList />
             ];
             break;
@@ -69,6 +71,7 @@ class App extends Component {
             mainContents = (<div>
                 <p>Error: {this.state.errorMessage}.</p>
             </div>);
+            sidebarContents = <WarningList />;
             break;
         }
         default: {
