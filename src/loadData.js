@@ -39,6 +39,9 @@ function loadDataFromTabletop(sheets, tabletop) {
     let result = {
         data: {
             quests: [],
+            // allStats: [],
+            // allTags: [],
+            // allCommands: [],
         },
         warnings: [],
         success: false,
