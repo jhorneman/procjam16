@@ -31,11 +31,9 @@ class WarningList extends Component {
     render() {
         if (this.state.warnings.length === 0) return null;
 
-        const warnings = (<ul>
-            {this.state.warnings.map((warning, index) =>
-                <li key={index}>{warning}</li>
-            )}
-        </ul>);
+        const warnings = this.state.warnings.map((warning, index) =>
+            <p key={index}>{warning}</p>
+        );
         return (<div className='warningList'>
             <h3>Warnings: {this.state.warnings.length}.</h3>
             {warnings}

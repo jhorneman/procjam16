@@ -97,6 +97,12 @@ body {
     min-width: 200px;
 }
 
+.questView button.death {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
 .clickableLink {
     display: inline-block;
 }
@@ -141,5 +147,5 @@ button {
 }
 
 .warningList {
-    background: light-red;
+    background: lightred;
 }

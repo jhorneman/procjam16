@@ -5,8 +5,9 @@ import { GameStore, GameStoreMutator } from '../gameStore';
 function getInitialState() {
     return {
         quest: GameStore.currentQuest(),
+        playerIsDead: GameStore.playerIsDead(),
         playerHasChosen: false,
-        playerChoice: undefined
+        playerChoice: undefined,
     };
 }
 
@@ -37,18 +38,24 @@ class QuestView extends Component {
         const quest = this.state.quest;
         let view;
         if (!this.state.playerHasChosen) {
+            let buttons = this.state.playerIsDead ? (
+                <button className='death' onClick={this.onAClick}>Rest In Peace</button>
+            ) : [
+                <button className='choice' onClick={this.onAClick}>{quest.ChoiceTexts[0]}</button>,
+                <button className='choice' onClick={this.onBClick}>{quest.ChoiceTexts[1]}</button>
+            ];
+
             view = (<div className='questView'>
                 <div className='text'>{quest.QuestText}</div>
                 <div className='flex-container buttonBar'>
-                    <button onClick={this.onAClick}>{quest.ChoiceTexts[0]}</button>
-                    <button onClick={this.onBClick}>{quest.ChoiceTexts[1]}</button>
+                    {buttons}
                 </div>
             </div>); 
         } else {
             view = (<div className='questView'>
                 <div className='text'>{quest.ResultTexts[this.state.playerChoice]}</div>
                 <div className='flex-container buttonBar'>
-                    <button onClick={this.onContinueClick}>Continue...</button>
+                    <button className='continue' onClick={this.onContinueClick}>Continue...</button>
                 </div>
             </div>)
         }
