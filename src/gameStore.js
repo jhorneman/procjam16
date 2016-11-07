@@ -76,16 +76,12 @@ export let GameStore = createStore({
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
         let that = this;
-        if (process.env.NODE_ENV === 'development') {
-            let dataLoadPromise = loadDataFromGoogleSpreadsheet();
-            dataLoadPromise.then(function(result) {
-                allQuests = result.data.quests;
-                warnings = result.warnings;
-                that.restartGame();
-            });
-        } else {
-            // loadDataFromJSONFile();
-        }
+        let dataLoadPromise = loadDataFromGoogleSpreadsheet();
+        dataLoadPromise.then(function(result) {
+            allQuests = result.data.quests;
+            warnings = result.warnings;
+            that.restartGame();
+        });
     },
 
     restartGame: function() {
