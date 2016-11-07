@@ -70,6 +70,10 @@ export let GameStore = createStore({
         return [...tags];
     },
 
+    playerIsDead: function() {
+        return isPlayerDead();
+    },
+
 }, 'gameStore');
 
 
@@ -202,8 +206,13 @@ function resetGameState() {
 }
 
 
+function isPlayerDead() {
+    return [...tags].some(tag => tag.startsWith('death'));
+}
+
+
 function getPossibleNextQuests() {
-    const playerIsDead = [...tags].some(tag => tag.startsWith('death'));
+    const playerIsDead = isPlayerDead();
     return allQuests.filter(q => {
         if (playerIsDead !== q.IsDeathQuest) return false;
         const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
