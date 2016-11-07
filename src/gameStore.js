@@ -106,6 +106,13 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     executeChoice: function(choiceIndex) {
+        if (currentQuest.IsDeathQuest) {
+            resetGameState();
+            possibleNextQuests = getPossibleNextQuests();
+            this.emitChange();
+            return;
+        }
+
         let nextQuestSetByGoCommand = null;
 
         currentQuest.Outcomes[choiceIndex].forEach(([operator, param0, param1]) => {
