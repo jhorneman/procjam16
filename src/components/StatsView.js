@@ -6,9 +6,9 @@ class StatsView extends Component {
         const statViews = this.props.statNames.map((name, index) => {
             return <StatView name={name} value={this.props.stats[name]} key={index} />;
         });
-        return (<div className='statsView'><ul>
+        return (<div className='statsView'>
             {statViews}
-        </ul></div>);
+        </div>);
     }
 }
 
@@ -19,7 +19,7 @@ StatsView.propTypes = {
 
 
 function StatView(props) {
-    return (<li>{props.name}: {props.value}</li>);
+    return (<p>{props.name}: {props.value}</p>);
 }
 
 StatView.propTypes = {

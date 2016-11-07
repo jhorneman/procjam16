@@ -47,12 +47,7 @@ body {
 .statsView {
     padding-left: 5px;
     border: 2px solid;
-    background-color: #AAA;
-}
-
-.statsView ul {
-    list-style-type: none;
-    padding: 0px;
+    background-color: #aaa;
 }
 
 .questView .text {
@@ -66,7 +61,7 @@ body {
 
 .questView button {
     flex-bases: 0;
-    width: 200px;
+    min-width: 200px;
 }
 
 .clickableLink {
