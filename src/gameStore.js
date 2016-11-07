@@ -2,11 +2,6 @@ import { createStore, createStoreMutator } from './miniflux';
 import loadDataFromGoogleSpreadsheet from './loadData';
 
 
-export const validCommands = [
-    'restart',
-    'go',
-];
-
 export const visibleStatNames = [
     'health',
     'luck',
@@ -125,30 +120,21 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                 tags.delete(param0);
                 break;
             }
-            case 'command': {
-                switch (param0) {
-                case 'restart': {
-                    resetGameState();
-                    break;
-                }
-                case 'go': {
-                    const nextQuest = allQuests.find(q => q.QuestName === param1);
-                    if (nextQuest !== undefined) {
-                        nextQuestSetByGoCommand = nextQuest;
-                    } else {
-                        reportError(`Go command in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}': could not find a quest named '${param1}'`);
-                    }
-                    break;
-                }
-                default: {
-                    reportError(`Unknown command '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
-                    break;
-                }
+            case 'restart': {
+                resetGameState();
+                break;
+            }
+            case 'go': {
+                const nextQuest = allQuests.find(q => q.QuestName === param0);
+                if (nextQuest !== undefined) {
+                    nextQuestSetByGoCommand = nextQuest;
+                } else {
+                    reportError(`Go command in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}', sheet '${currentQuest.SheetName}': could not find a quest named '${param0}'`);
                 }
                 break;
             }
             default: {
-                reportError(`Unknown operator '${operator}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
+                reportError(`Unknown operator '${operator}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}', sheet '${currentQuest.SheetName}'`);
                 break;
             }
             }

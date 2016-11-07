@@ -196,11 +196,13 @@ const binaryOperations = [
     [ '=', 'set' ],
     [ '+', 'add' ],
     [ '-', 'subtract' ],
+    ['go', 'go'],
 ];
 
 const unaryOperations = [
     [ '+', 'addTag' ],
     [ '-', 'removeTag' ],
+    ['restart', 'restart'],
 ];
 
 
@@ -210,7 +212,7 @@ function parseCondition(condition, reportFn) {
 
 
 function parseOperation(operation, reportFn) {
-    return parseStatement(binaryOperations, unaryOperations, 'command', operation, reportFn);
+    return parseStatement(binaryOperations, unaryOperations, null, operation, reportFn);
 }
 
 
@@ -249,7 +251,7 @@ function parseStatement(binaryOperators, unaryOperators, defaultOperator, statem
     });
     if (result !== null) return result;
 
-    return [defaultOperator, statement];
+    return (defaultOperator !== null) ? [defaultOperator, statement] : [];
 }
 
 
