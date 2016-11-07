@@ -4,12 +4,12 @@ import { GameStore } from '../gameStore';
 
 function getState() {
     return {
-        warnings: GameStore.warnings(),
+        tags: GameStore.tags(),
     };
 }
 
 
-class WarningList extends Component {
+class DebugTagsView extends Component {
     constructor(props) {
         super(props);
         this.state = getState();
@@ -29,19 +29,18 @@ class WarningList extends Component {
     }
 
     render() {
-        if (this.state.warnings.length === 0) return null;
+        const tagViews = this.state.tags.map((tag, index) => {
+            return <li key={index}>{tag}</li>;
+        });
 
-        const warnings = (<ul>
-            {this.state.warnings.map((warning, index) =>
-                <li key={index}>{warning}</li>
-            )}
-        </ul>);
-        return (<div className='warningList'>
-            <h3>Warnings: {this.state.warnings.length}.</h3>
-            {warnings}
+        return (<div className='tagsView'>
+            <h3>Player tags:</h3>
+            <ul>
+                {tagViews}
+            </ul>
         </div>);
     }
 }
 
 
-export default WarningList;
+export default DebugTagsView;

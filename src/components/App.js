@@ -3,7 +3,7 @@ import { GameStore } from '../gameStore';
 import ClickableLink from './ClickableLink';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
-import TagsView from './TagsView';
+import DebugTagsView from './DebugTagsView';
 import WarningList from './WarningList';
 
 
@@ -11,10 +11,8 @@ function getState() {
     return {
         state: GameStore.state(),
         errorMessage: GameStore.errorMessage(),
-        warnings: GameStore.warnings(),
         statNames: GameStore.allStatNames(),
         stats: GameStore.stats(),
-        tags: GameStore.tags(),
     };
 }
 
@@ -61,13 +59,15 @@ class App extends Component {
                 <StatsView statNames={this.state.statNames} stats={this.state.stats} />,
                 <QuestView />
             ];
-            sidebarContents = (<TagsView tags={this.state.tags} />);
+            sidebarContents = [
+                <DebugTagsView />,
+                <WarningList />
+            ];
             break;
         }
         case 'error': {
             mainContents = (<div>
                 <p>Error: {this.state.errorMessage}.</p>
-                <WarningList warnings={this.state.warnings} />
             </div>);
             break;
         }
