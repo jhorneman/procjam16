@@ -6,7 +6,7 @@ class StatsView extends Component {
         const statViews = this.props.statNames.map((name, index) => {
             return <StatView name={name} value={this.props.stats[name]} key={index} />;
         });
-        return (<div className='statsView'>
+        return (<div className='statsView flex-container'>
             {statViews}
         </div>);
     }
@@ -19,7 +19,17 @@ StatsView.propTypes = {
 
 
 function StatView(props) {
-    return (<p>{props.name}: {props.value}</p>);
+    let className = 'stat';
+    if (props.value === 0) {
+        className += ' valueZero';
+    } else if (props.value <= 2) {
+        className += ' valueLow';
+    }
+
+    return (<div className={className}>
+        <span className='statValue'>{props.value}</span>
+        <span className='statName'>{props.name}</span>
+    </div>);
 }
 
 StatView.propTypes = {

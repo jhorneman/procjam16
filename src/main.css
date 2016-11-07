@@ -45,9 +45,42 @@ body {
 }
 
 .statsView {
-    padding-left: 5px;
+    justify-content: space-between;
+}
+
+.statsView .stat {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
     border: 2px solid;
     background-color: #aaa;
+    text-align: center;
+}
+
+.statsView .stat.valueLow {
+    background-color: red;
+    color: white;
+    border-color: white;
+}
+
+.statsView .stat.valueZero {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+.statsView .stat .statValue {
+    display: block;
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+.statsView .stat .statName {
+    display: block;
+    margin-top: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .questView .text {
