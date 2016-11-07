@@ -6,9 +6,12 @@ class TagsView extends Component {
         const tagViews = this.props.tags.map((tag, index) => {
             return <li key={index}>{tag}</li>;
         });
-        return (<div className='tagsView'><ul>
-            {tagViews}
-        </ul></div>);
+        return (<div className='tagsView'>
+            <p>Player tags:</p>
+            <ul>
+                {tagViews}
+            </ul>
+        </div>);
     }
 }
 
