@@ -86,15 +86,15 @@ class App extends Component {
                 <div className='sidebar' />
                 <div className='flex-container main'>
                     {mainContents}
-                    <footer>
-                        <ClickableLink onClick={undefined}>About this game</ClickableLink>
-                        &copy; 2016 Liz England &amp; Jurie Horneman
-                    </footer>
                 </div>
                 <div className='sidebar'>
                     {sidebarContents}
                 </div>
             </div>
+            <footer>
+                <ClickableLink onClick={undefined}>About this game</ClickableLink>
+                &copy; 2016 Liz England &amp; Jurie Horneman
+            </footer>
         </div>);
     }
 }
