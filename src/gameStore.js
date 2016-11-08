@@ -2,11 +2,6 @@ import { createStore, createStoreMutator } from './miniflux';
 import loadDataFromGoogleSpreadsheet from './loadData';
 
 
-export const validCommands = [
-    'restart',
-    'go',
-];
-
 export const visibleStatNames = [
     'health',
     'luck',
@@ -17,6 +12,7 @@ export const visibleStatNames = [
 const statStartValue = 5;
 const statMaxValue = 10;
 const defaultDeathTag = 'death';
+const startTag = 'start';
 
 let state = 'uninitialized';
 let errorMessage;
@@ -70,22 +66,37 @@ export let GameStore = createStore({
         return [...tags];
     },
 
+    playerIsDead: function() {
+        return isPlayerDead();
+    },
+
+    processText: function(rawText) {
+        const parts = rawText.split('#');
+        if ((parts.length % 2) === 0) {
+            return '<text substitution error - unmatched hash signs>';            
+        }
+        for (let i=1; i<parts.length; i += 2) {
+            if (stats.hasOwnProperty(parts[i])) {
+                parts[i] = stats[parts[i]];
+            } else {
+                parts[i] = `<unknown stat '${parts[i]}'>`;
+            }
+        }
+        return parts.join('');
+    }
+
 }, 'gameStore');
 
 
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
         let that = this;
-        if (process.env.NODE_ENV === 'development') {
-            let dataLoadPromise = loadDataFromGoogleSpreadsheet();
-            dataLoadPromise.then(function(result) {
-                allQuests = result.data.quests;
-                warnings = result.warnings;
-                that.restartGame();
-            });
-        } else {
-            // loadDataFromJSONFile();
-        }
+        let dataLoadPromise = loadDataFromGoogleSpreadsheet();
+        dataLoadPromise.then(function(result) {
+            allQuests = result.data.quests;
+            warnings = result.warnings;
+            that.restartGame();
+        });
     },
 
     restartGame: function() {
@@ -96,6 +107,17 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     executeChoice: function(choiceIndex) {
+        // Automatically delete start tag.
+        if (tags.has(startTag)) tags.delete(startTag);
+
+        // If this is a death quest, don't execute quest logic, just restart the game.
+        if (currentQuest.IsDeathQuest) {
+            resetGameState();
+            possibleNextQuests = getPossibleNextQuests();
+            this.emitChange();
+            return;
+        }
+
         let nextQuestSetByGoCommand = null;
 
         currentQuest.Outcomes[choiceIndex].forEach(([operator, param0, param1]) => {
@@ -125,30 +147,21 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                 tags.delete(param0);
                 break;
             }
-            case 'command': {
-                switch (param0) {
-                case 'restart': {
-                    resetGameState();
-                    break;
-                }
-                case 'go': {
-                    const nextQuest = allQuests.find(q => q.QuestName === param1);
-                    if (nextQuest !== undefined) {
-                        nextQuestSetByGoCommand = nextQuest;
-                    } else {
-                        reportError(`Go command in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}': could not find a quest named '${param1}'`);
-                    }
-                    break;
-                }
-                default: {
-                    reportError(`Unknown command '${param0}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
-                    break;
-                }
+            case 'restart': {
+                resetGameState();
+                break;
+            }
+            case 'go': {
+                const nextQuest = allQuests.find(q => q.QuestName === param0);
+                if (nextQuest !== undefined) {
+                    nextQuestSetByGoCommand = nextQuest;
+                } else {
+                    reportError(`Go command in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}', sheet '${currentQuest.SheetName}': could not find a quest named '${param0}'`);
                 }
                 break;
             }
             default: {
-                reportError(`Unknown operator '${operator}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}'`);
+                reportError(`Unknown operator '${operator}' in outcome ${'AB'[choiceIndex]} of quest '${currentQuest.QuestName}', sheet '${currentQuest.SheetName}'`);
                 break;
             }
             }
@@ -201,15 +214,21 @@ function resetGameState() {
     }
 
     tags.clear();
+    tags.add(startTag);
 
     possibleNextQuests = [];
 }
 
 
+function isPlayerDead() {
+    return [...tags].some(tag => tag.startsWith('death'));
+}
+
+
 function getPossibleNextQuests() {
-    const playerIsDead = [...tags].some(tag => tag.startsWith('death'));
+    const playerIsDead = isPlayerDead();
     return allQuests.filter(q => {
-        if (playerIsDead && !q.IsDeathQuest) return false;
+        if (playerIsDead !== q.IsDeathQuest) return false;
         const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
         return q.Conditions.every(evaluateConditionForThisQuest);
     });

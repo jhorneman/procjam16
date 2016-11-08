@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "events": "^1.1.1",
+    "ls-cache": "^0.2.3",
+    "normalize.css": "^5.0.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "tabletop": "^1.4.3"

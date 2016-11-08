@@ -4,12 +4,13 @@ import { GameStore } from '../gameStore';
 
 function getState() {
     return {
-        warnings: GameStore.warnings(),
+        statNames: GameStore.allStatNames(),
+        stats: GameStore.stats(),
     };
 }
 
 
-class WarningList extends Component {
+class DebugStatsView extends Component {
     constructor(props) {
         super(props);
         this.state = getState();
@@ -29,17 +30,18 @@ class WarningList extends Component {
     }
 
     render() {
-        if (this.state.warnings.length === 0) return null;
+        const tagViews = this.state.statNames.map((statName, index) => {
+            return <li key={index}>{statName}: {this.state.stats[statName]}</li>;
+        });
 
-        const warnings = this.state.warnings.map((warning, index) =>
-            <p key={index}>{warning}.</p>
-        );
-        return (<div className='warningList'>
-            <h3>Warnings: {this.state.warnings.length}.</h3>
-            {warnings}
+        return (<div className='debugStatsView'>
+            <h3>Player stats:</h3>
+            <ul>
+                {tagViews}
+            </ul>
         </div>);
     }
 }
 
 
-export default WarningList;
+export default DebugStatsView;

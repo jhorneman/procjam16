@@ -1,8 +1,6 @@
 import Tabletop from 'tabletop';
 
 
-// const googleSpreadsheetKey = '1AHirIj1eUn8ofGamkkCgu2XWXweM4byqrcu9FAg-j48';     // Simple test doc
-// const googleSpreadsheetKey = '1rDndDW7cebpGy9fnDZqvfcsLN1CB_pTb4n28W140O04';     // Copy of game doc
 const googleSpreadsheetKey = '1F7YsZk5now_twhccVQYmqgpyKyO9zYi1OFk0mpWYg2k';        // Game doc
 
 
@@ -41,6 +39,9 @@ function loadDataFromTabletop(sheets, tabletop) {
     let result = {
         data: {
             quests: [],
+            // allStats: [],
+            // allTags: [],
+            // allCommands: [],
         },
         warnings: [],
         success: false,
@@ -195,11 +196,13 @@ const binaryOperations = [
     [ '=', 'set' ],
     [ '+', 'add' ],
     [ '-', 'subtract' ],
+    ['go', 'go'],
 ];
 
 const unaryOperations = [
     [ '+', 'addTag' ],
     [ '-', 'removeTag' ],
+    ['restart', 'restart'],
 ];
 
 
@@ -209,7 +212,7 @@ function parseCondition(condition, reportFn) {
 
 
 function parseOperation(operation, reportFn) {
-    return parseStatement(binaryOperations, unaryOperations, 'command', operation, reportFn);
+    return parseStatement(binaryOperations, unaryOperations, null, operation, reportFn);
 }
 
 
@@ -248,7 +251,7 @@ function parseStatement(binaryOperators, unaryOperators, defaultOperator, statem
     });
     if (result !== null) return result;
 
-    return [defaultOperator, statement];
+    return (defaultOperator !== null) ? [defaultOperator, statement] : [];
 }
 
 
