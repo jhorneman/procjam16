@@ -3,8 +3,7 @@ import Tabletop from 'tabletop';
 
 const googleSpreadsheetKey = '1F7YsZk5now_twhccVQYmqgpyKyO9zYi1OFk0mpWYg2k';        // Game doc
 
-
-const blacklistedSheetNames = ['Math'];
+const controlSheetName = 'Control';
 
 const doneFieldName = 'Done?';
 const questFieldNames = [
@@ -39,19 +38,57 @@ function loadDataFromTabletop(sheets, tabletop) {
     let result = {
         data: {
             quests: [],
-            // allStats: [],
-            // allTags: [],
-            // allCommands: [],
+            continueButtonText: '',
+            deathContinueButtonText: '',
+            deathResultText: '',
+            allTags: [],
+            allStats: [],
         },
         warnings: [],
         success: false,
     };
 
-    let questSheetNames = tabletop.foundSheetNames.filter(sheetName =>
-        blacklistedSheetNames.indexOf(sheetName) === -1
+    if (tabletop.foundSheetNames.indexOf(controlSheetName) === -1) {
+        result.warnings.push(`Couldn't find sheet named '${controlSheetName}'`);
+        return result;
+    }
+
+    let controlData = {};
+    tabletop.sheets(controlSheetName).all().forEach(row  => controlData[row.Key] = row.Value);
+
+    const blacklistedSheetNames = splitIntoParts(controlData['blacklistedSheetNames']);
+    blacklistedSheetNames.push(controlSheetName);
+
+    const stringListSheetNames = splitIntoParts(controlData['stringListSheetNames']);
+
+    result.continueButtonText = controlData['continueButtonText'];
+    result.deathContinueButtonText = controlData['deathContinueButtonText'];
+    result.deathResultText = controlData['deathResultText'];
+
+    const questSheetNames = tabletop.foundSheetNames.filter(sheetName =>
+        blacklistedSheetNames.indexOf(sheetName) === -1 &&
+        stringListSheetNames.indexOf(sheetName) === -1
     );
 
     questSheetNames.forEach(sheetName => loadDataFromQuestSheet(result, tabletop.sheets(sheetName)));
+
+    let questReferences = {
+        queriedTags: new Set(),
+        queriedStats: new Set(),
+        modifiedTags: new Set(['start', 'death']),    // TODO: Get these from common module.
+        modifiedStats: new Set(),
+        questNames: new Set(result.data.quests.map(q => q.QuestName)),
+    };
+
+    result.data.quests.forEach(q => readQuestReferences(questReferences, q));
+
+    // result.data.quests.forEach(q => verifyQuest(questReferences, q,
+    //     w => result.warnings.push(`${w} (quest '${q.QuestName}' in sheet '${q.SheetName}')`)));
+
+    // console.log([...questReferences.queriedTags]);
+
+    result.allTags = [...questReferences.modifiedTags];
+    result.allStats = [...questReferences.modifiedStats];
 
     return result;
 }
@@ -138,6 +175,90 @@ function loadDataFromQuestSheet(result, sheet) {
 }
 
 
+function readQuestReferences(questReferences, quest) {
+    quest.Conditions.forEach(c => {
+        switch (c[0]) {
+        case 'hasTag':
+        case 'doesntHaveTag': {
+            questReferences.queriedTags.add(c[1]);
+            break;
+        }
+        default: {
+            questReferences.queriedStats.add(c[1]);
+            break;
+        }
+        }
+    });
+
+    quest.Outcomes.forEach(o => o.forEach(a => {
+        switch (a[0]) {
+        case 'addTag':
+        case 'removeTag': {
+            questReferences.modifiedTags.add(a[1]);
+            break;
+        }
+        case 'set':
+        case 'add':
+        case 'subtract': {
+            questReferences.modifiedStats.add(a[1]);
+            break;
+        }
+        default: break;
+        }
+    }));
+
+    quest.DeathTags.forEach(tags => tags.forEach(tag => questReferences.modifiedTags.add(tag)));
+}
+
+
+function verifyQuest(questReferences, quest, reportFn) {
+    quest.Conditions.forEach(c => {
+        switch (c[0]) {
+        case 'hasTag':
+        case 'doesntHaveTag': {
+            if (!questReferences.modifiedTags.has(c[1])) {
+                reportFn(`Use of unknown tag '${c[1]}'`);
+            }
+            break;
+        }
+        default: {
+            if (!questReferences.modifiedStats.has(c[1])) {
+                reportFn(`Use of unknown stat '${c[1]}'`);
+            }
+            break;
+        }
+        }
+    });
+
+    quest.Outcomes.forEach(o => o.forEach(a => {
+        switch (a[0]) {
+        case 'addTag':
+        case 'removeTag': {
+            if (!questReferences.queriedTags.has(a[1])) {
+                reportFn(`Tag '${a[1]}' is never used in a condition`);
+            }
+            break;
+        }
+        case 'set':
+        case 'add':
+        case 'subtract': {
+            if (!questReferences.queriedStats.has(a[1])) {
+                reportFn(`Stat '${a[1]}' is never used in a condition`);
+            }
+            break;
+        }
+        case 'go': {
+            if (!questReferences.questNames.has(a[1])) {
+                reportFn(`Go command has unknown quest '${a[1]}' as parameter`);
+            }
+            break;
+        }
+        default: break;
+        }
+    }));
+}
+
+
 function processQuest(rawQuestData, reportFn) {
     let newQuest = {};
     ['QuestName', 'QuestText', 'SheetName'].forEach(n => newQuest[n] = rawQuestData[n]);
@@ -147,7 +268,7 @@ function processQuest(rawQuestData, reportFn) {
     let parsedConditions = splitIntoParts(rawQuestData['Conditions']);
     parsedConditions = parsedConditions.map(c => parseCondition(c, w => reportFn(`Conditions: ${w}`)));
     if (parsedConditions.some(c => c.length === 0)) return null;
-    newQuest['Conditions'] = parsedConditions;
+    newQuest.Conditions = parsedConditions;
 
     newQuest.ChoiceTexts = [rawQuestData['ChoiceAText'], rawQuestData['ChoiceBText']];
     newQuest.ResultTexts = [rawQuestData['ChoiceAResult'], rawQuestData['ChoiceBResult']];
@@ -212,7 +333,7 @@ function parseCondition(condition, reportFn) {
 
 
 function parseOperation(operation, reportFn) {
-    return parseStatement(binaryOperations, unaryOperations, null, operation, reportFn);
+    return parseStatement(binaryOperations, unaryOperations, 'addTag', operation, reportFn);
 }
 
 
@@ -251,7 +372,12 @@ function parseStatement(binaryOperators, unaryOperators, defaultOperator, statem
     });
     if (result !== null) return result;
 
-    return (defaultOperator !== null) ? [defaultOperator, statement] : [];
+    if (defaultOperator !== null) {
+        return [defaultOperator, statement];
+    } else {
+        reportFn(`Can't parse '${statement}'`);
+        return [];
+    }
 }
 
 
