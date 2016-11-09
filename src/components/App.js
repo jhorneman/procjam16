@@ -92,7 +92,7 @@ class App extends Component {
                 </div>
             </div>
             <footer>
-                <ClickableLink onClick={undefined}>About this game</ClickableLink>
+                <ClickableLink onClick={() => {}}>About this game</ClickableLink>
                 &copy; 2016 Liz England &amp; Jurie Horneman
             </footer>
         </div>);
