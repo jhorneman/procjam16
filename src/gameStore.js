@@ -152,6 +152,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
                 break;
             }
             case 'go': {
+                // This picks the first one. The loading code warns when there are go commands referring to non-unique quest names. 
                 const nextQuest = allQuests.find(q => q.QuestName === param0);
                 if (nextQuest !== undefined) {
                     nextQuestSetByGoCommand = nextQuest;

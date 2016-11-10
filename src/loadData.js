@@ -85,7 +85,7 @@ function loadDataFromTabletop(sheets, tabletop) {
         queriedStats: new Set(),
         modifiedTags: new Set(defaultTags),
         modifiedStats: new Set(),
-        questNames: new Set(result.data.quests.map(q => q.QuestName)),
+        questNames: result.data.quests.map(q => q.QuestName),
     };
 
     result.data.quests.forEach(q => readQuestReferences(globalQuestData, q));
@@ -272,8 +272,17 @@ function verifyQuest(globalQuestData, quest, reportFn) {
             break;
         }
         case 'go': {
-            if (!globalQuestData.questNames.has(a[1])) {
-                reportFn(`Go command has unknown quest '${a[1]}' as parameter`);
+            const foundQuests = globalQuestData.questNames.filter(n => n === a[1]);
+            switch (foundQuests.length) {
+            case 0: {
+                reportFn(`Go command refers to a quest named '${a[1]}' - there are no known quests with this name.`);
+                break;
+            }
+            case 1: break;
+            default: {
+                reportFn(`Go command refers to a quest named '${a[1]}' - there are ${foundQuests.length} with this name, the name must be unique!`);
+                break;
+            }
             }
             break;
         }
