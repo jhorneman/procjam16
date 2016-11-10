@@ -1,12 +1,20 @@
 import Tabletop from 'tabletop';
+import {
+    googleSpreadsheetKey,
+    binaryConditions,
+    unaryConditions,
+    binaryOperations,
+    unaryOperations,
+    defaultTags
+} from './constants';
 
-
-const googleSpreadsheetKey = '1F7YsZk5now_twhccVQYmqgpyKyO9zYi1OFk0mpWYg2k';        // Game doc
 
 const controlSheetName = 'Control';
 
+const IDfieldName = 'ID';
 const doneFieldName = 'Done?';
 const questFieldNames = [
+    IDfieldName,
     doneFieldName,
     'QuestName',
     'Conditions',
@@ -72,23 +80,21 @@ function loadDataFromTabletop(sheets, tabletop) {
 
     questSheetNames.forEach(sheetName => loadDataFromQuestSheet(result, tabletop.sheets(sheetName)));
 
-    let questReferences = {
+    let globalQuestData = {
         queriedTags: new Set(),
         queriedStats: new Set(),
-        modifiedTags: new Set(['start', 'death']),    // TODO: Get these from common module.
+        modifiedTags: new Set(defaultTags),
         modifiedStats: new Set(),
         questNames: new Set(result.data.quests.map(q => q.QuestName)),
     };
 
-    result.data.quests.forEach(q => readQuestReferences(questReferences, q));
+    result.data.quests.forEach(q => readQuestReferences(globalQuestData, q));
 
-    // result.data.quests.forEach(q => verifyQuest(questReferences, q,
-    //     w => result.warnings.push(`${w} (quest '${q.QuestName}' in sheet '${q.SheetName}')`)));
+    result.data.quests.forEach(q => verifyQuest(globalQuestData, q,
+        w => result.warnings.push(`${w} (quest '${q.QuestName}' in sheet '${q.SheetName}')`)));
 
-    // console.log([...questReferences.queriedTags]);
-
-    result.allTags = [...questReferences.modifiedTags];
-    result.allStats = [...questReferences.modifiedStats];
+    result.allTags = [...globalQuestData.modifiedTags];
+    result.allStats = [...globalQuestData.modifiedStats];
 
     return result;
 }
@@ -98,7 +104,7 @@ function loadDataFromQuestSheet(result, sheet) {
     let data = {};
 
     function addRow(row) {
-        // Make sure we can read the first column, which is  the field name.
+        // Make sure we can read the first column, which is the field name.
         let rowName;
         try {
             rowName = row[0].trim();
@@ -111,7 +117,10 @@ function loadDataFromQuestSheet(result, sheet) {
         if (rowName.length === 0) return;
 
         // Make sure this is a valid field name.
-        if (questFieldNames.indexOf(rowName) === -1) return;
+        if (questFieldNames.indexOf(rowName) === -1) {
+            result.warnings.push(`Ignoring '${rowName}' row in sheet '${sheet.name}'.`);
+            return;
+        }
 
         // Make sure we haven't read this field name already.
         if (data.hasOwnProperty(rowName)) {
@@ -160,8 +169,22 @@ function loadDataFromQuestSheet(result, sheet) {
     });
 
     // Read quest data.
+    let readColumnIDs = new Set();
     for (let i=0; i<nrColumns; i++) {
         if (data[doneFieldName][i] !== 'x') continue;
+
+        const columnID = data[IDfieldName][i];
+
+        if ((columnID === '') || (columnID === undefined)) {
+            result.warnings.push(`Empty ID field (quest '${data['QuestName'][i]}' in sheet '${sheet.name}')`);
+            continue;
+        }
+
+        if (readColumnIDs.has(columnID)) {
+            result.warnings.push(`Duplicate column ID '${columnID}' (quest '${data['QuestName'][i]}' in sheet '${sheet.name}')`);
+            continue;
+        }
+        readColumnIDs.add(columnID);
 
         let rawQuestData = {};
         questFieldNames.forEach(fieldName => rawQuestData[fieldName] = data[fieldName][i]);
@@ -169,22 +192,23 @@ function loadDataFromQuestSheet(result, sheet) {
 
         const newQuest = processQuest(rawQuestData, w => result.warnings.push(`${w} (quest '${rawQuestData['QuestName']}' in sheet '${sheet.name}')`));
         if (newQuest) {
+            newQuest.ID = result.data.quests.length;
             result.data.quests.push(newQuest);
         }
     }
 }
 
 
-function readQuestReferences(questReferences, quest) {
+function readQuestReferences(globalQuestData, quest) {
     quest.Conditions.forEach(c => {
         switch (c[0]) {
         case 'hasTag':
         case 'doesntHaveTag': {
-            questReferences.queriedTags.add(c[1]);
+            globalQuestData.queriedTags.add(c[1]);
             break;
         }
         default: {
-            questReferences.queriedStats.add(c[1]);
+            globalQuestData.queriedStats.add(c[1]);
             break;
         }
         }
@@ -194,36 +218,36 @@ function readQuestReferences(questReferences, quest) {
         switch (a[0]) {
         case 'addTag':
         case 'removeTag': {
-            questReferences.modifiedTags.add(a[1]);
+            globalQuestData.modifiedTags.add(a[1]);
             break;
         }
         case 'set':
         case 'add':
         case 'subtract': {
-            questReferences.modifiedStats.add(a[1]);
+            globalQuestData.modifiedStats.add(a[1]);
             break;
         }
         default: break;
         }
     }));
 
-    quest.DeathTags.forEach(tags => tags.forEach(tag => questReferences.modifiedTags.add(tag)));
+    quest.DeathTags.forEach(tags => tags.forEach(tag => globalQuestData.modifiedTags.add(tag)));
 }
 
 
-function verifyQuest(questReferences, quest, reportFn) {
+function verifyQuest(globalQuestData, quest, reportFn) {
     quest.Conditions.forEach(c => {
         switch (c[0]) {
         case 'hasTag':
         case 'doesntHaveTag': {
-            if (!questReferences.modifiedTags.has(c[1])) {
-                reportFn(`Use of unknown tag '${c[1]}'`);
+            if (!globalQuestData.modifiedTags.has(c[1])) {
+                reportFn(`Condition uses unknown tag '${c[1]}'`);
             }
             break;
         }
         default: {
-            if (!questReferences.modifiedStats.has(c[1])) {
-                reportFn(`Use of unknown stat '${c[1]}'`);
+            if (!globalQuestData.modifiedStats.has(c[1])) {
+                reportFn(`Condition uses unknown stat '${c[1]}'`);
             }
             break;
         }
@@ -232,23 +256,23 @@ function verifyQuest(questReferences, quest, reportFn) {
 
     quest.Outcomes.forEach(o => o.forEach(a => {
         switch (a[0]) {
-        case 'addTag':
+/*        case 'addTag':
         case 'removeTag': {
-            if (!questReferences.queriedTags.has(a[1])) {
+            if (!globalQuestData.queriedTags.has(a[1])) {
                 reportFn(`Tag '${a[1]}' is never used in a condition`);
             }
             break;
-        }
+        } */
         case 'set':
         case 'add':
         case 'subtract': {
-            if (!questReferences.queriedStats.has(a[1])) {
+            if (!globalQuestData.queriedStats.has(a[1])) {
                 reportFn(`Stat '${a[1]}' is never used in a condition`);
             }
             break;
         }
         case 'go': {
-            if (!questReferences.questNames.has(a[1])) {
+            if (!globalQuestData.questNames.has(a[1])) {
                 reportFn(`Go command has unknown quest '${a[1]}' as parameter`);
             }
             break;
@@ -263,6 +287,7 @@ function processQuest(rawQuestData, reportFn) {
     let newQuest = {};
     ['QuestName', 'QuestText', 'SheetName'].forEach(n => newQuest[n] = rawQuestData[n]);
 
+    newQuest.ColumnID = rawQuestData['ID'];
     newQuest.IsDeathQuest = (newQuest.SheetName === 'Deaths');
 
     let parsedConditions = splitIntoParts(rawQuestData['Conditions']);
@@ -299,32 +324,6 @@ function processQuest(rawQuestData, reportFn) {
 function splitIntoParts(rawText) {
     return rawText.split(',').map(b => b.trim()).filter(b => b.length > 0);
 }
-
-
-const binaryConditions = [
-    [ '<', 'lessThan' ],
-    [ '>', 'greaterThan' ],
-    [ '<=', 'lessThanOrEqual' ],
-    [ '>=', 'greaterThanOrEqual' ],
-    [ '=', 'equals' ],
-];
-
-const unaryConditions = [
-    [ '!', 'doesntHaveTag' ],
-];
-
-const binaryOperations = [
-    [ '=', 'set' ],
-    [ '+', 'add' ],
-    [ '-', 'subtract' ],
-    ['go', 'go'],
-];
-
-const unaryOperations = [
-    [ '+', 'addTag' ],
-    [ '-', 'removeTag' ],
-    ['restart', 'restart'],
-];
 
 
 function parseCondition(condition, reportFn) {
