@@ -41,20 +41,26 @@ body {
     min-height: 400px;
 }
 
-footer {
+.page footer {
     margin: auto auto 10px auto;    /* Center horizontally and push to the bottom */
     color: #333;
 }
 
-footer .clickableLink {
+.page footer div.buttonBar {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.page footer .clickableLink:first-child {
     margin-right: 10px;
 }
 
-footer a {
+.page footer a {
     color: #333;
 }
 
-footer a:hover {
+.page footer a:hover {
     color: white;
 }
 
