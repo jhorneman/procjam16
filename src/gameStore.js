@@ -91,6 +91,7 @@ export let GameStore = createStore({
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
         let that = this;
+        state = 'loading';
         let dataLoadPromise = loadDataFromGoogleSpreadsheet();
         dataLoadPromise.then(function(result) {
             allQuests = result.data.quests;
