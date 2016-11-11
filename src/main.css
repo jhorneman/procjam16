@@ -29,6 +29,10 @@ body {
     margin-bottom: 10px;
 }
 
+.page header .clickableLink {
+    margin-left: 10px;
+}
+
 .content {
     justify-content: center;
 }
@@ -159,6 +163,11 @@ button {
     margin-top: 0px;
     list-style-type: none;
     padding: 0px;
+}
+
+.debugQuestView {
+    display: block;
+    padding: 10px 20px 10px 20px;
 }
 
 .warningList {

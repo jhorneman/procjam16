@@ -3,7 +3,8 @@ import { GameStore, GameStoreMutator } from '../gameStore';
 import ClickableLink from './ClickableLink';
 import GameView from './GameView';
 import Sidebar from './Sidebar';
-import AboutView from './AboutView'; 
+import AboutView from './AboutView';
+import DebugQuestList from './DebugQuestList';
 
 
 function getState() {
@@ -26,6 +27,7 @@ class App extends Component {
         this._onRestartGameClicked = this._onRestartGameClicked.bind(this);
         this._onShowAboutViewClicked = this._onShowAboutViewClicked.bind(this);
         this._onBackToGameClicked = this._onBackToGameClicked.bind(this);
+        this._onViewQuestsClicked = this._onViewQuestsClicked.bind(this);
     }
 
     _onChange() {
@@ -56,22 +58,24 @@ class App extends Component {
         });
     }
 
+    _onViewQuestsClicked() {
+        this.setState({
+            uiState: 'quests',
+        });
+    }
+
     render() {
         let debugBar = null;
+        let debugButtons = null;
         let mainView = null;
         let sidebarView = null;
         let footerButtons = null;
-
-        if (this.state.debugViewIsOn) {
-            debugBar = <header>
-                Debug buttons!
-            </header>;
-        }
 
         switch (this.state.uiState) {
         case 'game': {
             mainView = <GameView />;
             sidebarView = <Sidebar />;
+            debugButtons = (<ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>);
             footerButtons = [
                 <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>,
                 <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
@@ -85,10 +89,22 @@ class App extends Component {
             );
             break;
         }
+        case 'quests': {
+            debugButtons = (<ClickableLink onClick={this._onBackToGameClicked} key='quests'>Back to the game</ClickableLink>);
+            mainView = <DebugQuestList />;
+            break;            
+        }
         default: {
             mainView = (<p>Unknown UI state '{this.state.uiState}'.</p>);
             break;
         }
+        }
+
+        if (this.state.debugViewIsOn) {
+            debugBar = <header>
+                Debug Menu
+                {debugButtons}
+            </header>;
         }
 
         return (<div className='flex-container page'>

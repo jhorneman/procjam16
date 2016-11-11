@@ -1,20 +1,56 @@
-import React from 'react';
-import './DebugQuestList.css';
+import React, { Component } from 'react';
+import { GameStore } from '../gameStore';
 
 
-function DebugQuestList(props) {
-    return (
-        <div>
-            {props.quests.map((quest, index) =>
-                <DebugQuestView quest={quest} key={index}/>
-            )}
-        </div>
-    )
+function getState() {
+    return {
+        quests: GameStore.allQuests(),
+    };
 }
 
-DebugQuestList.propTypes = {
-    quests: React.PropTypes.array.isRequired,
-};
+
+class DebugQuestList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = getState();
+        this._onChange = this._onChange.bind(this);
+    }
+
+    _onChange() {
+        this.setState(getState());
+    }
+
+    componentDidMount() {
+        GameStore.addChangeListener(this._onChange);
+    }
+
+    componentWillUnmount() {
+        GameStore.removeChangeListener(this._onChange);
+    }
+
+    render() {
+        let sheetNames = [];
+        let questsBySheet = {};
+        this.state.quests.forEach(q => {
+            if (!questsBySheet.hasOwnProperty(q.SheetName)) {
+                sheetNames.push(q.SheetName);
+                questsBySheet[q.SheetName] = [];
+            }
+            questsBySheet[q.SheetName].push(q);
+        });
+
+        let questViews = [];
+        sheetNames.forEach(sheetName => questsBySheet[sheetName].forEach((quest, index) => {
+            questViews.push(<DebugQuestView quest={quest} key={questViews.length}/>);
+        }));
+
+        return (
+            <div>
+                {questViews}
+            </div>
+        );
+    }
+}
 
 
 function DebugQuestView(props) {
