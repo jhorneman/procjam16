@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
+import { GameStore } from '../gameStore';
+
+
+function getState() {
+    return {
+        statNames: GameStore.visibleStatNames(),
+        stats: GameStore.stats(),
+    };
+}
 
 
 class StatsView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = getState();
+        this._onChange = this._onChange.bind(this);
+    }
+
+    _onChange() {
+        this.setState(getState());
+    }
+
+    componentDidMount() {
+        GameStore.addChangeListener(this._onChange);
+    }
+
+    componentWillUnmount() {
+        GameStore.removeChangeListener(this._onChange);
+    }
+
     render() {
-        const statViews = this.props.statNames.map((name, index) => {
-            return <StatView name={name} value={this.props.stats[name]} key={index} />;
+        const statViews = this.state.statNames.map((name, index) => {
+            return <StatView name={name} value={this.state.stats[name]} key={index} />;
         });
         return (<div className='statsView flex-container'>
             {statViews}
         </div>);
     }
 }
-
-StatsView.propTypes = {
-    statNames: React.PropTypes.array.isRequired,
-    stats: React.PropTypes.object.isRequired,
-};
 
 
 function StatView(props) {
