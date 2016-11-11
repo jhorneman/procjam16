@@ -103,20 +103,20 @@ body {
 
 .statsView .stat .statValue {
     display: block;
-    margin-top: 10px;
-    font-size: 32px;
+    margin-top: 7px;
+    font-size: 40px;
 }
 
 .statsView .stat .statName {
     display: block;
-    margin-top: 4px;
     font-size: 14px;
     text-transform: uppercase;
 }
 
 .questView .text {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 32px;
 }
 
 .questView .buttonBar {
