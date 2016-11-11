@@ -74,12 +74,14 @@ class App extends Component {
         switch (this.state.uiState) {
         case 'game': {
             mainView = <GameView />;
-            sidebarView = <Sidebar />;
-            debugButtons = (<ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>);
             footerButtons = [
                 <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>,
                 <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
             ];
+            if (this.state.debugViewIsOn) {
+                sidebarView = (<Sidebar />);
+                debugButtons = (<ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>);
+            }
             break;
         }
         case 'about': {
