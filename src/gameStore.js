@@ -111,13 +111,12 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         if (cachedDataHash === dataHash) {
             console.log('Cache has same hash as loaded data.')
             this._loadGame();
+            this.emitChange();
         } else {
             console.log('Cache has different hash as loaded data.')
             lscache.set('dataHash', dataHash);
-            resetGameState();
+            this.restartGame();
         }
-
-        this.emitChange();
     },
 
     _saveGame: function() {
