@@ -178,3 +178,8 @@ button {
 .warningList {
     background: lightred;
 }
+
+.aboutView {
+    font-size: larger;
+    line-height: 1.5em;
+}

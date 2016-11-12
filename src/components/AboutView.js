@@ -17,7 +17,9 @@ developed for [Procjam 2016](http://www.procjam.com).
 
 
 function AboutView() {
-    return (<ReactMarkdown source={aboutViewContent} />);
+    return (<div className='aboutView'>
+        <ReactMarkdown source={aboutViewContent} />
+    </div>);
 }
 
 
