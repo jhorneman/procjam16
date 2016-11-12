@@ -1,5 +1,7 @@
 import { createStore, createStoreMutator } from './miniflux'; 
 import loadDataFromGoogleSpreadsheet from './loadData';
+import lscache from 'ls-cache';
+import sha1 from 'stable-sha1';
 
 
 export const visibleStatNames = [
@@ -94,14 +96,62 @@ export let GameStore = createStore({
 
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
-        let that = this;
         state = 'loading';
         let dataLoadPromise = loadDataFromGoogleSpreadsheet();
-        dataLoadPromise.then(function(result) {
-            allQuests = result.data.quests;
-            warnings = result.warnings;
-            that.restartGame();
-        });
+        dataLoadPromise.then(this._processLoadedData.bind(this));
+    },
+
+    _processLoadedData: function(result) {
+        allQuests = result.data.quests;
+        warnings = result.warnings;
+
+        const dataHash = sha1(allQuests);
+        const cachedDataHash = lscache.get('dataHash');
+
+        if (cachedDataHash === dataHash) {
+            console.log('Cache has same hash as loaded data.')
+            this._loadGame();
+        } else {
+            console.log('Cache has different hash as loaded data.')
+            lscache.set('dataHash', dataHash);
+            resetGameState();
+        }
+
+        this.emitChange();
+    },
+
+    _saveGame: function() {
+        let savedGameState = {
+            currentQuestID: currentQuest ? currentQuest.ID : -1,
+            stats: stats,
+            tags: [...tags],
+        };
+        lscache.set('gameState', savedGameState);
+    },
+
+    _loadGame: function() {
+        let loadedGameState = lscache.get('gameState');
+        if (loadedGameState) {
+            state = 'playing';
+            if (loadedGameState.currentQuestID !== -1) {
+                currentQuest = allQuests.find(q => q.ID === loadedGameState.currentQuestID);
+                if (currentQuest === undefined) {
+                    console.log(`Couldn't find a quest with the ID '${loadedGameState.currentQuestID}' - resetting the game.`);
+                    resetGameState();
+                    possibleNextQuests = getPossibleNextQuests();
+                    pickNextQuest();
+                    return;
+                }
+            } else {
+                currentQuest =  null;
+            }
+            stats = loadedGameState.stats;
+            tags = new Set(loadedGameState.tags);
+        } else {
+            resetGameState();
+        }
+        possibleNextQuests = getPossibleNextQuests();
+        pickNextQuest();
     },
 
     restartGame: function() {
@@ -183,6 +233,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             possibleNextQuests = getPossibleNextQuests();
         }
         pickNextQuest();
+        this._saveGame();
         this.emitChange();
     },
 });
