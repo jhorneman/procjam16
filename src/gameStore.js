@@ -20,6 +20,9 @@ let state = 'uninitialized';
 let errorMessage;
 let allQuests = [];
 let warnings = [];
+let continueButtonText;
+let deathContinueButtonText;
+let deathResultText;
 
 let currentQuest;
 let stats = {};
@@ -76,6 +79,18 @@ export let GameStore = createStore({
         return isPlayerDead();
     },
 
+    continueButtonText: function() {
+        return continueButtonText;
+    },
+
+    deathContinueButtonText: function() {
+        return deathContinueButtonText;
+    },
+
+    deathResultText: function() {
+        return deathResultText;
+    },
+
     processText: function(rawText) {
         const parts = rawText.split('#');
         if ((parts.length % 2) === 0) {
@@ -104,6 +119,9 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     _processLoadedData: function(result) {
         allQuests = result.data.quests;
         warnings = result.warnings;
+        continueButtonText = result.continueButtonText;
+        deathContinueButtonText = result.deathContinueButtonText;
+        deathResultText = result.deathResultText;
 
         const dataHash = sha1(allQuests);
         const cachedDataHash = lscache.get('dataHash');

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { GameStore, GameStoreMutator } from '../gameStore';
 
 
-const continueButtonText = 'Continue...';
-const deathContinueButtonText = 'Begin Anew';
-const deathResultText = 'You lasted #days# in the jungle and traveled #miles# miles. You did not reach the white city.';
-
 const initialState = {
     playerHasChosen: false,
     playerChoice: undefined,
@@ -16,6 +12,9 @@ function getState() {
     return {
         quest: GameStore.currentQuest(),
         isDeathQuest: GameStore.isDeathQuest(),
+        continueButtonText: GameStore.continueButtonText(),
+        deathContinueButtonText: GameStore.deathContinueButtonText(),
+        deathResultText: GameStore.deathResultText(),
     };
 }
 
@@ -74,11 +73,12 @@ class QuestView extends Component {
                 </div>); 
 
             } else {
-                const resultText = GameStore.processText(this.state.isDeathQuest ? deathResultText : quest.ResultTexts[this.state.playerChoice]);
+                let resultText = this.state.isDeathQuest ? this.state.deathResultText : quest.ResultTexts[this.state.playerChoice];
+                resultText = GameStore.processText(resultText);
                 view = (<div className='questView'>
                     <div className='text'>{resultText}</div>
                     <div className='flex-container buttonBar'>
-                        <button className='continue' onClick={this._onContinueClick}>{continueButtonText}</button>
+                        <button className='continue' onClick={this._onContinueClick}>{this.state.continueButtonText}</button>
                     </div>
                 </div>)
             }
@@ -94,11 +94,11 @@ class QuestView extends Component {
                 </div>); 
 
             } else {
-                const resultText = GameStore.processText(deathResultText);
+                const resultText = GameStore.processText(this.state.deathResultText);
                 view = (<div className='questView'>
                     <div className='text'>{resultText}</div>
                     <div className='flex-container buttonBar'>
-                        <button className='restart' onClick={this._onContinueClick}>{deathContinueButtonText}</button>
+                        <button className='restart' onClick={this._onContinueClick}>{this.state.deathContinueButtonText}</button>
                     </div>
                 </div>)
             }

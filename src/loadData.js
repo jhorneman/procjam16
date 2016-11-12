@@ -46,11 +46,12 @@ function loadDataFromTabletop(sheets, tabletop) {
     let result = {
         data: {
             quests: [],
-            continueButtonText: '',
-            deathContinueButtonText: '',
-            deathResultText: '',
+            continueButtonText: '<continue>',
+            deathContinueButtonText: '<continue>',
+            deathResultText: '<you died>',
             allTags: [],
             allStats: [],
+            stringLists: {},
         },
         warnings: [],
         success: false,
@@ -63,6 +64,14 @@ function loadDataFromTabletop(sheets, tabletop) {
 
     let controlData = {};
     tabletop.sheets(controlSheetName).all().forEach(row  => controlData[row.Key] = row.Value);
+
+    ['continueButtonText', 'deathContinueButtonText', 'deathResultText'].forEach(fieldName => {
+        if (controlData.hasOwnProperty(fieldName)) {
+            result.data[fieldName] = controlData[fieldName];
+        } else {
+            result.warnings.push(`Couldn't find control data field '${fieldName}'`);
+        }
+    })
 
     const blacklistedSheetNames = splitIntoParts(controlData['blacklistedSheetNames']);
     blacklistedSheetNames.push(controlSheetName);
@@ -96,7 +105,13 @@ function loadDataFromTabletop(sheets, tabletop) {
     result.allTags = [...globalQuestData.modifiedTags];
     result.allStats = [...globalQuestData.modifiedStats];
 
+    stringListSheetNames.forEach(sheetName => loadDataFromStringListsSheet(result, tabletop.sheets(sheetName)));
+
     return result;
+}
+
+function loadDataFromStringListsSheet(result, sheet) {
+
 }
 
 
