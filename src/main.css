@@ -154,6 +154,10 @@ button {
     border-radius: 0.25rem;
 }
 
+.debugTagsView h3 {
+    margin-top: 0px;
+}
+
 .debugTagsView ul {
     margin-top: 0px;
     list-style-type: none;
