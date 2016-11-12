@@ -46,6 +46,10 @@ export let GameStore = createStore({
         return currentQuest;
     },
 
+    isDeathQuest: function() {
+        return currentQuest ? currentQuest.IsDeathQuest : false;
+    },
+
     possibleNextQuests: function() {
         return possibleNextQuests;
     },
@@ -111,13 +115,8 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         // Automatically delete start tag.
         if (tags.has(startTag)) tags.delete(startTag);
 
-        // If this is a death quest, don't execute quest logic, just restart the game.
-        if (currentQuest.IsDeathQuest) {
-            resetGameState();
-            possibleNextQuests = getPossibleNextQuests();
-            this.emitChange();
-            return;
-        }
+        // If the current quest is a death quest, don't execute quest logic. The game will be restarted in pickNextQuest.
+        if (currentQuest.IsDeathQuest) return;
 
         let nextQuestSetByGoCommand = null;
 
@@ -179,6 +178,10 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     pickNextQuest: function() {
+        if (currentQuest.IsDeathQuest) {
+            resetGameState();
+            possibleNextQuests = getPossibleNextQuests();
+        }
         pickNextQuest();
         this.emitChange();
     },
