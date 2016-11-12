@@ -53,8 +53,8 @@ class GameView extends Component {
         }
         case 'error': {
             contents = [
-                <p>Error: {this.state.errorMessage}.</p>,
-                <WarningList />
+                <p key='message'>Error: {this.state.errorMessage}.</p>,
+                <WarningList key='warnings' />
             ];
             break;
         }
