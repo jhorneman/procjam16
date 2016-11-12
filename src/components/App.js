@@ -19,7 +19,8 @@ class App extends Component {
         super(props);
 
         this.state = Object.assign({}, getState(), {
-            debugViewIsOn: (process.env.NODE_ENV === 'development'),
+            inDevMode: (process.env.NODE_ENV === 'development'),
+            showDebugSidebar: false,
             uiState: 'game',
         });
 
@@ -27,6 +28,7 @@ class App extends Component {
         this._onRestartGameClicked = this._onRestartGameClicked.bind(this);
         this._onShowAboutViewClicked = this._onShowAboutViewClicked.bind(this);
         this._onBackToGameClicked = this._onBackToGameClicked.bind(this);
+        this._onToggleSidebarClicked = this._onToggleSidebarClicked.bind(this);
         this._onViewQuestsClicked = this._onViewQuestsClicked.bind(this);
     }
 
@@ -58,6 +60,12 @@ class App extends Component {
         });
     }
 
+    _onToggleSidebarClicked() {
+        this.setState({
+            showDebugSidebar: !this.state.showDebugSidebar,
+        });
+    }
+
     _onViewQuestsClicked() {
         this.setState({
             uiState: 'quests',
@@ -78,9 +86,12 @@ class App extends Component {
                 <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>,
                 <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
             ];
-            if (this.state.debugViewIsOn) {
-                sidebarView = (<Sidebar />);
-                debugButtons = (<ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>);
+            if (this.state.inDevMode) {
+                sidebarView = this.state.showDebugSidebar ? (<Sidebar />) : null;
+                debugButtons = [
+                    <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle sidebar</ClickableLink>,
+                    <ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>,
+                ];
             }
             break;
         }
@@ -102,7 +113,7 @@ class App extends Component {
         }
         }
 
-        if (this.state.debugViewIsOn) {
+        if (this.state.inDevMode) {
             debugBar = <header>
                 Debug Menu
                 {debugButtons}
