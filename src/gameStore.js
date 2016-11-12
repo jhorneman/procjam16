@@ -229,8 +229,12 @@ function isPlayerDead() {
 
 function getPossibleNextQuests() {
     const playerIsDead = isPlayerDead();
+    const gameIsStarting = tags.has(startTag);
+
     return allQuests.filter(q => {
+        if (gameIsStarting !== q.IsStartQuest) return false;
         if (playerIsDead !== q.IsDeathQuest) return false;
+
         const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
         return q.Conditions.every(evaluateConditionForThisQuest);
     });

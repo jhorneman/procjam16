@@ -304,6 +304,8 @@ function processQuest(rawQuestData, reportFn) {
     if (parsedConditions.some(c => c.length === 0)) return null;
     newQuest.Conditions = parsedConditions;
 
+    newQuest.IsStartQuest = newQuest.Conditions.some(c => (c[0] === 'hasTag') && (c[1] === 'start'));
+
     newQuest.ChoiceTexts = [rawQuestData['ChoiceAText'], rawQuestData['ChoiceBText']];
     newQuest.ResultTexts = [rawQuestData['ChoiceAResult'], rawQuestData['ChoiceBResult']];
     newQuest.Outcomes = [null, null];
