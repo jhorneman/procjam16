@@ -17,6 +17,20 @@ body {
     height: 100%;
 }
 
+#background {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -20px;
+    z-index: 1;
+}
+
+#game {
+    position: absolute;
+    max-width: 400px;
+    min-height: 400px;
+    z-index: 2;
+}
+
 .page {
     flex-direction: column;
     width: 100%;

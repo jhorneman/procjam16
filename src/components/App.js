@@ -37,6 +37,15 @@ class App extends Component {
     }
 
     componentDidMount() {
+        var canvas = document.createElement('canvas');
+        var c = canvas.getContext('2d');
+        canvas.width = 440;
+        canvas.height = 500;
+        const backgroundElement = document.getElementById('background');
+        backgroundElement.appendChild(canvas);
+        c.fillStyle = 'LightSkyBlue';
+        c.fillRect(0, 0, 440, 500);
+
         GameStore.addChangeListener(this._onChange);
     }
 
