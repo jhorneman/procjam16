@@ -107,6 +107,8 @@ function loadDataFromTabletop(sheets, tabletop) {
 
     stringListSheetNames.forEach(sheetName => loadDataFromStringListsSheet(result, tabletop.sheets(sheetName)));
 
+    result.success = true;
+
     return result;
 }
 

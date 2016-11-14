@@ -72,6 +72,10 @@ class App extends Component {
         });
     }
 
+    _onDownloadDataClicked() {
+        GameStore.downloadGameDataAsJSON();
+    }
+
     render() {
         let debugBar = null;
         let debugButtons = null;
@@ -91,6 +95,7 @@ class App extends Component {
                 debugButtons = [
                     <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle sidebar</ClickableLink>,
                     <ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>,
+                    <ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink>,
                 ];
             }
             break;

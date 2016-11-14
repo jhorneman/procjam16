@@ -2,6 +2,8 @@ import { createStore, createStoreMutator } from './miniflux';
 import loadDataFromGoogleSpreadsheet from './loadData';
 import lscache from 'ls-cache';
 import sha1 from 'stable-sha1';
+import download from './download';
+import bakedGameData from './gameData.json';
 
 
 export const visibleStatNames = [
@@ -18,6 +20,7 @@ const startTag = 'start';
 
 let state = 'uninitialized';
 let errorMessage;
+let rawGameData;
 let allQuests = [];
 let warnings = [];
 let continueButtonText;
@@ -104,6 +107,12 @@ export let GameStore = createStore({
             }
         }
         return parts.join('');
+    },
+
+    downloadGameDataAsJSON: function() {
+        const resultAsJSONString = JSON.stringify(rawGameData, undefined, 4);
+        const resultAsDataURI = 'data:application/json;base64,' + window.btoa(resultAsJSONString);
+        download('gameData.json', resultAsDataURI);
     }
 
 }, 'gameStore');
@@ -112,11 +121,23 @@ export let GameStore = createStore({
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
         state = 'loading';
-        let dataLoadPromise = loadDataFromGoogleSpreadsheet();
+
+        let dataLoadPromise;
+        if (process.env.NODE_ENV === 'development') {
+            console.log('Loading game data from Google spreadsheet.');
+            dataLoadPromise = loadDataFromGoogleSpreadsheet();
+
+        } else {
+            console.log('Loading game data from JSON file.');
+            dataLoadPromise = new Promise(function (resolve, reject) {
+                resolve(bakedGameData);
+            });
+        }
         dataLoadPromise.then(this._processLoadedData.bind(this));
     },
 
     _processLoadedData: function(result) {
+        rawGameData = result;
         allQuests = result.data.quests;
         warnings = result.warnings;
         continueButtonText = result.continueButtonText;
