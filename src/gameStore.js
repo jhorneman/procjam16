@@ -22,6 +22,7 @@ let state = 'uninitialized';
 let errorMessage;
 let rawGameData;
 let allQuests = [];
+let allStringLists = {};
 let warnings = [];
 let continueButtonText;
 let deathContinueButtonText;
@@ -103,7 +104,12 @@ export let GameStore = createStore({
             if (stats.hasOwnProperty(parts[i])) {
                 parts[i] = stats[parts[i]];
             } else {
-                parts[i] = `<unknown stat '${parts[i]}'>`;
+                if (allStringLists.hasOwnProperty(parts[i])) {
+                    const stringIndex = Math.floor(Math.random() * allStringLists[parts[i]].length);
+                    parts[i] = allStringLists[parts[i]][stringIndex];
+                } else {
+                    parts[i] = `<unknown stat or string list '${parts[i]}'>`;
+                }
             }
         }
         return parts.join('');
@@ -141,12 +147,13 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         console.log(`Data was retrieved at ${result.retrievedAt}.`);
 
         allQuests = result.data.quests;
+        allStringLists = result.data.stringLists;
         warnings = result.warnings;
         continueButtonText = result.continueButtonText;
         deathContinueButtonText = result.deathContinueButtonText;
         deathResultText = result.deathResultText;
 
-        const dataHash = sha1(allQuests);
+        const dataHash = sha1(allQuests);   // Only quests can alter the game flow, no need to hash the rest.
         const cachedDataHash = lscache.get('dataHash');
 
         if (cachedDataHash === dataHash) {

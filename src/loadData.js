@@ -113,8 +113,28 @@ function loadDataFromTabletop(sheets, tabletop) {
     return result;
 }
 
-function loadDataFromStringListsSheet(result, sheet) {
 
+function loadDataFromStringListsSheet(result, sheet) {
+    sheet.column_names.forEach(stringListKey => {
+        if (!result.data.stringLists.hasOwnProperty(stringListKey)) {
+            result.data.stringLists[stringListKey] = [];
+        }
+    });
+
+    sheet.toArray().forEach((row, rowIndex) => {
+        let cell;
+        for (var i=0; i<row.length; i++) {
+            try {
+                cell = row[i].trim();
+            } catch(e) {
+                result.data.stringLists(`Couldn't process a cell in row ${rowIndex} of sheet '${sheet.name}'.`);
+                continue;
+            }
+            if (cell !== '') {
+                result.data.stringLists[sheet.column_names[i]].push(cell);
+            }
+        }
+    });
 }
 
 
@@ -147,7 +167,7 @@ function loadDataFromQuestSheet(result, sheet) {
         }
 
         // Read remaining cells of row.
-        let column = [];
+        let convertedRow = [];
         let cell;
         for (var i=1; i<row.length; i++) {
             try {
@@ -156,11 +176,11 @@ function loadDataFromQuestSheet(result, sheet) {
                 result.warnings.push(`Couldn't process a cell in the '${rowName}' row of sheet '${sheet.name}'.`);
                 cell = '';
             }
-            column.push(cell);
+            convertedRow.push(cell);
         }
 
         // Store row.
-        data[rowName] = column;
+        data[rowName] = convertedRow;
     }
 
     // Read column names (first row) and all rows below it.
