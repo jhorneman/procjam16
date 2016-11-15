@@ -107,6 +107,7 @@ function loadDataFromTabletop(sheets, tabletop) {
 
     stringListSheetNames.forEach(sheetName => loadDataFromStringListsSheet(result, tabletop.sheets(sheetName)));
 
+    result.retrievedAt = (new Date()).toUTCString();
     result.success = true;
 
     return result;

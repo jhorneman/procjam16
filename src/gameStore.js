@@ -138,6 +138,8 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
 
     _processLoadedData: function(result) {
         rawGameData = result;
+        console.log(`Data was retrieved at ${result.retrievedAt}.`);
+
         allQuests = result.data.quests;
         warnings = result.warnings;
         continueButtonText = result.continueButtonText;
