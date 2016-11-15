@@ -30,6 +30,8 @@ class App extends Component {
         this._onBackToGameClicked = this._onBackToGameClicked.bind(this);
         this._onToggleSidebarClicked = this._onToggleSidebarClicked.bind(this);
         this._onViewQuestsClicked = this._onViewQuestsClicked.bind(this);
+        this._onDownloadDataClicked = this._onDownloadDataClicked.bind(this);
+        this._onClearLSClicked = this._onClearLSClicked.bind(this);
     }
 
     _onChange() {
@@ -76,6 +78,10 @@ class App extends Component {
         GameStore.downloadGameDataAsJSON();
     }
 
+    _onClearLSClicked() {
+        GameStore.clearLocalStorage();
+    }
+
     render() {
         let debugBar = null;
         let debugButtons = null;
@@ -96,6 +102,7 @@ class App extends Component {
                     <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle sidebar</ClickableLink>,
                     <ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>,
                     <ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink>,
+                    <ClickableLink onClick={this._onClearLSClicked} key='clearls'>Clear local storage</ClickableLink>,
                 ];
             }
             break;

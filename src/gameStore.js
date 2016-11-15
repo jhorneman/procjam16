@@ -17,6 +17,11 @@ const statStartValue = 5;
 const statMaxValue = 10;
 const defaultDeathTag = 'death';
 const startTag = 'start';
+const distanceStatName = 'miles';
+const defaultQuestDistance = 8;
+const timeStatName = 'days';
+const defaultQuestTime = 1;
+const localStorageKey = 'gameState';
 
 let state = 'uninitialized';
 let errorMessage;
@@ -119,7 +124,12 @@ export let GameStore = createStore({
         const resultAsJSONString = JSON.stringify(rawGameData, undefined, 4);
         const resultAsDataURI = 'data:application/json;base64,' + window.btoa(resultAsJSONString);
         download('gameData.json', resultAsDataURI);
-    }
+    },
+
+    // This doesn't mutate store state, so it's fine to put it here.
+    clearLocalStorage: function() {
+        lscache.remove(localStorageKey);
+    },
 
 }, 'gameStore');
 
@@ -173,14 +183,14 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             stats: stats,
             tags: [...tags],
         };
-        lscache.set('gameState', savedGameState);
+        lscache.set(localStorageKey, savedGameState);
     },
 
     _loadGame: function() {
         let loadGameSuccess = false;
 
         // Try to get dynamic game state from local storage. Did we get anything?
-        let loadedGameState = lscache.get('gameState');
+        let loadedGameState = lscache.get(localStorageKey);
         if (loadedGameState) {
             // Yes -> Do we have any current quest ID?
             if (loadedGameState.currentQuestID !== -1) {
@@ -219,6 +229,10 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
 
         // If the current quest is a death quest, don't execute quest logic. The game will be restarted in pickNextQuest.
         if (currentQuest.IsDeathQuest) return;
+
+        // TODO: Read distance/time from quest, only do following if no values are found.
+        stats[distanceStatName] += defaultQuestDistance;
+        stats[timeStatName] += defaultQuestTime;
 
         let nextQuestSetByGoCommand = null;
 
@@ -320,6 +334,8 @@ function resetGameState() {
     for (let statName of visibleStatNames) {
         stats[statName] = statStartValue;
     }
+    stats[distanceStatName] = 0;
+    stats[timeStatName] = 0;
 
     tags.clear();
     tags.add(startTag);
