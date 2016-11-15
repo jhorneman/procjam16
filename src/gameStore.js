@@ -177,28 +177,33 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
     },
 
     _loadGame: function() {
+        let loadGameSuccess = false;
+
+        // Try to get dynamic game state from local storage. Did we get anything?
         let loadedGameState = lscache.get('gameState');
         if (loadedGameState) {
-            state = 'playing';
+            // Yes -> Do we have any current quest ID?
             if (loadedGameState.currentQuestID !== -1) {
+                // Yes -> Can we find a quest with this ID?
                 currentQuest = allQuests.find(q => q.ID === loadedGameState.currentQuestID);
-                if (currentQuest === undefined) {
+                if (currentQuest !== undefined) {
+                    // Yes -> Success!
+                    state = 'playing';
+                    stats = loadedGameState.stats;
+                    tags = new Set(loadedGameState.tags);
+                    loadGameSuccess = true;
+                } else {
                     console.log(`Couldn't find a quest with the ID '${loadedGameState.currentQuestID}' - resetting the game.`);
-                    resetGameState();
-                    possibleNextQuests = getPossibleNextQuests();
-                    pickNextQuest();
-                    return;
                 }
-            } else {
-                currentQuest =  null;
             }
-            stats = loadedGameState.stats;
-            tags = new Set(loadedGameState.tags);
-        } else {
-            resetGameState();
         }
-        possibleNextQuests = getPossibleNextQuests();
-        pickNextQuest();
+
+        // If we couldn't load the game state, reset it.
+        if (!loadGameSuccess) {
+            resetGameState();
+            possibleNextQuests = getPossibleNextQuests();
+            pickNextQuest();
+        }
     },
 
     restartGame: function() {
