@@ -6,7 +6,7 @@ html, body {
 
 body {
     font-family: 'Catamaran', sans-serif;
-    background-color: #280322;
+    background-color: #36082e;
 }
 
 .flex-container {
@@ -20,12 +20,13 @@ body {
 #background {
     position: absolute;
     margin-top: -80px;
-    margin-left: -100px;
+    margin-left: -300px;
     z-index: 1;
 }
 
 #game {
     position: absolute;
+    margin-top: 80px;
     max-width: 400px;
     min-height: 400px;
     z-index: 2;
@@ -61,7 +62,7 @@ body {
 
 .page footer {
     margin: auto auto 10px auto;    /* Center horizontally and push to the bottom */
-    color: #333;
+    color: #888;
 }
 
 .page footer div.buttonBar {
@@ -75,7 +76,7 @@ body {
 }
 
 .page footer a {
-    color: #333;
+    color: #888;
 }
 
 .page footer a:hover {
