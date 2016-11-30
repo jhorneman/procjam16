@@ -64,8 +64,9 @@ class GameView extends Component {
         }
         }
 
-        return (<div>
-            {contents}
+        return (<div id='gameView'>
+            <div id='background' />
+            <div id='game'>{contents}</div>
         </div>);
     }
 }

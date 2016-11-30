@@ -5,6 +5,7 @@ import GameView from './GameView';
 import Sidebar from './Sidebar';
 import AboutView from './AboutView';
 import DebugQuestList from './DebugQuestList';
+import { drawBackground } from '../images';
 
 
 function getState() {
@@ -39,6 +40,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        drawBackground();
         GameStore.addChangeListener(this._onChange);
     }
 
@@ -147,7 +149,7 @@ class App extends Component {
                 <div className='buttonBar'>
                     {footerButtons}
                 </div>
-                <p className='copyright'>&copy; 2016 Liz England &amp; Jurie Horneman</p>
+                <p className='copyright'>&copy; 2016 Liz England, Jurie Horneman &amp; Stefan Srb</p>
             </footer>
         </div>);
     }
