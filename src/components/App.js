@@ -5,7 +5,7 @@ import GameView from './GameView';
 import Sidebar from './Sidebar';
 import AboutView from './AboutView';
 import DebugQuestList from './DebugQuestList';
-import { jitterHSV, HSVtoRGBstring } from '../colorUtils';
+import { drawBackground } from '../images';
 
 
 function getState() {
@@ -38,39 +38,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const canvasWidth = 600;
-        const canvasHeight = 600;
-
-        var canvas = document.createElement('canvas');
-        var c = canvas.getContext('2d');
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-        const backgroundElement = document.getElementById('background');
-        backgroundElement.appendChild(canvas);
-
-        const centerX = canvasWidth / 2;
-        const centerY = canvasHeight / 2;
-
-        const gradientCenterX = centerX + (Math.random() * 50) - 25;
-        const gradientCenterY = centerY + (Math.random() * 50) - 25;
-
-        const radialGradient = c.createRadialGradient(gradientCenterX, gradientCenterY, 20, gradientCenterX, gradientCenterY, centerX);
-
-        radialGradient.addColorStop(0, HSVtoRGBstring(jitterHSV([87, 20, 96], 50)));
-        radialGradient.addColorStop(1, HSVtoRGBstring(jitterHSV([136, 44, 100], 50)));
-
-        c.save();
- 
-        c.beginPath();
-        c.arc(centerX, centerY, centerX, 0, Math.PI * 2, false);
- 
-        c.clip();
- 
-        c.fillStyle = radialGradient;
-        c.fillRect(0, 0, canvasWidth, canvasHeight);
-
-        c.restore();
-
+        drawBackground();
         GameStore.addChangeListener(this._onChange);
     }
 
