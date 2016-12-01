@@ -13,7 +13,14 @@ let bgContext = null;
 let compositingCanvas = null;
 let compositingContext = null;
 
-const colors = ['#64e4ac', '#098d76', '#36082e'];
+const colors = {
+    close: '#36082e',           // Closest layer / outside circle.
+    middle: '#098d76',          // Middle layer.
+    far: '#64e4ac',             // Far layer.
+    background: '#a5febe',      // Background inside circle.
+    gradient: '#e4f5ce'         // Center of gradient inside circle.
+};
+
 
 const imagePaths = [jungleFar01, jungleMid01, jungleClose01];
 
@@ -55,21 +62,11 @@ export function setupBackground() {
 
 
 export function drawBackground() {
-    // Fill background with base color.
-    bgContext.fillStyle = '#36082e';
-    bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
-
-    // Set up circle mask.
-    bgContext.save();
-    bgContext.beginPath();
-    bgContext.arc(centerX, centerY, centerY, 0, Math.PI * 2, false);
-    bgContext.clip();
-
     // Draw background gradient.
-    const radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
+    let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
         centerX, centerY, centerY);
-    radialGradient.addColorStop(0, '#e4f5ce');
-    radialGradient.addColorStop(1, '#a5febe');
+    radialGradient.addColorStop(0, colors.gradient);
+    radialGradient.addColorStop(1, colors.background);
     bgContext.fillStyle = radialGradient;
     bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
 
@@ -84,7 +81,7 @@ export function drawBackground() {
 
         // Draw a colored rectangle to the compositing canvas, blending it with the image there.
         compositingContext.globalCompositeOperation = 'source-in';
-        compositingContext.fillStyle = colors[index];
+        compositingContext.fillStyle = colors[['far', 'middle', 'close'][index]];
         compositingContext.fillRect(0, 0, imageWidth, imageHeight);
 
         // Copy the recolored image onto the background canvas.
@@ -96,6 +93,19 @@ export function drawBackground() {
         );
     });
 
-    // End circle mask.
-    bgContext.restore();
+    // Draw circle mask.
+    radialGradient = bgContext.createRadialGradient(centerX, centerY, 398, centerX, centerY, 400);
+    radialGradient.addColorStop(0, RGBtoRGBA(colors.close, 0));
+    radialGradient.addColorStop(1, RGBtoRGBA(colors.close, 1));
+    bgContext.fillStyle = radialGradient;
+    bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
+}
+
+
+function RGBtoRGBA(RGB, alpha) {
+    if (RGB.length !== 7) {
+        console.logWarning('RGBtoRGBA: expected a 7 character RGB string, got something else. The resulting color is likely wrong.');
+    }
+    const color = parseInt(RGB.substring(1), 16);
+    return `rgba(${color >> 16}, ${(color >> 8) & 0xFF}, ${color & 0xFF}, ${alpha})`;
 }
