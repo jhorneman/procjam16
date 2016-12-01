@@ -66,7 +66,7 @@ class QuestView extends Component {
                 const questText = GameStore.processText(quest.QuestText);
                 view = (<div className='questView'>
                     <div className='text'>{questText}</div>
-                    <div className='flex-container buttonBar'>
+                    <div className='buttonBar'>
                         <button className='choice' onClick={this._onAClick} key='choiceA'>{quest.ChoiceTexts[0]}</button>
                         <button className='choice' onClick={this._onBClick} key='choiceB'>{quest.ChoiceTexts[1]}</button>
                     </div>
@@ -77,7 +77,7 @@ class QuestView extends Component {
                 resultText = GameStore.processText(resultText);
                 view = (<div className='questView'>
                     <div className='text'>{resultText}</div>
-                    <div className='flex-container buttonBar'>
+                    <div className='buttonBar'>
                         <button className='continue' onClick={this._onContinueClick}>{this.state.continueButtonText}</button>
                     </div>
                 </div>)
@@ -88,7 +88,7 @@ class QuestView extends Component {
                 const questText = GameStore.processText(quest.QuestText);
                 view = (<div className='questView'>
                     <div className='text'>{questText}</div>
-                    <div className='flex-container buttonBar'>
+                    <div className='buttonBar'>
                         <button className='death' onClick={this._onAClick}>{quest.ChoiceTexts[0]}</button>
                     </div>
                 </div>); 
@@ -97,7 +97,7 @@ class QuestView extends Component {
                 const resultText = GameStore.processText(this.state.deathResultText);
                 view = (<div className='questView'>
                     <div className='text'>{resultText}</div>
-                    <div className='flex-container buttonBar'>
+                    <div className='buttonBar'>
                         <button className='restart' onClick={this._onContinueClick}>{this.state.deathContinueButtonText}</button>
                     </div>
                 </div>)
