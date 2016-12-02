@@ -7,6 +7,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -60,6 +61,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "2",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -113,6 +115,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "3",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -161,6 +164,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "4",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -209,6 +213,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "5",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -267,6 +272,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "6",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -326,6 +332,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "7",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -398,6 +405,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "8",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -483,6 +491,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "9",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -542,6 +551,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "10",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -589,6 +599,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "11",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -642,6 +653,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "12",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -690,6 +702,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "13",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -740,6 +753,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "14",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -790,6 +804,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "15",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -834,6 +849,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "16",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -884,6 +900,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "17",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -934,6 +951,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "18",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -982,6 +1000,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "19",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1030,6 +1049,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "20",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -1089,6 +1109,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "25",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1127,6 +1148,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "26",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -1165,6 +1187,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "27",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1208,6 +1231,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "28",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1257,6 +1281,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "43",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1306,6 +1331,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "44",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1370,6 +1396,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "45",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -1421,6 +1448,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "46",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1459,6 +1487,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "47",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1503,6 +1532,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "48",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1545,6 +1575,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "49",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1590,6 +1621,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "52",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1632,6 +1664,7 @@
                 "SheetName": "Stat Events",
                 "ColumnID": "53",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1674,6 +1707,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1711,6 +1745,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "2",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1769,6 +1804,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "3",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1807,6 +1843,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "4",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1857,6 +1894,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "5",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1903,6 +1941,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "6",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1929,6 +1968,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "7",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1961,6 +2001,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "8",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1992,6 +2033,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "9",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2036,6 +2078,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "10",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2093,6 +2136,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "12",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2129,6 +2173,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "13",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2171,6 +2216,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "19",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2215,6 +2261,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "20",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2247,6 +2294,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "21",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2300,6 +2348,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "22",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2358,6 +2407,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "25",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2403,6 +2453,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "27",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2463,6 +2514,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "28",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2502,6 +2554,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "29",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2550,6 +2603,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "31",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2607,6 +2661,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "32",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2663,6 +2718,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "33",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2716,6 +2772,7 @@
                 "SheetName": "Random Events",
                 "ColumnID": "34",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2758,6 +2815,7 @@
                 "SheetName": "Decks",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2821,6 +2879,7 @@
                 "SheetName": "Decks",
                 "ColumnID": "2",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2877,6 +2936,7 @@
                 "SheetName": "Decks",
                 "ColumnID": "3",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2928,6 +2988,7 @@
                 "SheetName": "Decks",
                 "ColumnID": "4",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2987,6 +3048,7 @@
                 "SheetName": "Decks",
                 "ColumnID": "5",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3045,6 +3107,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -3112,6 +3175,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "2",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3168,6 +3232,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "8",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3231,6 +3296,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "9",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3294,6 +3360,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "10",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3357,6 +3424,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "11",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3448,6 +3516,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "12",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3511,6 +3580,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "13",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3602,6 +3672,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "14",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3665,6 +3736,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "15",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3756,6 +3828,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "16",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3825,6 +3898,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "17",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3891,6 +3965,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "20",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -3948,6 +4023,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "21",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3993,6 +4069,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "22",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4038,6 +4115,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "23",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4083,6 +4161,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "24",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4128,6 +4207,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "25",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4189,6 +4269,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "26",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4246,6 +4327,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "27",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4287,6 +4369,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "28",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4328,6 +4411,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "29",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4369,6 +4453,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "30",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4410,6 +4495,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "31",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4451,6 +4537,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "32",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4497,6 +4584,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "33",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4543,6 +4631,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "34",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4596,6 +4685,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "35",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4642,6 +4732,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "36",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4683,6 +4774,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "48",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4732,6 +4824,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "49",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4781,6 +4874,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "63",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4827,6 +4921,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "64",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4871,6 +4966,7 @@
                 "SheetName": "Storylines",
                 "ColumnID": "65",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4915,6 +5011,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "1",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4956,6 +5053,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "2",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4997,6 +5095,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "3",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5038,6 +5137,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "4",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5079,6 +5179,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "5",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5120,6 +5221,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "6",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5161,6 +5263,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "7",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5202,6 +5305,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "8",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5243,6 +5347,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "9",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5284,6 +5389,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "10",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5325,6 +5431,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "11",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5366,6 +5473,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "12",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5407,6 +5515,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "13",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5448,6 +5557,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "14",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5490,6 +5600,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "15",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5531,6 +5642,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "16",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5573,6 +5685,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "17",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5615,6 +5728,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "18",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5657,6 +5771,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "19",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5698,6 +5813,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "20",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5739,6 +5855,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "21",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5780,6 +5897,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "22",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5821,6 +5939,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "23",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5862,6 +5981,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "24",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5903,6 +6023,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "25",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5944,6 +6065,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "26",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5985,6 +6107,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "27",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6026,6 +6149,7 @@
                 "SheetName": "Deaths",
                 "ColumnID": "QuestName",
                 "IsDeathQuest": true,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6067,6 +6191,7 @@
                 "SheetName": "Starts",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
+                "Style": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6095,10 +6220,16 @@
         ],
         "continueButtonText": "Continue...",
         "deathContinueButtonText": "Begin Anew",
-        "deathResultText": "You lasted #days# in the jungle and traveled #miles# miles. You did not reach the white city.",
+        "deathResultText": "You lasted #days# days in the jungle and traveled #miles# miles. You did not reach the White City.",
         "allTags": [],
         "allStats": [],
-        "stringLists": {}
+        "stringLists": {
+            "scary": [
+                "scary",
+                "terrifying",
+                "fear-inducing"
+            ]
+        }
     },
     "warnings": [
         "Condition uses unknown tag 'totem_story' (quest 'Hole In Tree A' in sheet 'Random Events')",
@@ -6109,7 +6240,7 @@
     "success": true,
     "continueButtonText": "Continue...",
     "deathContinueButtonText": "Begin Anew",
-    "deathResultText": "You lasted #days# in the jungle and traveled #miles# miles. You did not reach the white city.",
+    "deathResultText": "You lasted #days# days in the jungle and traveled #miles# miles. You did not reach the White City.",
     "allTags": [
         "start",
         "death",
@@ -6201,5 +6332,6 @@
         "health",
         "luck",
         "story"
-    ]
+    ],
+    "retrievedAt": "Fri, 02 Dec 2016 12:50:54 GMT"
 }
