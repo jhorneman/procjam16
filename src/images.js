@@ -9,9 +9,7 @@ const centerX = backgroundWidth / 2;
 const centerY = backgroundHeight / 2;
 
 let bgCanvas = null;
-let bgContext = null;
 let compositingCanvas = null;
-let compositingContext = null;
 
 const colors = {
     close: '#36082e',           // Closest layer / outside circle.
@@ -45,7 +43,6 @@ export function loadImages() {
 export function setupBackground() {
     // Create background canvas.
     bgCanvas = document.createElement('canvas');
-    bgContext = bgCanvas.getContext('2d');
     bgCanvas.width = backgroundWidth;
     bgCanvas.height = backgroundHeight;
 
@@ -55,13 +52,15 @@ export function setupBackground() {
 
     // Create compositing canvas.
     compositingCanvas = document.createElement('canvas');
-    compositingContext = compositingCanvas.getContext('2d');
     compositingCanvas.width = 1890;
     compositingCanvas.height = 1932;
 }
 
 
 export function drawBackground() {
+    const bgContext = bgCanvas.getContext('2d');
+    const compositingContext = compositingCanvas.getContext('2d');
+
     // Draw background gradient.
     let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
         centerX, centerY, centerY);
