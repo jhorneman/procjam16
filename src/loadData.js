@@ -19,6 +19,7 @@ const questFieldNames = [
     'QuestName',
     'Conditions',
     'QuestText',
+    'Style',
     'ChoiceAText',
     'ChoiceAResult',
     'ChoiceAData',
@@ -336,6 +337,7 @@ function processQuest(rawQuestData, reportFn) {
 
     newQuest.ColumnID = rawQuestData['ID'];
     newQuest.IsDeathQuest = (newQuest.SheetName === 'Deaths');
+    newQuest.Style = splitIntoParts(rawQuestData['Style']);
 
     let parsedConditions = splitIntoParts(rawQuestData['Conditions']);
     parsedConditions = parsedConditions.map(c => parseCondition(c, w => reportFn(`Conditions: ${w}`)));
