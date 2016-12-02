@@ -131,6 +131,10 @@ function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
     radialGradient.addColorStop(1, RGBtoRGBA(currentColors.close, 1));
     bgContext.fillStyle = radialGradient;
     bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
+
+    // Set body background color.
+    const bodyElement = document.getElementsByTagName('body')[0];
+    bodyElement.style.backgroundColor = currentColors.close;
 }
 
 
