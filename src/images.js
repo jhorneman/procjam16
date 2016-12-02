@@ -9,31 +9,56 @@ const centerX = backgroundWidth / 2;
 const centerY = backgroundHeight / 2;
 
 const colors = {
-    close: '#36082e',           // Closest layer / outside circle.
-    middle: '#098d76',          // Middle layer.
-    far: '#64e4ac',             // Far layer.
-    background: '#a5febe',      // Background inside circle.
-    gradient: '#e4f5ce'         // Center of gradient inside circle.
+    'jungle': {
+        close: '#36082e',           // Closest layer / outside circle.
+        middle: '#098d76',          // Middle layer.
+        far: '#64e4ac',             // Far layer.
+        background: '#a5febe',      // Background inside circle.
+        gradient: '#e4f5ce'         // Center of gradient inside circle.
+    },
+
+    'fog': {
+        close: '#989fbb',
+        middle: '#989fbb',
+        far: '#a6aac2',
+        background: '#989fbb',
+        gradient: '#e8dbe7'
+    }
 };
 
 
-const imagePaths = [jungleFar01, jungleMid01, jungleClose01];
+const defaultStyle = 'jungle';
+const imagePaths = {
+    'jungle': [jungleFar01, jungleMid01, jungleClose01]
+};
 
-let images = [];
+let images = {};
 
 
 export function loadImages() {
-    images = imagePaths.map(() => new Image());
-    let imagePromises = images.map((img, index) =>
+    let imagePromises = [];
+    for (let styleName in imagePaths) {     // eslint-disable-line guard-for-in
+        Array.prototype.push.apply(imagePromises, loadImagesForAStyle(styleName));
+    }
+    return Promise.all(imagePromises);
+}
+
+
+function loadImagesForAStyle(styleName) {
+    if (!imagePaths.hasOwnProperty(styleName)) {
+        console.log(`Unknown style name '${styleName}'.`);
+        return [];
+    }
+    const newImages = imagePaths[styleName].map(() => new Image());
+    images[styleName] = newImages;
+    return newImages.map((img, index) =>
         new Promise(function(resolve, reject) {
-            img.src = imagePaths[index];
+            img.src = imagePaths[styleName][index];
             img.onload = function() {
                 resolve(this);
             }
         }
     ));
-
-    return Promise.all(imagePromises);
 }
 
 
@@ -52,20 +77,33 @@ export function createCanvases() {
 }
 
 
-export function drawBackground({ bgCanvas, compositingCanvas }) {
+export function drawBackground({ bgCanvas, compositingCanvas }, styles) {
+    const mainStyle = findMainStyle(styles);
+    if (images.hasOwnProperty(mainStyle)) {
+        _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles);
+    } else {
+        Promise.all(loadImagesForAStyle(mainStyle)).then(function() {
+            _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles);
+        });
+    }
+}
+
+
+function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
     const bgContext = bgCanvas.getContext('2d');
     const compositingContext = compositingCanvas.getContext('2d');
+    const currentColors = colors[mainStyle];
 
     // Draw background gradient.
     let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
         centerX, centerY, centerY);
-    radialGradient.addColorStop(0, colors.gradient);
-    radialGradient.addColorStop(1, colors.background);
+    radialGradient.addColorStop(0, currentColors.gradient);
+    radialGradient.addColorStop(1, currentColors.background);
     bgContext.fillStyle = radialGradient;
     bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
 
     // Recolor and draw image layers, back to front.
-    images.forEach((img, index) => {
+    images[mainStyle].forEach((img, index) => {
         const imageWidth = img.width;
         const imageHeight = img.height;
 
@@ -75,7 +113,7 @@ export function drawBackground({ bgCanvas, compositingCanvas }) {
 
         // Draw a colored rectangle to the compositing canvas, blending it with the image there.
         compositingContext.globalCompositeOperation = 'source-in';
-        compositingContext.fillStyle = colors[['far', 'middle', 'close'][index]];
+        compositingContext.fillStyle = currentColors[['far', 'middle', 'close'][index]];
         compositingContext.fillRect(0, 0, imageWidth, imageHeight);
 
         // Copy the recolored image onto the background canvas.
@@ -89,16 +127,26 @@ export function drawBackground({ bgCanvas, compositingCanvas }) {
 
     // Draw circle mask.
     radialGradient = bgContext.createRadialGradient(centerX, centerY, 398, centerX, centerY, 400);
-    radialGradient.addColorStop(0, RGBtoRGBA(colors.close, 0));
-    radialGradient.addColorStop(1, RGBtoRGBA(colors.close, 1));
+    radialGradient.addColorStop(0, RGBtoRGBA(currentColors.close, 0));
+    radialGradient.addColorStop(1, RGBtoRGBA(currentColors.close, 1));
     bgContext.fillStyle = radialGradient;
     bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
 }
 
 
+function findMainStyle(styles) {
+    let mainStyle = styles.find(style => imagePaths.hasOwnProperty(style));
+    if (mainStyle === undefined) {
+        console.log(`Couldn't find main style in '${styles}' - picking default style.`);
+        mainStyle = defaultStyle;
+    }
+    return mainStyle;
+}
+
+
 function RGBtoRGBA(RGB, alpha) {
     if (RGB.length !== 7) {
-        console.logWarning('RGBtoRGBA: expected a 7 character RGB string, got something else. The resulting color is likely wrong.');
+        console.log('RGBtoRGBA: expected a 7 character RGB string, got something else. The resulting color is likely wrong.');
     }
     const color = parseInt(RGB.substring(1), 16);
     return `rgba(${color >> 16}, ${(color >> 8) & 0xFF}, ${color & 0xFF}, ${alpha})`;
