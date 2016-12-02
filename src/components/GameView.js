@@ -3,7 +3,7 @@ import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import WarningList from './WarningList';
-import { setupBackground, drawBackground } from '../images';
+import { createCanvases, drawBackground } from '../images';
 
 
 function getState() {
@@ -19,15 +19,22 @@ class GameView extends Component {
         super(props);
         this.state = getState();
         this._onChange = this._onChange.bind(this);
+        this._setBackgroundRef = this._setBackgroundRef.bind(this);
     }
 
     _onChange() {
         this.setState(getState());
     }
 
+    _setBackgroundRef(backgroundEl) {
+        if (backgroundEl !== null) {
+            this.canvases = createCanvases();
+            backgroundEl.appendChild(this.canvases.bgCanvas);
+        }
+    }
+
     componentDidMount() {
-        setupBackground();
-        drawBackground();
+        drawBackground(this.canvases);
         GameStore.addChangeListener(this._onChange);
     }
 
@@ -68,7 +75,7 @@ class GameView extends Component {
         }
 
         return (<div id='gameView'>
-            <div id='background' />
+            <div id='background' ref={this._setBackgroundRef} />
             <div id='game'>{contents}</div>
         </div>);
     }

@@ -8,9 +8,6 @@ const backgroundHeight = 800;
 const centerX = backgroundWidth / 2;
 const centerY = backgroundHeight / 2;
 
-let bgCanvas = null;
-let compositingCanvas = null;
-
 const colors = {
     close: '#36082e',           // Closest layer / outside circle.
     middle: '#098d76',          // Middle layer.
@@ -40,24 +37,22 @@ export function loadImages() {
 }
 
 
-export function setupBackground() {
+export function createCanvases() {
     // Create background canvas.
-    bgCanvas = document.createElement('canvas');
+    const bgCanvas = document.createElement('canvas');
     bgCanvas.width = backgroundWidth;
     bgCanvas.height = backgroundHeight;
 
-    // Add it to the DOM.
-    const backgroundElement = document.getElementById('background');
-    backgroundElement.appendChild(bgCanvas);
-
     // Create compositing canvas.
-    compositingCanvas = document.createElement('canvas');
+    const compositingCanvas = document.createElement('canvas');
     compositingCanvas.width = 1890;
     compositingCanvas.height = 1932;
+
+    return { bgCanvas, compositingCanvas };
 }
 
 
-export function drawBackground() {
+export function drawBackground({ bgCanvas, compositingCanvas }) {
     const bgContext = bgCanvas.getContext('2d');
     const compositingContext = compositingCanvas.getContext('2d');
 
