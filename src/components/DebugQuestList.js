@@ -45,7 +45,7 @@ class DebugQuestList extends Component {
         }));
 
         return (
-            <div>
+            <div className='debug'>
                 {questViews}
             </div>
         );

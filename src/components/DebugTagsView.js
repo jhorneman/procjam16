@@ -33,7 +33,7 @@ class DebugTagsView extends Component {
             return <li key={index}>{tag}</li>;
         });
 
-        return (<div className='debugTagsView'>
+        return (<div className='debug debugTagsView'>
             <h3>Player tags:</h3>
             <ul>
                 {tagViews}

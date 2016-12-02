@@ -34,7 +34,7 @@ class WarningList extends Component {
         const warnings = this.state.warnings.map((warning, index) =>
             <p key={index}>{warning}.</p>
         );
-        return (<div className='warningList'>
+        return (<div className='debug warningList'>
             <h3>Warnings: {this.state.warnings.length}.</h3>
             {warnings}
         </div>);

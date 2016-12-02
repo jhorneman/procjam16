@@ -34,7 +34,7 @@ class DebugStatsView extends Component {
             return <li key={index}>{statName}: {this.state.stats[statName]}</li>;
         });
 
-        return (<div className='debugStatsView'>
+        return (<div className='debug debugStatsView'>
             <h3>Player stats:</h3>
             <ul>
                 {tagViews}
