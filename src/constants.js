@@ -16,13 +16,13 @@ export const binaryOperations = [
     [ '=', 'set' ],
     [ '+', 'add' ],
     [ '-', 'subtract' ],
-    ['go', 'go'],
 ];
 
 export const unaryOperations = [
     [ '+', 'addTag' ],
     [ '-', 'removeTag' ],
-    ['restart', 'restart'],
+    ['restart', 'restart'],     // Strictly speaking restart is not a unary operation, but hey.
+    ['go', 'go'],
 ];
 
 export const defaultTags = [ 'start', 'death' ];
