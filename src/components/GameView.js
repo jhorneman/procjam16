@@ -10,6 +10,7 @@ function getState() {
     return {
         gameState: GameStore.state(),
         errorMessage: GameStore.errorMessage(),
+        style: GameStore.currentStyle()
     };
 }
 
@@ -34,12 +35,19 @@ class GameView extends Component {
     }
 
     componentDidMount() {
-        drawBackground(this.canvases);
+        drawBackground(this.canvases, this.state.style);
         GameStore.addChangeListener(this._onChange);
     }
 
     componentWillUnmount() {
         GameStore.removeChangeListener(this._onChange);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // Redraw background if style changed.
+        if (prevState.style !== this.state.style) {
+            drawBackground(this.canvases, this.state.style);
+        }
     }
 
     render() {
