@@ -60,6 +60,13 @@ export let GameStore = createStore({
         return currentQuest;
     },
 
+    currentStyle: function() {
+        if (currentQuest && (currentQuest.Style.length > 0)) {
+           return currentQuest.Style;
+        }
+        return 'jungle';
+    },
+
     isDeathQuest: function() {
         return currentQuest ? currentQuest.IsDeathQuest : false;
     },
