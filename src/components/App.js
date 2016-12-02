@@ -5,7 +5,6 @@ import GameView from './GameView';
 import Sidebar from './Sidebar';
 import AboutView from './AboutView';
 import DebugQuestList from './DebugQuestList';
-import { setupBackground, drawBackground } from '../images';
 
 
 function getState() {
@@ -40,8 +39,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        setupBackground();
-        drawBackground();
         GameStore.addChangeListener(this._onChange);
     }
 

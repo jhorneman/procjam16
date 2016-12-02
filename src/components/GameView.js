@@ -3,6 +3,7 @@ import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import WarningList from './WarningList';
+import { setupBackground, drawBackground } from '../images';
 
 
 function getState() {
@@ -25,6 +26,8 @@ class GameView extends Component {
     }
 
     componentDidMount() {
+        setupBackground();
+        drawBackground();
         GameStore.addChangeListener(this._onChange);
     }
 
