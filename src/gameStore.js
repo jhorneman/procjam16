@@ -64,7 +64,7 @@ export let GameStore = createStore({
         if (currentQuest && (currentQuest.Style.length > 0)) {
            return currentQuest.Style;
         }
-        return 'jungle';
+        return ['jungle'];
     },
 
     isDeathQuest: function() {
