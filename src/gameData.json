@@ -2053,8 +2053,8 @@
                     [],
                     [
                         [
-                            "addTag",
-                            "go take_totem"
+                            "go",
+                            "take_totem"
                         ],
                         [
                             "addTag",
@@ -2236,8 +2236,8 @@
                     [],
                     [
                         [
-                            "addTag",
-                            "go take_totem"
+                            "go",
+                            "take_totem"
                         ],
                         [
                             "addTag",
@@ -3213,8 +3213,8 @@
                             1
                         ],
                         [
-                            "addTag",
-                            "go <take_creature>"
+                            "go",
+                            "<take_creature>"
                         ]
                     ]
                 ],
@@ -3998,8 +3998,8 @@
                             "fog_storyline"
                         ],
                         [
-                            "addTag",
-                            "go FogStory2"
+                            "go",
+                            "FogStory2"
                         ],
                         [
                             "addTag",
@@ -4048,8 +4048,8 @@
                     ],
                     [
                         [
-                            "addTag",
-                            "go FogStory3"
+                            "go",
+                            "FogStory3"
                         ]
                     ]
                 ],
@@ -4088,8 +4088,8 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go FogStory4"
+                            "go",
+                            "FogStory4"
                         ]
                     ],
                     [
@@ -4140,8 +4140,8 @@
                     ],
                     [
                         [
-                            "addTag",
-                            "go FogStory5"
+                            "go",
+                            "FogStory5"
                         ]
                     ]
                 ],
@@ -4180,8 +4180,8 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go FogStory6"
+                            "go",
+                            "FogStory6"
                         ]
                     ],
                     [
@@ -4288,8 +4288,8 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go bogs1"
+                            "go",
+                            "bogs1"
                         ],
                         [
                             "addTag",
@@ -4302,8 +4302,8 @@
                     ],
                     [
                         [
-                            "addTag",
-                            "go bogs1"
+                            "go",
+                            "bogs1"
                         ],
                         [
                             "addTag",
@@ -4346,14 +4346,14 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go bogs2"
+                            "go",
+                            "bogs2"
                         ]
                     ],
                     [
                         [
-                            "addTag",
-                            "go bogs2"
+                            "go",
+                            "bogs2"
                         ]
                     ]
                 ],
@@ -4388,14 +4388,14 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go bogs3"
+                            "go",
+                            "bogs3"
                         ]
                     ],
                     [
                         [
-                            "addTag",
-                            "go bogs3"
+                            "go",
+                            "bogs3"
                         ]
                     ]
                 ],
@@ -4430,14 +4430,14 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go bogs4"
+                            "go",
+                            "bogs4"
                         ]
                     ],
                     [
                         [
-                            "addTag",
-                            "go bogs4"
+                            "go",
+                            "bogs4"
                         ]
                     ]
                 ],
@@ -4472,14 +4472,14 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go bogs5"
+                            "go",
+                            "bogs5"
                         ]
                     ],
                     [
                         [
-                            "addTag",
-                            "go bogs5"
+                            "go",
+                            "bogs5"
                         ]
                     ]
                 ],
@@ -4556,8 +4556,8 @@
                 "Outcomes": [
                     [
                         [
-                            "addTag",
-                            "go take_ruins"
+                            "go",
+                            "take_ruins"
                         ],
                         [
                             "addTag",
@@ -4610,8 +4610,8 @@
                     ],
                     [
                         [
-                            "addTag",
-                            "go take_ruins"
+                            "go",
+                            "take_ruins"
                         ],
                         [
                             "addTag",
@@ -4715,8 +4715,8 @@
                             "ruins_only"
                         ],
                         [
-                            "addTag",
-                            "go city_ruins_entrance"
+                            "go",
+                            "city_ruins_entrance"
                         ]
                     ]
                 ],
@@ -6233,6 +6233,7 @@
     },
     "warnings": [
         "Condition uses unknown tag 'totem_story' (quest 'Hole In Tree A' in sheet 'Random Events')",
+        "Go command refers to a quest named '<take_creature>' - there are no known quests with this name. (quest 'Taking an egg' in sheet 'Storylines')",
         "Condition uses unknown tag 'death_dream' (quest 'Dream' in sheet 'Deaths')",
         "Condition uses unknown tag 'death_infected' (quest 'death_infected' in sheet 'Deaths')",
         "Condition uses unknown tag 'death_madness' (quest 'death_madness' in sheet 'Deaths')"
@@ -6270,7 +6271,6 @@
         "death_blasphemy",
         "x",
         "death_spiderweb",
-        "go take_totem",
         "totem_start",
         "totem_storyline",
         "has_totem",
@@ -6283,7 +6283,6 @@
         "no_magi",
         "egg_storyline",
         "egg1",
-        "go <take_creature>",
         "death_jungleparanoia",
         "thief_cont",
         "thief_caught",
@@ -6301,27 +6300,15 @@
         "death_thom",
         "death_fog",
         "fog_storyline",
-        "go FogStory2",
         "fog_only",
-        "go FogStory3",
-        "go FogStory4",
-        "go FogStory5",
-        "go FogStory6",
         "madness",
         "...",
-        "go bogs1",
         "bogs_only",
         "bogs_storyline",
-        "go bogs2",
-        "go bogs3",
-        "go bogs4",
-        "go bogs5",
-        "go take_ruins",
         "ruins_start",
         "ruins_storyline",
         "ruins_arrive",
         "ruins_only",
-        "go city_ruins_entrance",
         "dreams1",
         "dreams_story",
         "dreams2"
@@ -6333,5 +6320,5 @@
         "luck",
         "story"
     ],
-    "retrievedAt": "Fri, 02 Dec 2016 12:50:54 GMT"
+    "retrievedAt": "Fri, 02 Dec 2016 14:55:27 GMT"
 }
