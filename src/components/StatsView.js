@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
+import { visibleStatNames } from '../constants';
+
+import icon_health from '../../images/icon_health.png';
+import icon_luck from '../../images/icon_luck.png';
+import icon_morale from '../../images/icon_morale.png';
+import icon_rations from '../../images/icon_rations.png';
+
+
+const statImages = {
+    'health': icon_health,
+    'luck': icon_luck,
+    'morale': icon_morale,
+    'rations': icon_rations
+};
 
 
 function getState() {
     return {
-        statNames: GameStore.visibleStatNames(),
         stats: GameStore.stats(),
     };
 }
@@ -30,7 +43,7 @@ class StatsView extends Component {
     }
 
     render() {
-        const statViews = this.state.statNames.map((name, index) => {
+        const statViews = visibleStatNames.map((name, index) => {
             return <StatView name={name} value={this.state.stats[name]} key={index} />;
         });
         return (<div className='statsView flex-container'>
@@ -49,8 +62,8 @@ function StatView(props) {
     }
 
     return (<div className={className}>
+        <span className='statName' key='name'><img src={statImages[props.name]} alt={props.name} /></span>
         <span className='statValue' key='value'>{props.value}</span>
-        <span className='statName' key='name'>{props.name}</span>
     </div>);
 }
 

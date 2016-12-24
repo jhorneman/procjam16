@@ -4,14 +4,8 @@ import lscache from 'ls-cache';
 import sha1 from 'stable-sha1';
 import download from './download';
 import bakedGameData from './gameData.json';
+import { visibleStatNames } from './constants';
 
-
-export const visibleStatNames = [
-    'health',
-    'luck',
-    'morale',
-    'rations',
-];
 
 const statStartValue = 5;
 const statMaxValue = 10;
@@ -77,10 +71,6 @@ export let GameStore = createStore({
 
     allStatNames: function() {
         return Object.keys(stats);
-    },
-
-    visibleStatNames: function() {
-        return visibleStatNames;
     },
 
     stats: function() {

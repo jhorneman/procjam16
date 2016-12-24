@@ -1,8 +1,3 @@
-import jungleFar01 from '../images/jungle_far_01.png';
-import jungleMid01 from '../images/jungle_mid_01.png';
-import jungleClose01 from '../images/jungle_close_01.png';
-
-
 const backgroundWidth = 1000;
 const backgroundHeight = 800;
 const centerX = backgroundWidth / 2;
@@ -11,7 +6,7 @@ const centerY = backgroundHeight / 2;
 const colors = {
     'jungle': {
         close: '#36082e',           // Closest layer / outside circle.
-        middle: '#098d76',          // Middle layer.
+        mid: '#098d76',             // Middle layer.
         far: '#64e4ac',             // Far layer.
         background: '#a5febe',      // Background inside circle.
         gradient: '#e4f5ce'         // Center of gradient inside circle.
@@ -19,7 +14,7 @@ const colors = {
 
     'fog': {
         close: '#989fbb',
-        middle: '#989fbb',
+        mid: '#989fbb',
         far: '#a6aac2',
         background: '#989fbb',
         gradient: '#e8dbe7'
@@ -28,37 +23,74 @@ const colors = {
 
 
 const defaultStyle = 'jungle';
-const imagePaths = {
-    'jungle': [jungleFar01, jungleMid01, jungleClose01]
-};
-
+const layerNames = ['far', 'mid', 'close'];     // Names must be back to front.
+let imagePaths = {};
 let images = {};
 
 
-export function loadImages() {
-    let imagePromises = [];
-    for (let styleName in imagePaths) {     // eslint-disable-line guard-for-in
-        Array.prototype.push.apply(imagePromises, loadImagesForAStyle(styleName));
+export function prepareImages() {
+    imagePaths = {
+        'jungle': imageLayerVariationPaths('jungle'),
+        'cave': imageLayerVariationPaths('cave'),
+        'special': imageVariationPaths('special_mid')
+    };
+
+    for (let theme in imagePaths) {     // eslint-disable-line guard-for-in
+        images[theme] = {};
+        for (let layer in imagePaths[theme]) {     // eslint-disable-line guard-for-in
+            images[theme][layer] = {};
+            for (let nr in imagePaths[theme][layer]) {     // eslint-disable-line guard-for-in
+                images[theme][layer][nr] = null;
+            }
+        }
     }
-    return Promise.all(imagePromises);
 }
 
 
-function loadImagesForAStyle(styleName) {
-    if (!imagePaths.hasOwnProperty(styleName)) {
-        console.log(`Unknown style name '${styleName}'.`);
-        return [];
+function imageLayerVariationPaths(imageName) {
+    let paths = {};
+    layerNames.forEach(layer => {
+        paths[layer] = imageVariationPaths(imageName + `_${layer}`)
+    });
+    return paths;
+}
+
+
+function imageVariationPaths(imageName) {
+    let paths = {};
+    [1, 2, 3].forEach(nr => {
+        paths[nr] = fullImagePath(imageName + `_0${nr}`)
+    });
+    return paths;
+}
+
+
+function fullImagePath(imageFilename) {
+    return process.env.PUBLIC_URL + `/images/${imageFilename}.png`;
+}
+
+
+function hasImage(obj, theme, layer, nr) {
+    return (obj.hasOwnProperty(theme) && obj[theme].hasOwnProperty(layer) && obj[theme][layer].hasOwnProperty(nr));
+}
+
+
+function loadImage(theme, layer, nr) {
+    if (!hasImage(imagePaths, theme, layer, nr)) {
+        console.log(`No path known for image with theme '${theme}', layer '${layer}', and number ${nr}.`);
+        return null;
     }
-    const newImages = imagePaths[styleName].map(() => new Image());
-    images[styleName] = newImages;
-    return newImages.map((img, index) =>
-        new Promise(function(resolve, reject) {
-            img.src = imagePaths[styleName][index];
-            img.onload = function() {
-                resolve(this);
-            }
+
+    if (hasImage(images, theme, layer, nr) && (images[theme][layer][nr] !== null)) return null;
+
+    return new Promise(function(resolve, reject) {
+        let image = new Image();
+        images[theme][layer][nr] = image;
+        image.src = imagePaths[theme][layer][nr];
+        image.onload = function() {
+            resolve(image);
         }
-    ));
+    });
 }
 
 
@@ -70,29 +102,31 @@ export function createCanvases() {
 
     // Create compositing canvas.
     const compositingCanvas = document.createElement('canvas');
-    compositingCanvas.width = 1890;
-    compositingCanvas.height = 1932;
+    compositingCanvas.width = 945;
+    compositingCanvas.height = 966;
 
     return { bgCanvas, compositingCanvas };
 }
 
 
 export function drawBackground({ bgCanvas, compositingCanvas }, styles) {
-    const mainStyle = findMainStyle(styles);
-    if (images.hasOwnProperty(mainStyle)) {
-        _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles);
-    } else {
-        Promise.all(loadImagesForAStyle(mainStyle)).then(function() {
-            _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles);
+    let theme = 'jungle';
+    const nr = Math.floor(Math.random() * (3 - 1)) + 1;
+    let imagePromises = layerNames.map(layer => loadImage(theme, layer, nr)).filter(promise => promise !== null);
+    if (imagePromises.count > 0) {
+        Promise.all(imagePromises).then(function() {
+            _drawBackground(bgCanvas, compositingCanvas, theme, nr);
         });
+    } else {
+        _drawBackground(bgCanvas, compositingCanvas, theme, nr);
     }
 }
 
 
-function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
+function _drawBackground(bgCanvas, compositingCanvas, theme, nr) {
     const bgContext = bgCanvas.getContext('2d');
     const compositingContext = compositingCanvas.getContext('2d');
-    const currentColors = colors[mainStyle];
+    const currentColors = colors['jungle'];
 
     // Draw background gradient.
     let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
@@ -103,7 +137,8 @@ function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
     bgContext.fillRect(0, 0, backgroundWidth, backgroundHeight);
 
     // Recolor and draw image layers, back to front.
-    images[mainStyle].forEach((img, index) => {
+    layerNames.forEach(layer => {
+        const img = images[theme][layer][nr];
         const imageWidth = img.width;
         const imageHeight = img.height;
 
@@ -113,15 +148,15 @@ function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
 
         // Draw a colored rectangle to the compositing canvas, blending it with the image there.
         compositingContext.globalCompositeOperation = 'source-in';
-        compositingContext.fillStyle = currentColors[['far', 'middle', 'close'][index]];
+        compositingContext.fillStyle = currentColors[layer];
         compositingContext.fillRect(0, 0, imageWidth, imageHeight);
 
         // Copy the recolored image onto the background canvas.
         bgContext.drawImage(
             compositingCanvas,
-            -27, -83,
-            imageWidth / 2,
-            imageHeight / 2
+            27, -83,
+            imageWidth,
+            imageHeight
         );
     });
 
@@ -137,7 +172,7 @@ function _drawBackground(bgCanvas, compositingCanvas, mainStyle, styles) {
     bodyElement.style.backgroundColor = currentColors.close;
 }
 
-
+/*
 function findMainStyle(styles) {
     let mainStyle = styles.find(style => imagePaths.hasOwnProperty(style));
     if (mainStyle === undefined) {
@@ -146,7 +181,7 @@ function findMainStyle(styles) {
     }
     return mainStyle;
 }
-
+*/
 
 function RGBtoRGBA(RGB, alpha) {
     if (RGB.length !== 7) {

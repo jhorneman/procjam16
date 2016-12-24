@@ -1,5 +1,12 @@
 export const googleSpreadsheetKey = '1F7YsZk5now_twhccVQYmqgpyKyO9zYi1OFk0mpWYg2k';
 
+export const visibleStatNames = [
+    'health',
+    'luck',
+    'morale',
+    'rations',
+];
+
 export const binaryConditions = [
     [ '<', 'lessThan' ],
     [ '>', 'greaterThan' ],
