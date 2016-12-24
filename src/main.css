@@ -196,6 +196,11 @@ button {
 }
 
 .aboutView {
+    color: #888;
     font-size: larger;
     line-height: 1.5em;
+}
+
+.aboutView a {
+    color: lightblue;
 }
