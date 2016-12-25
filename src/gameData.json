@@ -1894,7 +1894,9 @@
                 "SheetName": "Random Events",
                 "ColumnID": "5",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "cave"
+                ],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1941,7 +1943,9 @@
                 "SheetName": "Random Events",
                 "ColumnID": "6",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "cave"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1968,7 +1972,9 @@
                 "SheetName": "Random Events",
                 "ColumnID": "7",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "cave"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2001,7 +2007,9 @@
                 "SheetName": "Random Events",
                 "ColumnID": "8",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "cave"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2033,7 +2041,9 @@
                 "SheetName": "Random Events",
                 "ColumnID": "9",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "cave"
+                ],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -3965,7 +3975,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "20",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4023,7 +4035,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "21",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4069,7 +4083,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "22",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4115,7 +4131,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "23",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4161,7 +4179,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "24",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4207,7 +4227,9 @@
                 "SheetName": "Storylines",
                 "ColumnID": "25",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "fog"
+                ],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6320,5 +6342,5 @@
         "luck",
         "story"
     ],
-    "retrievedAt": "Fri, 02 Dec 2016 14:55:27 GMT"
+    "retrievedAt": "Sun, 25 Dec 2016 14:16:30 GMT"
 }
