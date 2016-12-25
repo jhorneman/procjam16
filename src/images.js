@@ -85,9 +85,9 @@ function loadImage(theme, layer, nr) {
 
     return new Promise(function(resolve, reject) {
         let image = new Image();
-        images[theme][layer][nr] = image;
         image.src = imagePaths[theme][layer][nr];
         image.onload = function() {
+            images[theme][layer][nr] = image;
             resolve(image);
         }
     });
@@ -110,23 +110,29 @@ export function createCanvases() {
 
 
 export function drawBackground({ bgCanvas, compositingCanvas }, styles) {
-    let theme = 'jungle';
+    const isCaveStyle = styles.find(style => style === 'cave');
+    const theme =  isCaveStyle ? 'cave': 'jungle';
+
     const nr = Math.floor(Math.random() * (3 - 1)) + 1;
+
+    const isFog = styles.find(style => style === 'fog');
+    const colorSet = isFog ? 'fog' : 'jungle';
+
     let imagePromises = layerNames.map(layer => loadImage(theme, layer, nr)).filter(promise => promise !== null);
-    if (imagePromises.count > 0) {
+    if (imagePromises.length > 0) {
         Promise.all(imagePromises).then(function() {
-            _drawBackground(bgCanvas, compositingCanvas, theme, nr);
+            _drawBackground(bgCanvas, compositingCanvas, theme, nr, colorSet);
         });
     } else {
-        _drawBackground(bgCanvas, compositingCanvas, theme, nr);
+        _drawBackground(bgCanvas, compositingCanvas, theme, nr, colorSet);
     }
 }
 
 
-function _drawBackground(bgCanvas, compositingCanvas, theme, nr) {
+function _drawBackground(bgCanvas, compositingCanvas, theme, nr, colorSet) {
     const bgContext = bgCanvas.getContext('2d');
     const compositingContext = compositingCanvas.getContext('2d');
-    const currentColors = colors['jungle'];
+    const currentColors = colors[colorSet];
 
     // Draw background gradient.
     let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
@@ -172,16 +178,6 @@ function _drawBackground(bgCanvas, compositingCanvas, theme, nr) {
     bodyElement.style.backgroundColor = currentColors.close;
 }
 
-/*
-function findMainStyle(styles) {
-    let mainStyle = styles.find(style => imagePaths.hasOwnProperty(style));
-    if (mainStyle === undefined) {
-        console.log(`Couldn't find main style in '${styles}' - picking default style.`);
-        mainStyle = defaultStyle;
-    }
-    return mainStyle;
-}
-*/
 
 function RGBtoRGBA(RGB, alpha) {
     if (RGB.length !== 7) {
