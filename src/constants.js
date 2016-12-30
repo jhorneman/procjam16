@@ -7,6 +7,9 @@ export const visibleStatNames = [
     'rations',
 ];
 
+export const distanceStatName = 'miles';
+export const timeStatName = 'days';
+
 export const binaryConditions = [
     [ '<', 'lessThan' ],
     [ '>', 'greaterThan' ],
@@ -33,3 +36,5 @@ export const unaryOperations = [
 ];
 
 export const defaultTags = [ 'start', 'death' ];
+
+export const defaultStats = [distanceStatName, timeStatName, ...visibleStatNames];

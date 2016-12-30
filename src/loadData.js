@@ -5,7 +5,8 @@ import {
     unaryConditions,
     binaryOperations,
     unaryOperations,
-    defaultTags
+    defaultTags,
+    defaultStats
 } from './constants';
 
 
@@ -94,7 +95,7 @@ function loadDataFromTabletop(sheets, tabletop) {
         queriedTags: new Set(),
         queriedStats: new Set(),
         modifiedTags: new Set(defaultTags),
-        modifiedStats: new Set(),
+        modifiedStats: new Set(defaultStats),
         questNames: result.data.quests.map(q => q.QuestName),
     };
 
@@ -148,7 +149,7 @@ function loadDataFromQuestSheet(result, sheet) {
         try {
             rowName = row[0].trim();
         } catch(e) {
-            result.warnings.push(`Couldn't process a row in sheet '${sheet.name}'.`);
+            result.warnings.push(`Couldn't process a row in sheet '${sheet.name}'`);
             return;
         }
 
@@ -157,13 +158,13 @@ function loadDataFromQuestSheet(result, sheet) {
 
         // Make sure this is a valid field name.
         if (questFieldNames.indexOf(rowName) === -1) {
-            result.warnings.push(`Ignoring '${rowName}' row in sheet '${sheet.name}'.`);
+            result.warnings.push(`Ignoring '${rowName}' row in sheet '${sheet.name}'`);
             return;
         }
 
         // Make sure we haven't read this field name already.
         if (data.hasOwnProperty(rowName)) {
-            result.warnings.push(`There is more than one '${rowName}' row in sheet '${sheet.name}'.`);
+            result.warnings.push(`There is more than one '${rowName}' row in sheet '${sheet.name}'`);
             return;
         }
 
@@ -174,7 +175,7 @@ function loadDataFromQuestSheet(result, sheet) {
             try {
                 cell = row[i].trim();
             } catch(e) {
-                result.warnings.push(`Couldn't process a cell in the '${rowName}' row of sheet '${sheet.name}'.`);
+                result.warnings.push(`Couldn't process a cell in the '${rowName}' row of sheet '${sheet.name}'`);
                 cell = '';
             }
             convertedRow.push(cell);
@@ -196,7 +197,7 @@ function loadDataFromQuestSheet(result, sheet) {
             if (nrColumns < data[fieldName].length) nrColumns = data[fieldName].length;
         } else {
             noRowsMissing = true;
-            result.warnings.push(`Couldn't find '${fieldName}' row in sheet '${sheet.name}'.`);
+            result.warnings.push(`Couldn't find '${fieldName}' row in sheet '${sheet.name}'`);
         }
     })
     if (noRowsMissing) return;
@@ -335,7 +336,7 @@ function processQuest(rawQuestData, reportFn) {
     let newQuest = {};
     ['QuestName', 'QuestText', 'SheetName'].forEach(n => newQuest[n] = rawQuestData[n]);
 
-    newQuest.ColumnID = rawQuestData['ID'];
+    newQuest.ColumnID = rawQuestData[IDfieldName];
     newQuest.IsDeathQuest = (newQuest.SheetName === 'Deaths');
     newQuest.Style = splitIntoParts(rawQuestData['Style']);
 

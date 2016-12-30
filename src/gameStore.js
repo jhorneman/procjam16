@@ -4,16 +4,14 @@ import lscache from 'ls-cache';
 import sha1 from 'stable-sha1';
 import download from './download';
 import bakedGameData from './gameData.json';
-import { visibleStatNames } from './constants';
+import { visibleStatNames, distanceStatName, timeStatName } from './constants';
 
 
 const statStartValue = 5;
 const statMaxValue = 10;
 const defaultDeathTag = 'death';
 const startTag = 'start';
-const distanceStatName = 'miles';
 const defaultQuestDistance = 8;
-const timeStatName = 'days';
 const defaultQuestTime = 1;
 const localStorageKey = 'gameState';
 
