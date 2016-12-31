@@ -22,7 +22,6 @@ const colors = {
 };
 
 
-const defaultStyle = 'jungle';
 const layerNames = ['far', 'mid', 'close'];     // Names must be back to front.
 let imagePaths = {};
 let images = {};
