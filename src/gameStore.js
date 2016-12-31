@@ -28,7 +28,7 @@ let deathResultText;
 let currentQuest;
 let stats = {};
 let tags = new Set();
-let possibleNextQuests;
+let possibleNextQuests = [];
 
 
 export let GameStore = createStore({
