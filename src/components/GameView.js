@@ -3,6 +3,7 @@ import { GameStore } from '../gameStore';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import WarningList from './WarningList';
+import DebugNextQuestList from './DebugNextQuestList';
 import { createCanvases, drawBackground } from '../images';
 
 
@@ -67,6 +68,9 @@ class GameView extends Component {
                 <StatsView key='stats' />,
                 <QuestView key='quest' />
             ];
+            if (this.props.showDebugUI) {
+                contents.push(<DebugNextQuestList key='nextQuests' />);
+            }
             break;
         }
         case 'error': {
@@ -88,6 +92,16 @@ class GameView extends Component {
         </div>);
     }
 }
+
+
+GameView.propTypes = {
+    showDebugUI: React.PropTypes.bool
+};
+
+
+GameView.defaultProps = {
+    showDebugUI: false
+};
 
 
 export default GameView;

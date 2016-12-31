@@ -20,7 +20,7 @@ class App extends Component {
 
         this.state = Object.assign({}, getState(), {
             inDevMode: (process.env.NODE_ENV === 'development'),
-            showDebugSidebar: false,
+            showDebugUI: false,
             uiState: 'game',
         });
 
@@ -64,7 +64,7 @@ class App extends Component {
 
     _onToggleSidebarClicked() {
         this.setState({
-            showDebugSidebar: !this.state.showDebugSidebar,
+            showDebugUI: !this.state.showDebugUI,
         });
     }
 
@@ -91,15 +91,15 @@ class App extends Component {
 
         switch (this.state.uiState) {
         case 'game': {
-            mainView = <GameView />;
+            mainView = <GameView showDebugUI={this.state.showDebugUI} />;
             footerButtons = [
                 <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>,
                 <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
             ];
             if (this.state.inDevMode) {
-                sidebarView = this.state.showDebugSidebar ? (<Sidebar />) : null;
+                sidebarView = this.state.showDebugUI ? (<Sidebar />) : null;
                 debugButtons = [
-                    <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle sidebar</ClickableLink>,
+                    <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle debug UI</ClickableLink>,
                     <ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>,
                     <ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink>,
                     <ClickableLink onClick={this._onClearLSClicked} key='clearls'>Clear local storage</ClickableLink>,
