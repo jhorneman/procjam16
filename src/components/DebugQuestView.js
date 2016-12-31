@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
-import DebugQuestView from './DebugQuestView';
-import DebugTagsView from './DebugTagsView';
-import DebugStatsView from './DebugStatsView';
-import WarningList from './WarningList';
 
 
 function getState() {
     return {
-        gameState: GameStore.state(),
+        currentQuest: GameStore.currentQuest()
     };
 }
 
 
-class Sidebar extends Component {
+class DebugQuestView extends Component {
     constructor(props) {
         super(props);
         this.state = getState();
@@ -33,16 +29,12 @@ class Sidebar extends Component {
     }
 
     render() {
-        if (this.state.gameState !== 'playing') return null;
-
-        return (<div>
-            <DebugQuestView key='quest' />
-            <DebugTagsView key='tags' />
-            <DebugStatsView key='stats' />
-            <WarningList key='warnings' />
+        return (<div className='debug debugQuestView'>
+            <h3>Current quest:</h3>
+            <p>{this.state.currentQuest.QuestName} ({this.state.currentQuest.SheetName})</p>
         </div>);
     }
 }
 
 
-export default Sidebar;
+export default DebugQuestView;
