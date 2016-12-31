@@ -225,29 +225,36 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         // If the current quest is a death quest, don't execute quest logic. The game will be restarted in pickNextQuest.
         if (currentQuest.IsDeathQuest) return;
 
-        // TODO: Read distance/time from quest, only do following if no values are found.
-        stats[distanceStatName] += defaultQuestDistance;
-        stats[timeStatName] += defaultQuestTime;
-
         let nextQuestSetByGoCommand = null;
+        let timeWasModified = false;
+        let distanceWasModified = false;
 
         currentQuest.Outcomes[choiceIndex].forEach(([operator, param0, param1]) => {
             switch (operator) {
             case 'set': {
                 stats[param0] = param1;
                 checkStatForDeath(param0, choiceIndex);
+
+                if (param0 === timeStatName) timeWasModified = true;
+                if (param0 === distanceStatName) distanceWasModified = true;
                 break;
             }
             case 'add': {
                 if (!stats.hasOwnProperty(param0)) stats[param0] = 0;
                 stats[param0] += param1;
                 if (stats[param0] > statMaxValue) stats[param0] = statMaxValue;
+
+                if (param0 === timeStatName) timeWasModified = true;
+                if (param0 === distanceStatName) distanceWasModified = true;
                 break;
             }
             case 'subtract': {
                 if (!stats.hasOwnProperty(param0)) stats[param0] = 0;
                 stats[param0] -= param1;
                 checkStatForDeath(param0, choiceIndex);
+
+                if (param0 === timeStatName) timeWasModified = true;
+                if (param0 === distanceStatName) distanceWasModified = true;
                 break;
             }
             case 'addTag': {
@@ -278,6 +285,13 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
             }
             }
         });
+
+        if (!timeWasModified) {
+            stats[timeStatName] += defaultQuestTime;
+        }
+        if (!distanceWasModified) {
+            stats[distanceStatName] += defaultQuestDistance;
+        }
 
         if (nextQuestSetByGoCommand === null) {
             possibleNextQuests = getPossibleNextQuests();
