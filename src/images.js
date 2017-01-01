@@ -18,9 +18,34 @@ const colors = {
         far: '#a6aac2',
         background: '#989fbb',
         gradient: '#e8dbe7'
+    },
+
+    'dream': {
+        close: '#182720',
+        mid: '#395e4d',
+        far: '#8fbba7',
+        background: '#c5dcd1',
+        gradient: '#edcde5'
+    },
+
+    'swamp': {
+        close: '#989fbb',
+        mid: '#989fbb',
+        far: '#a6aac2',
+        background: '#989fbb',
+        gradient: '#f0f3e2'
+    },
+
+    'magic': {
+        close: '#230224',
+        mid: '#995fd6',
+        far: '#995fd6',
+        background: '#b9a9fd',
+        gradient: '#cee5f5'
     }
 };
 
+const colorTags = ['fog', 'dream', 'swamp', 'magic'];
 
 const layerNames = ['far', 'mid', 'close'];     // Names must be back to front.
 let imagePaths = {};
@@ -109,13 +134,8 @@ export function createCanvases() {
 
 
 export function drawBackground({ bgCanvas, compositingCanvas }, styles) {
-    const isCaveStyle = styles.find(style => style === 'cave');
-    const theme =  isCaveStyle ? 'cave': 'jungle';
-
+    const { theme, colorSet } = parseStyles(styles);
     const nr = Math.floor(Math.random() * (3 - 1)) + 1;
-
-    const isFog = styles.find(style => style === 'fog');
-    const colorSet = isFog ? 'fog' : 'jungle';
 
     let imagePromises = layerNames.map(layer => loadImage(theme, layer, nr)).filter(promise => promise !== null);
     if (imagePromises.length > 0) {
@@ -125,6 +145,22 @@ export function drawBackground({ bgCanvas, compositingCanvas }, styles) {
     } else {
         _drawBackground(bgCanvas, compositingCanvas, theme, nr, colorSet);
     }
+}
+
+
+function parseStyles(styles) {
+    const isCaveStyle = styles.find(style => style === 'cave');
+    const theme =  isCaveStyle ? 'cave': 'jungle';
+
+    let colorSet = 'jungle';
+    for (let colorTag of colorTags) {
+        if (styles.find(style => style === colorTag)) {
+            colorSet = colorTag;
+            break;
+        }
+    }
+
+    return { theme, colorSet };
 }
 
 
