@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 
 const aboutViewContent = `
-This is a horror game by [Liz England](http://www.lizengland.com), [Jurie Horneman](http://www.intelligent-artifice.com), and [Stefan Srb](http://www.leaf-thief.com/),
+The White City is a game by [Liz England](http://www.lizengland.com), [Jurie Horneman](http://www.intelligent-artifice.com), and [Stefan Srb](http://www.leaf-thief.com/),
 developed for [Procjam 2016](http://www.procjam.com).
 
 The texts, assets, and source code can be found on [GitHub](https://github.com/jhorneman/procjam16).
