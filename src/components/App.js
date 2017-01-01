@@ -147,7 +147,7 @@ class App extends Component {
                 <div className='buttonBar'>
                     {footerButtons}
                 </div>
-                <p className='copyright'>&copy; 2016 Liz England, Jurie Horneman &amp; Stefan Srb</p>
+                <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
             </footer>
         </div>);
     }
