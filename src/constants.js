@@ -7,6 +7,8 @@ export const visibleStatNames = [
     'rations',
 ];
 
+export const typeCooldownLimit = 4;
+
 export const distanceStatName = 'miles';
 export const timeStatName = 'days';
 
