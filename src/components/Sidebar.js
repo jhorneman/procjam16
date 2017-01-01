@@ -3,6 +3,7 @@ import { GameStore } from '../gameStore';
 import DebugQuestView from './DebugQuestView';
 import DebugTagsView from './DebugTagsView';
 import DebugStatsView from './DebugStatsView';
+import DebugTypeCooldownView from './DebugTypeCooldownView';
 import WarningList from './WarningList';
 
 
@@ -39,6 +40,7 @@ class Sidebar extends Component {
             <DebugQuestView key='quest' />
             <DebugTagsView key='tags' />
             <DebugStatsView key='stats' />
+            <DebugTypeCooldownView key='typeCooldowns' />
             <WarningList key='warnings' />
         </div>);
     }
