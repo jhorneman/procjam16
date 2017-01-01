@@ -171,7 +171,7 @@ button {
     padding: 5px 15px 5px 15px;
 }
 
-.debugTagsView h3 {
+.debug h3 {
     margin-top: 0px;
 }
 
@@ -179,11 +179,6 @@ button {
     margin-top: 0px;
     list-style-type: none;
     padding: 0px;
-}
-
-.debugQuestView {
-    display: block;
-    padding: 10px 20px 10px 20px;
 }
 
 .warningList {
