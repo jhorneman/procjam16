@@ -54,7 +54,7 @@ class DebugQuestList extends Component {
 
 
 function DebugQuestView(props) {
-    return <div className='debugQuestView'>
+    return <div>
         Quest: {props.quest.QuestName}<br/>
         Sheet: {props.quest.SheetName}
     </div>;
