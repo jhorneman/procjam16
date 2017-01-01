@@ -4,7 +4,7 @@ import lscache from 'ls-cache';
 import sha1 from 'stable-sha1';
 import download from './download';
 import bakedGameData from './gameData.json';
-import { visibleStatNames, distanceStatName, timeStatName } from './constants';
+import { visibleStatNames, distanceStatName, timeStatName, typeCooldownLimit } from './constants';
 
 
 const statStartValue = 5;
@@ -29,6 +29,7 @@ let currentQuest;
 let stats = {};
 let tags = new Set();
 let possibleNextQuests = [];
+let typeCooldowns = {};
 
 
 export let GameStore = createStore({
@@ -77,6 +78,10 @@ export let GameStore = createStore({
 
     tags: function() {
         return [...tags];
+    },
+
+    typeCooldowns: function() {
+        return typeCooldowns;
     },
 
     playerIsDead: function() {
@@ -131,6 +136,9 @@ export let GameStore = createStore({
 
 export let GameStoreMutator = createStoreMutator(GameStore, {
     init: function() {
+        // Make sure game state is always reset.
+        resetGameState();
+
         state = 'loading';
 
         let dataLoadPromise;
@@ -225,6 +233,10 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         // If the current quest is a death quest, don't execute quest logic. The game will be restarted in pickNextQuest.
         if (currentQuest.IsDeathQuest) return;
 
+        for (let questType of currentQuest.Types) {
+            typeCooldowns[questType] = typeCooldownLimit;
+        }
+
         let nextQuestSetByGoCommand = null;
         let timeWasModified = false;
         let distanceWasModified = false;
@@ -309,6 +321,7 @@ export let GameStoreMutator = createStoreMutator(GameStore, {
         }
         pickNextQuest();
         this._saveGame();
+        typeCooldowns = updateCooldowns(typeCooldowns);
         this.emitChange();
     },
 });
@@ -350,6 +363,7 @@ function resetGameState() {
     tags.add(startTag);
 
     possibleNextQuests = [];
+    typeCooldowns = {};
 }
 
 
@@ -362,13 +376,37 @@ function getPossibleNextQuests() {
     const playerIsDead = isPlayerDead();
     const gameIsStarting = tags.has(startTag);
 
-    return allQuests.filter(q => {
+    const nextQuests = allQuests.filter(q => {
         if (gameIsStarting !== q.IsStartQuest) return false;
         if (playerIsDead !== q.IsDeathQuest) return false;
 
         const evaluateConditionForThisQuest = evaluateCondition.bind(null, q);
         return q.Conditions.every(evaluateConditionForThisQuest);
     });
+
+    const nextQuestsNotOnCooldown = nextQuests.filter(q => {
+        return q.Types.every(type => {
+            return !typeCooldowns.hasOwnProperty(type);
+        });
+    });
+
+    if (nextQuestsNotOnCooldown.length > 0) {
+        return nextQuestsNotOnCooldown;
+    }
+    console.log('Too many quest types are on cooldown! Resetting all cooldown timers.');
+    typeCooldowns = {};
+    return nextQuests;
+}
+
+
+function updateCooldowns(cooldowns) {
+    let newCooldowns = {};
+    for (let type in cooldowns) {     // eslint-disable-line guard-for-in
+        if (cooldowns[type] > 1) {
+            newCooldowns[type] = cooldowns[type] - 1;
+        }
+    };
+    return newCooldowns;
 }
 
 
