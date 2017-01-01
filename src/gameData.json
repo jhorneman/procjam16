@@ -3,11 +3,14 @@
         "quests": [
             {
                 "QuestName": "norm food",
-                "QuestText": "It is quiet. The jungle is lush.",
+                "QuestText": "It is quiet and your companions are weary. The jungle is lush with vegetation.",
                 "SheetName": "Stat Events",
                 "ColumnID": "1",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "easy"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -57,11 +60,12 @@
             },
             {
                 "QuestName": "high food",
-                "QuestText": "Your bags are flush with food. The explorers ask for a feast.",
+                "QuestText": "Your bags are flush with food. The explorers ask your for a feast to ease their tensions.",
                 "SheetName": "Stat Events",
                 "ColumnID": "2",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -75,7 +79,7 @@
                     "Feast"
                 ],
                 "ResultTexts": [
-                    "Mutterings behind your back, lost in the breeze.",
+                    "You hear faint mutterings behind your back, lost in the breeze.",
                     "They share stories of their youth over roasted nuts and salted flesh."
                 ],
                 "Outcomes": [
@@ -111,11 +115,14 @@
             },
             {
                 "QuestName": "low food",
-                "QuestText": "Dreams of feasts invade their sleep. In the morning stomachs growl and mouths water.",
+                "QuestText": "Dreams of feasts invade their sleep. In the morning stomachs growl and mouths water across the camp.",
                 "SheetName": "Stat Events",
                 "ColumnID": "3",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "campb"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -130,7 +137,7 @@
                 ],
                 "ResultTexts": [
                     "They count every morsel as if each mouthful could be their last.",
-                    "They return empty handed."
+                    "The hunters return empty handed."
                 ],
                 "Outcomes": [
                     [
@@ -165,6 +172,9 @@
                 "ColumnID": "4",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "campb"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -179,7 +189,7 @@
                 ],
                 "ResultTexts": [
                     "They count every morsel as if each mouthful could be their last.",
-                    "They return with small lizards, their meat tough but filling."
+                    "The hunters return with small lizards, their meat tough but filling."
                 ],
                 "Outcomes": [
                     [
@@ -214,6 +224,9 @@
                 "ColumnID": "5",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "starveA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -273,6 +286,9 @@
                 "ColumnID": "6",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "starveA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -333,6 +349,9 @@
                 "ColumnID": "7",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "starveA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -351,7 +370,7 @@
                     "Intervene"
                 ],
                 "ResultTexts": [
-                    "They settle their own quarrels amongs themselves. You redistribute the rations among the survivors.",
+                    "They settle their own quarrels amongst themselves. You redistribute the rations among the survivors.",
                     "You end the fight and their spirits calm, but not without taking a wound."
                 ],
                 "Outcomes": [
@@ -406,6 +425,7 @@
                 "ColumnID": "8",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -492,6 +512,7 @@
                 "ColumnID": "9",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -508,7 +529,7 @@
                     "Treat It"
                 ],
                 "ResultTexts": [
-                    "Thr burning spreads slowly. Veins red with infection tendril through your body.",
+                    "The burning spreads slowly. Veins red with infection tendril through your body.",
                     "You treat it with a sweet sap and green poultice. The swelling goes down."
                 ],
                 "Outcomes": [
@@ -537,7 +558,7 @@
                 ],
                 "DeathTags": [
                     [
-                        "death_infection"
+                        "death_infected"
                     ],
                     [
                         "death_tired"
@@ -552,6 +573,7 @@
                 "ColumnID": "10",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -585,10 +607,10 @@
                 ],
                 "DeathTags": [
                     [
-                        "death_infection"
+                        "death_infected"
                     ],
                     [
-                        "death_infection"
+                        "death_infected"
                     ]
                 ],
                 "ID": 9
@@ -600,6 +622,7 @@
                 "ColumnID": "11",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -654,6 +677,7 @@
                 "ColumnID": "12",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -703,6 +727,7 @@
                 "ColumnID": "13",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -754,6 +779,9 @@
                 "ColumnID": "14",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "resentment"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -805,6 +833,9 @@
                 "ColumnID": "15",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "resentment"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -850,6 +881,9 @@
                 "ColumnID": "16",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "lostA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -901,6 +935,9 @@
                 "ColumnID": "17",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "lostA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -952,6 +989,9 @@
                 "ColumnID": "18",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "moraleLowA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1001,6 +1041,9 @@
                 "ColumnID": "19",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "moraleLowA"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1044,12 +1087,15 @@
                 "ID": 18
             },
             {
-                "QuestName": "high morale",
-                "QuestText": "An explorer examines the constellations. \"Tonight is the solstice. We must celebrate and give offerings.\"",
+                "QuestName": "The Solstice",
+                "QuestText": "An explorer examines the constellations. \"Tonight is the Solstice. We must celebrate and give offerings.\"",
                 "SheetName": "Stat Events",
                 "ColumnID": "20",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "holiday"
+                ],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -1064,7 +1110,7 @@
                 ],
                 "ResultTexts": [
                     "\"We celebrate when our task is over,\" you respond. Disappointment lingers in the air.",
-                    "Through the night your companions eat and drink their fill and offer prayers to the gods."
+                    "Through the night your companions eat and drink their fill and offer prayers to the Gods. Your spirits are buoyed."
                 ],
                 "Outcomes": [
                     [
@@ -1104,27 +1150,186 @@
                 "ID": 19
             },
             {
-                "QuestName": "A Thunderstorm Unlucky",
-                "QuestText": "The skies darken and roar with thunder. Torrential rain whips through the jungle canopy and soaks the wanderers to the bone.",
+                "QuestName": "The Birth Of the Great Mother",
+                "QuestText": "An explorer examines the constellations. \"Tonight is the Birth of the Great Mother. We must celebrate and give offerings.\"",
                 "SheetName": "Stat Events",
-                "ColumnID": "25",
+                "ColumnID": "21",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "holiday"
+                ],
                 "Conditions": [
                     [
-                        "lessThan",
-                        "luck",
-                        5
+                        "greaterThan",
+                        "morale",
+                        4
                     ]
                 ],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
-                    "Seek Shelter",
-                    "Pray"
+                    "Do Not Celebrate",
+                    "Celebrate the Holy Day"
                 ],
                 "ResultTexts": [
-                    "You attempt to seek shelter within a small, shallow cave.",
-                    "You and your companions seek guidance from the gods. They do not listen. You emerge from the storm cold and tired."
+                    "\"We celebrate when our task is over,\" you respond. Disappointment lingers in the air.",
+                    "Through the night your companions eat and drink their fill and offer prayers to the Great Mother as her constellation rises above the horizon for the first time that year."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "luck",
+                            1
+                        ],
+                        [
+                            "subtract",
+                            "morale",
+                            2
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            2
+                        ],
+                        [
+                            "add",
+                            "morale",
+                            1
+                        ],
+                        [
+                            "add",
+                            "luck",
+                            2
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 20
+            },
+            {
+                "QuestName": "Asking for Rest",
+                "QuestText": "Your companions turn to you. \"We've traveled for #days# days. Don't you feel it's time to have a day of rest?\"",
+                "SheetName": "Stat Events",
+                "ColumnID": "22",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "greaterThan",
+                        "days",
+                        20
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Do Not Rest",
+                    "Rest"
+                ],
+                "ResultTexts": [
+                    "\"We may rest when our task is over,\" you respond. Disappointment lingers in the air.",
+                    "The day passes without any progress, but your spirits improve. Men and women tell stories of lovers left behind, waiting for them back home."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "morale",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "add",
+                            "morale",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 21
+            },
+            {
+                "QuestName": "High Morale, Push Harder (Morale End)",
+                "QuestText": "Morale is high and the men and women you travel with feel invincible. Perhaps you could put their extra energy to use.",
+                "SheetName": "Stat Events",
+                "ColumnID": "23",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "moraleHighA"
+                ],
+                "Conditions": [
+                    [
+                        "equals",
+                        "morale",
+                        10
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Continue Normally",
+                    "Push Harder"
+                ],
+                "ResultTexts": [
+                    "You decide against risking your good fortune in this hostile environment.",
+                    "You push them harder and cover more ground than normal. At the end, they are exhausted and resentful."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "subtract",
+                            "morale",
+                            2
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 22
+            },
+            {
+                "QuestName": "High Morale, Push Harder (Health End)",
+                "QuestText": "Morale is high and the men and women you travel with feel invincible. Perhaps you could put their extra energy to use.",
+                "SheetName": "Stat Events",
+                "ColumnID": "24",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "moraleHighA"
+                ],
+                "Conditions": [
+                    [
+                        "equals",
+                        "morale",
+                        10
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Continue Normally",
+                    "Push Harder"
+                ],
+                "ResultTexts": [
+                    "You decide against risking your good fortune in this hostile environment.",
+                    "Pushed to their limits, at first they covered ground quickly. But in their carelessness, an explorer twists her ankle in a hidden hole. You are forced to halt your journey until she can walk again."
                 ],
                 "Outcomes": [
                     [],
@@ -1140,15 +1345,123 @@
                     [],
                     []
                 ],
-                "ID": 20
+                "ID": 23
             },
             {
-                "QuestName": "A Thunderstorm Lucky",
+                "QuestName": "A Thunderstorm - Unlucky, Caves",
+                "QuestText": "The skies darken and roar with thunder. Torrential rain whips through the jungle canopy and soaks the wanderers to the bone.",
+                "SheetName": "Stat Events",
+                "ColumnID": "25",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "thunderstorm"
+                ],
+                "Conditions": [
+                    [
+                        "lessThan",
+                        "luck",
+                        4
+                    ],
+                    [
+                        "doesntHaveTag",
+                        "caves_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Seek Shelter",
+                    "Pray"
+                ],
+                "ResultTexts": [
+                    "You attempt to seek shelter within a small, shallow cave.",
+                    "You and your companions seek guidance from the Gods. They do not listen. You emerge from the storm cold and tired."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "addTag",
+                            "caves_storyline"
+                        ],
+                        [
+                            "addTag",
+                            "caves_only"
+                        ],
+                        [
+                            "go",
+                            "caves1"
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 24
+            },
+            {
+                "QuestName": "A Thunderstorm - Unlucky",
                 "QuestText": "The skies darken and roar with thunder. Torrential rain whips through the jungle canopy and soaks the wanderers to the bone.",
                 "SheetName": "Stat Events",
                 "ColumnID": "26",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "thunderstorm"
+                ],
+                "Conditions": [
+                    [
+                        "lessThan",
+                        "luck",
+                        5
+                    ],
+                    [
+                        "hasTag",
+                        "caves_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Seek Shelter",
+                    "Pray"
+                ],
+                "ResultTexts": [
+                    "You attempt to seek shelter within a small, shallow cave.",
+                    "You and your companions seek guidance from the Gods. They do not listen. You emerge from the storm cold and tired."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 25
+            },
+            {
+                "QuestName": "A Thunderstorm - Lucky",
+                "QuestText": "The skies darken and roar with thunder. Torrential rain whips through the jungle canopy and soaks the wanderers to the bone.",
+                "SheetName": "Stat Events",
+                "ColumnID": "27",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "thunderstorm"
+                ],
                 "Conditions": [
                     [
                         "greaterThan",
@@ -1163,7 +1476,7 @@
                 ],
                 "ResultTexts": [
                     "You attempt to seek shelter but are unable to find any suitable. You wait out the storm at the base of a half-rotted tree but it provides little shelter.",
-                    "You are your companions seek guidance from the gods. The storm lightens to a small drizzle and soon the sun returns."
+                    "You are your companions seek guidance from the Gods. The storm lightens to a small drizzle and soon the sun returns."
                 ],
                 "Outcomes": [
                     [
@@ -1179,15 +1492,18 @@
                     [],
                     []
                 ],
-                "ID": 21
+                "ID": 26
             },
             {
-                "QuestName": "A Thunderstorm Other",
+                "QuestName": "A Thunderstorm - Other",
                 "QuestText": "The skies darken and roar with thunder. Torrential rain whips through the jungle canopy and soaks the wanderers to the bone.",
                 "SheetName": "Stat Events",
-                "ColumnID": "27",
+                "ColumnID": "28",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "thunderstorm"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1196,7 +1512,7 @@
                 ],
                 "ResultTexts": [
                     "Only once you find shelter do you realize that in your scramble through the jungle some of your rations went missing.",
-                    "The gods appreciate your prayers, but the storm continues."
+                    "The Gods appreciate your prayers, but the storm continues."
                 ],
                 "Outcomes": [
                     [
@@ -1223,15 +1539,16 @@
                     [],
                     []
                 ],
-                "ID": 22
+                "ID": 27
             },
             {
                 "QuestName": "min luck",
                 "QuestText": "The moon rises crimson in the night. A dark omen.",
                 "SheetName": "Stat Events",
-                "ColumnID": "28",
+                "ColumnID": "29",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1246,7 +1563,7 @@
                 ],
                 "ResultTexts": [
                     "The blood red moon signifies blood, and that is what you grant it.",
-                    "You pray to the gods for protection. Your faith wavers."
+                    "You pray to the Gods for protection. Your faith wavers."
                 ],
                 "Outcomes": [
                     [
@@ -1273,15 +1590,364 @@
                     [],
                     []
                 ],
-                "ID": 23
+                "ID": 28
             },
             {
-                "QuestName": "food x morale lo hi",
-                "QuestText": "The ration bags lay mostly empty. The men and women look to you for leadership.",
+                "QuestName": "vines bad ending",
+                "QuestText": "You wake up in the night unable to move. Thick vines cover you, wrap around you, squeeze you.",
                 "SheetName": "Stat Events",
-                "ColumnID": "43",
+                "ColumnID": "30",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "lessThan",
+                        "luck",
+                        3
+                    ],
+                    [
+                        "lessThan",
+                        "morale",
+                        3
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Use Your Knife",
+                    "Yell For Help"
+                ],
+                "ResultTexts": [
+                    "You attempt to reach for your knife but the vines wrap tighter with every movement you make.",
+                    "You yell for help but your companions are too slow. The vines writhe and squeeze the air out of your lungs."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            10
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            10
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [
+                        "death_vines"
+                    ],
+                    [
+                        "death_vines"
+                    ]
+                ],
+                "ID": 29
+            },
+            {
+                "QuestName": "vines good ending",
+                "QuestText": "You wake up in the night unable to move. Thick vines cover you, wrap around you, squeeze you.",
+                "SheetName": "Stat Events",
+                "ColumnID": "31",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "lessThan",
+                        "luck",
+                        5
+                    ],
+                    [
+                        "greaterThan",
+                        "morale",
+                        2
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Use Your Knife",
+                    "Yell For Help"
+                ],
+                "ResultTexts": [
+                    "You attempt to reach for your knife but the vines wrap tighter with every movement you make.",
+                    "You yell for help. Your companions respond immediately, their knives freeing you from the thick, warm vines."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            10
+                        ]
+                    ],
+                    []
+                ],
+                "DeathTags": [
+                    [
+                        "death_vines"
+                    ],
+                    []
+                ],
+                "ID": 30
+            },
+            {
+                "QuestName": "Rest or Pray, Weak Health",
+                "QuestText": "You fear that if you press any further, your health will not hold up.",
+                "SheetName": "Stat Events",
+                "ColumnID": "32",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "equals",
+                        "health",
+                        1
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Rest",
+                    "Pray"
+                ],
+                "ResultTexts": [
+                    "You take a day of rest.",
+                    "You pray to the Gods before breaking camp."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "luck",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 31
+            },
+            {
+                "QuestName": "Weakness A",
+                "QuestText": "You wake in the morning but can barely lift a limb. A debilitating weakness takes over your body.",
+                "SheetName": "Stat Events",
+                "ColumnID": "33",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "equals",
+                        "health",
+                        1
+                    ],
+                    [
+                        "greaterThan",
+                        "morale",
+                        5
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Call For Rest",
+                    "Request To Be Carried"
+                ],
+                "ResultTexts": [
+                    "You call on the explorers to take a day of rest while you attempt to recuperate.",
+                    "Your companions agree to take turns carrying you on a makeshift stretcher. You feel better the next day, but lose some time."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 32
+            },
+            {
+                "QuestName": "Weakness B",
+                "QuestText": "You wake in the morning but can barely lift a limb. A debilitating weakness takes over your body.",
+                "SheetName": "Stat Events",
+                "ColumnID": "34",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "equals",
+                        "health",
+                        1
+                    ],
+                    [
+                        "lessThan",
+                        "morale",
+                        6
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Call For Rest",
+                    "Request To Be Carried"
+                ],
+                "ResultTexts": [
+                    "You call on the explorers to take a day of rest while you attempt to recuperate.",
+                    "You companions argue out of earshot before returning to you. They, too, feel weak and decide the group should rest instead."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "add",
+                            "health",
+                            1
+                        ],
+                        [
+                            "subtract",
+                            "morale",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 33
+            },
+            {
+                "QuestName": "rope bridge - lucky",
+                "QuestText": "The jungle ends in a sharp cliff. A wide canyon separates you from your path. An ancient rope bridge sways in the breeze.",
+                "SheetName": "Stat Events",
+                "ColumnID": "35",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "ropeBridge"
+                ],
+                "Conditions": [
+                    [
+                        "greaterThan",
+                        "luck",
+                        5
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Climb Down",
+                    "Take Bridge"
+                ],
+                "ResultTexts": [
+                    "You climb down the muddy, slick terrain and then up again on the other side. Besides losing time, your travel is without incident.",
+                    "The Gods favor you as you cross the bridge without incident."
+                ],
+                "Outcomes": [
+                    [],
+                    []
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 34
+            },
+            {
+                "QuestName": "rope bridge - unlucky",
+                "QuestText": "The jungle ends in a sharp cliff. A wide canyon separates you from your path. An ancient rope bridge sways in the breeze.",
+                "SheetName": "Stat Events",
+                "ColumnID": "36",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "ropeBridge"
+                ],
+                "Conditions": [
+                    [
+                        "lessThan",
+                        "luck",
+                        6
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Climb Down",
+                    "Take Bridge"
+                ],
+                "ResultTexts": [
+                    "You climb down the muddy, slick terrain and then up again on the other side. Besides losing time, your travel is without incident.",
+                    "You whispered prayers to the Gods do you no favors. The rope bridge snaps, leaving half the weary explorers on the wrong side of the chasm."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "subtract",
+                            "morale",
+                            2
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 35
+            },
+            {
+                "QuestName": "Rations are almost empty",
+                "QuestText": "The ration bags lay mostly empty. The men and women look to you for leadership.",
+                "SheetName": "Stat Events",
+                "ColumnID": "37",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1323,15 +1989,16 @@
                     [],
                     []
                 ],
-                "ID": 24
+                "ID": 36
             },
             {
-                "QuestName": "food x morale hi lo",
+                "QuestName": "Food has gone missing",
                 "QuestText": "Some of the food has gone missing in the night.",
                 "SheetName": "Stat Events",
-                "ColumnID": "44",
+                "ColumnID": "38",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1388,15 +2055,16 @@
                     [],
                     []
                 ],
-                "ID": 25
+                "ID": 37
             },
             {
-                "QuestName": "Ate Something Bad",
+                "QuestName": "vomit",
                 "QuestText": "Your body goes into a cold sweat. Your stomach lurches. It must have been something you ate...",
                 "SheetName": "Stat Events",
-                "ColumnID": "45",
+                "ColumnID": "39",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -1437,18 +2105,25 @@
                     ]
                 ],
                 "DeathTags": [
-                    [],
-                    []
+                    [
+                        "death_vomit"
+                    ],
+                    [
+                        "death_vomit"
+                    ]
                 ],
-                "ID": 26
+                "ID": 38
             },
             {
-                "QuestName": "Mushrooms A",
+                "QuestName": "Mushrooms - positive",
                 "QuestText": "Large colorful mushroom grow under the shade of the jungle canopy. If they are edible they could be dried and turned into rations.",
                 "SheetName": "Stat Events",
-                "ColumnID": "46",
+                "ColumnID": "40",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "mushrooms"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1479,15 +2154,18 @@
                     [],
                     []
                 ],
-                "ID": 27
+                "ID": 39
             },
             {
-                "QuestName": "Mushrooms B",
+                "QuestName": "Mushrooms - sickening",
                 "QuestText": "Large colorful mushroom grow under the shade of the jungle canopy. If they are edible they could be dried and turned into rations.",
                 "SheetName": "Stat Events",
-                "ColumnID": "47",
+                "ColumnID": "41",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "mushrooms"
+                ],
                 "Conditions": [
                     [
                         "lessThan",
@@ -1502,18 +2180,17 @@
                 ],
                 "ResultTexts": [
                     "You step past the mushrooms as if they do not exist.",
-                    "It tastes bitter."
+                    "It tastes #flavor# at first but soon you find your tongue recoiling from it."
                 ],
                 "Outcomes": [
                     [],
                     [
                         [
-                            "subtract",
-                            "health",
-                            1
+                            "addTag",
+                            "vomit"
                         ],
                         [
-                            "addTag",
+                            "go",
                             "vomit"
                         ]
                     ]
@@ -1524,15 +2201,16 @@
                         "death_vomit"
                     ]
                 ],
-                "ID": 28
+                "ID": 40
             },
             {
                 "QuestName": "Heatwave Thirst",
-                "QuestText": "An intense heatwave hits the explorers. Their mouths are parched as they suck dew from leaves. A scout tellls you of a pond, but it is covered with a sticky film.",
+                "QuestText": "An intense heatwave hits the explorers. Their mouths are parched as they suck dew from leaves. A scout tells you of a pond, but it is covered with a sticky film.",
                 "SheetName": "Stat Events",
-                "ColumnID": "48",
+                "ColumnID": "42",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1541,7 +2219,7 @@
                 ],
                 "ResultTexts": [
                     "You continue through the jungle praying for rain.",
-                    "You drink first from the stagnant pond but the rest of your companions soon join you. It tastes foul but your thist is lessened for now."
+                    "You drink first from the stagnant pond but the rest of your companions soon join you. It tastes foul but your thirst is lessened for now."
                 ],
                 "Outcomes": [
                     [
@@ -1560,6 +2238,10 @@
                         [
                             "addTag",
                             "vomit"
+                        ],
+                        [
+                            "go",
+                            "vomit"
                         ]
                     ]
                 ],
@@ -1567,15 +2249,16 @@
                     [],
                     []
                 ],
-                "ID": 29
+                "ID": 41
             },
             {
-                "QuestName": "food x health lo hi",
+                "QuestName": "Found Partial Carcass",
                 "QuestText": "A half-eaten carcass of a large predator lies on the trail before you. It is still fresh.",
                 "SheetName": "Stat Events",
-                "ColumnID": "49",
+                "ColumnID": "43",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -1613,15 +2296,16 @@
                     [],
                     []
                 ],
-                "ID": 30
+                "ID": 42
             },
             {
-                "QuestName": "food x luck hi lo",
+                "QuestName": "Maggots",
                 "QuestText": "As you divide your rations for the midday meal, you discover thick, fat maggots feasting on your food.",
                 "SheetName": "Stat Events",
-                "ColumnID": "52",
+                "ColumnID": "44",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1649,6 +2333,10 @@
                         [
                             "addTag",
                             "vomit"
+                        ],
+                        [
+                            "go",
+                            "vomit"
                         ]
                     ]
                 ],
@@ -1656,15 +2344,16 @@
                     [],
                     []
                 ],
-                "ID": 31
+                "ID": 43
             },
             {
-                "QuestName": "food x luck hi lo",
+                "QuestName": "Spoiled by Mold",
                 "QuestText": "As you dip into your pack for your daily rations, a sickly-sweet smell emanates from them. Your food is covered in black and green mold.",
                 "SheetName": "Stat Events",
-                "ColumnID": "53",
+                "ColumnID": "45",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1692,6 +2381,10 @@
                         [
                             "addTag",
                             "vomit"
+                        ],
+                        [
+                            "go",
+                            "vomit"
                         ]
                     ]
                 ],
@@ -1699,7 +2392,280 @@
                     [],
                     []
                 ],
-                "ID": 32
+                "ID": 44
+            },
+            {
+                "QuestName": "Mystery Fruit - Edible",
+                "QuestText": "Some #plantadj# #color# fruit hang from a #planttype#. You've never seen it before.",
+                "SheetName": "Stat Events",
+                "ColumnID": "46",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "mysteryFruit"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave It",
+                    "Eat It"
+                ],
+                "ResultTexts": [
+                    "You leave them alone. #ignoredsentence#",
+                    "The #flavor# fruit fills you, satisfying your raging appetite. You gesture to the other explorers to follow your lead."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "add",
+                            "rations",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 45
+            },
+            {
+                "QuestName": "Mystery Fruit - Vomit",
+                "QuestText": "Some #plantadj# #color# fruit hang from a #planttype#. You've never seen it before.",
+                "SheetName": "Stat Events",
+                "ColumnID": "47",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "mysteryFruit"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave It",
+                    "Eat It"
+                ],
+                "ResultTexts": [
+                    "You leave them alone. #ignoredsentence#",
+                    "The fruit tastes #flavor#, its sticky pulp yielding unwillingly from behind its #plantadj# skin. Your stomach recoils and you leave the rest of the fruit behind."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "addTag",
+                            "vomit"
+                        ],
+                        [
+                            "go",
+                            "vomit"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 46
+            },
+            {
+                "QuestName": "Mystery Fruit - Divine",
+                "QuestText": "Some #plantadj# #color# fruit hang from a #planttype#. You've never seen it before.",
+                "SheetName": "Stat Events",
+                "ColumnID": "48",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "mysteryFruit"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave It",
+                    "Eat It"
+                ],
+                "ResultTexts": [
+                    "You leave them alone. #ignoredsentence#",
+                    "As you eat the fruit's #flavor# flesh, a vision takes hold of you. A white city gleaming beneath the hot equatorial sun. The vision fades but your memory remains."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "add",
+                            "luck",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 47
+            },
+            {
+                "QuestName": "Mystery Fruit - Morale",
+                "QuestText": "Some #plantadj# #color# fruit hang from a #planttype#. You've never seen it before.",
+                "SheetName": "Stat Events",
+                "ColumnID": "49",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "mysteryFruit"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave It",
+                    "Eat It"
+                ],
+                "ResultTexts": [
+                    "You leave them alone. #ignoredsentence#",
+                    "A euphoria takes hold as you and your companions eagerly consume the #flavor# fruit. Hours pass, but when its effect subsides your spirits are strengthened."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "add",
+                            "morale",
+                            2
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 48
+            },
+            {
+                "QuestName": "Medicinal Fern",
+                "QuestText": "A scout identifies a large fern. Its sap can restore health when rubbed on the skin, or it can be drank to soothe your appetite.",
+                "SheetName": "Stat Events",
+                "ColumnID": "50",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "easy"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Use As Medicine",
+                    "Use As Food"
+                ],
+                "ResultTexts": [
+                    "You give the orders to use the sap. You feel better almost immediately.",
+                    "You give the orders to turn the sap into rations. It will not go far, but it will help take the edge off of the hunger."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "rations",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 49
+            },
+            {
+                "QuestName": "Comet",
+                "QuestText": "A single comet lights up in a burst of glory before extinguishing against the clear night sky. It is an omen.",
+                "SheetName": "Stat Events",
+                "ColumnID": "51",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "easy"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Rest",
+                    "Pray"
+                ],
+                "ResultTexts": [
+                    "Your deep, dreamless sleep helps restore your health.",
+                    "The Gods are pleased by your wakeful vigil through the night."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "luck",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 50
+            },
+            {
+                "QuestName": "Flower Nectar",
+                "QuestText": "A huge #color# flower stands alone in the center of the clearing. The #flavor# scent of its nectar draws you to it.",
+                "SheetName": "Stat Events",
+                "ColumnID": "52",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [
+                    "easy"
+                ],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Drink The Nectar",
+                    "Share The Nectar"
+                ],
+                "ResultTexts": [
+                    "You drink every drop of the nectar and feel it warm your limbs. The weakness  in your muscles subsides for a time.",
+                    "You share the nectar among your companions, each tasting a few drops. Their worries subside for a short time."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "morale",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 51
             },
             {
                 "QuestName": "Insect Swarm",
@@ -1708,6 +2674,7 @@
                 "ColumnID": "1",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1737,7 +2704,7 @@
                     [],
                     []
                 ],
-                "ID": 33
+                "ID": 52
             },
             {
                 "QuestName": "Ancient Battlefield",
@@ -1746,6 +2713,7 @@
                 "ColumnID": "2",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1796,7 +2764,7 @@
                         "death_mutiny_violence"
                     ]
                 ],
-                "ID": 34
+                "ID": 53
             },
             {
                 "QuestName": "Scout B",
@@ -1805,6 +2773,7 @@
                 "ColumnID": "3",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1835,7 +2804,7 @@
                     [],
                     []
                 ],
-                "ID": 35
+                "ID": 54
             },
             {
                 "QuestName": "Obelisk",
@@ -1844,6 +2813,7 @@
                 "ColumnID": "4",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1851,7 +2821,7 @@
                     "Destroy It"
                 ],
                 "ResultTexts": [
-                    "The gods are pleased by your actions, but your companions fear for their souls.",
+                    "The Gods are pleased by your actions, but your companions fear for their souls.",
                     "You destroy the abomination, working together to topple the blasphemous obelisk to the ground."
                 ],
                 "Outcomes": [
@@ -1886,7 +2856,7 @@
                     ],
                     []
                 ],
-                "ID": 36
+                "ID": 55
             },
             {
                 "QuestName": "Cave A",
@@ -1895,6 +2865,9 @@
                 "ColumnID": "5",
                 "IsDeathQuest": false,
                 "Style": [
+                    "cave"
+                ],
+                "Types": [
                     "cave"
                 ],
                 "Conditions": [
@@ -1913,7 +2886,7 @@
                     "Explore It"
                 ],
                 "ResultTexts": [
-                    "The explorers continue their trek.",
+                    "#ignoredsentence#",
                     "Broken, gnawed bones and the smell of feces. Something lives here. You leave quickly."
                 ],
                 "Outcomes": [
@@ -1931,11 +2904,9 @@
                 ],
                 "DeathTags": [
                     [],
-                    [
-                        "x"
-                    ]
+                    []
                 ],
-                "ID": 37
+                "ID": 56
             },
             {
                 "QuestName": "Cave B",
@@ -1946,6 +2917,9 @@
                 "Style": [
                     "cave"
                 ],
+                "Types": [
+                    "cave"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1953,7 +2927,7 @@
                     "Explore It"
                 ],
                 "ResultTexts": [
-                    "The explorers continue their trek.",
+                    "#ignoredsentence#",
                     "You find nothing."
                 ],
                 "Outcomes": [
@@ -1964,7 +2938,7 @@
                     [],
                     []
                 ],
-                "ID": 38
+                "ID": 57
             },
             {
                 "QuestName": "Cave C",
@@ -1975,6 +2949,9 @@
                 "Style": [
                     "cave"
                 ],
+                "Types": [
+                    "cave"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -1982,7 +2959,7 @@
                     "Explore It"
                 ],
                 "ResultTexts": [
-                    "The explorers continue their trek.",
+                    "#ignoredsentence#",
                     "You find a small cache of dried food."
                 ],
                 "Outcomes": [
@@ -1999,7 +2976,7 @@
                     [],
                     []
                 ],
-                "ID": 39
+                "ID": 58
             },
             {
                 "QuestName": "Cave D",
@@ -2010,22 +2987,38 @@
                 "Style": [
                     "cave"
                 ],
-                "Conditions": [],
+                "Types": [
+                    "cave"
+                ],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "cavespider_storyline"
+                    ]
+                ],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
                     "Leave It",
                     "Explore It"
                 ],
                 "ResultTexts": [
-                    "The explorers continue their trek.",
+                    "#ignoredsentence#",
                     "Thick, sticky webs catch you. You struggle to free yourself but..."
                 ],
                 "Outcomes": [
                     [],
                     [
                         [
+                            "go",
+                            "CaveSpider"
+                        ],
+                        [
                             "addTag",
-                            "death_spiderweb"
+                            "cavespider_storyline"
+                        ],
+                        [
+                            "addTag",
+                            "cavespider_only"
                         ]
                     ]
                 ],
@@ -2033,15 +3026,212 @@
                     [],
                     []
                 ],
-                "ID": 40
+                "ID": 59
+            },
+            {
+                "QuestName": "CaveSpider",
+                "QuestText": "With each movement, the sticky strings tighten against your skin. You hear something skitter in the darkness.",
+                "SheetName": "Random Events",
+                "ColumnID": "9",
+                "IsDeathQuest": false,
+                "Style": [
+                    "cave"
+                ],
+                "Types": [
+                    "cave"
+                ],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "cavespider_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Struggle Free",
+                    "Call For Help"
+                ],
+                "ResultTexts": [
+                    "Your struggles only seal your doom.",
+                    "Your companions hack away at the web with their machetes, freeing you and dragging you into the light. Whatever lurks in the cave does not follow."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "removeTag",
+                            "cavespider_only"
+                        ],
+                        [
+                            "addTag",
+                            "death_spiderweb"
+                        ]
+                    ],
+                    [
+                        [
+                            "removeTag",
+                            "cavespider_only"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 60
+            },
+            {
+                "QuestName": "Skeleton with Totem",
+                "QuestText": "A skeleton covered in vines and moss lays in your path. From its rags you can barely make out expedition clothing.",
+                "SheetName": "Random Events",
+                "ColumnID": "10",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "totem_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Bury It",
+                    "Search for Loot"
+                ],
+                "ResultTexts": [
+                    "You give the skeleton a proper burial. The Gods are pleased.",
+                    "You find a strange artifact on the body."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "luck",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "take_totem"
+                        ],
+                        [
+                            "addTag",
+                            "totem_start"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 61
+            },
+            {
+                "QuestName": "Hole In Tree A",
+                "QuestText": "There is a large hole in a large, moss-covered tree. You think you see something glinting within.",
+                "SheetName": "Random Events",
+                "ColumnID": "11",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "totem_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Ignore It",
+                    "Reach In"
+                ],
+                "ResultTexts": [
+                    "You leave it alone. #ignoredsentence#",
+                    "You find a strange artifact."
+                ],
+                "Outcomes": [
+                    [],
+                    [
+                        [
+                            "go",
+                            "take_totem"
+                        ],
+                        [
+                            "addTag",
+                            "totem_start"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 62
+            },
+            {
+                "QuestName": "Wanderer with Totem",
+                "QuestText": "You stumble upon a lone wanderer - weak, pale, and dressed in rags. \"Food, please. I have nothing to give you except this in exchange.\" A small stone relic lies in his hands.",
+                "SheetName": "Random Events",
+                "ColumnID": "12",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "totem_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Refuse Him",
+                    "Trade Him"
+                ],
+                "ResultTexts": [
+                    "\"May the Gods curse you for your avarice!\" He disappears into the jungle, but you cannot help but feel the divine eyes upon you, judging.",
+                    "You hand him rations and he hands you the strange stone totem before disappearing as quickly as he arrived. You examine it."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "luck",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "addTag",
+                            "totem_start"
+                        ],
+                        [
+                            "go",
+                            "take_totem"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 63
             },
             {
                 "QuestName": "Cave with Totem",
                 "QuestText": "You stumble upon a small cave, its entrance covered in thick vines.",
                 "SheetName": "Random Events",
-                "ColumnID": "9",
+                "ColumnID": "13",
                 "IsDeathQuest": false,
                 "Style": [
+                    "cave"
+                ],
+                "Types": [
                     "cave"
                 ],
                 "Conditions": [
@@ -2056,7 +3246,7 @@
                     "Explore It"
                 ],
                 "ResultTexts": [
-                    "The explorers continue their trek.",
+                    "#ignoredsentence#",
                     "A skeleton sits in the fetal position grasping a small totem in its hands."
                 ],
                 "Outcomes": [
@@ -2069,10 +3259,6 @@
                         [
                             "addTag",
                             "totem_start"
-                        ],
-                        [
-                            "addTag",
-                            "totem_storyline"
                         ]
                     ]
                 ],
@@ -2080,15 +3266,16 @@
                     [],
                     []
                 ],
-                "ID": 41
+                "ID": 64
             },
             {
                 "QuestName": "take_totem",
                 "QuestText": "The totem is a small black stone carved in the rough shape of a human. It is covered in strange markings.",
                 "SheetName": "Random Events",
-                "ColumnID": "10",
+                "ColumnID": "14",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2113,22 +3300,16 @@
                     ],
                     [
                         [
-                            "subtract",
-                            "luck",
-                            2
-                        ],
-                        [
-                            "subtract",
-                            "morale",
-                            1
-                        ],
-                        [
                             "addTag",
                             "has_totem"
                         ],
                         [
                             "removeTag",
                             "totem_start"
+                        ],
+                        [
+                            "addTag",
+                            "totem_storyline"
                         ]
                     ]
                 ],
@@ -2138,15 +3319,52 @@
                         "death_blasphemy"
                     ]
                 ],
-                "ID": 42
+                "ID": 65
+            },
+            {
+                "QuestName": "Thorny Plant",
+                "QuestText": "As you hike deeper into the jungle, large ferns covered in serrated thorns grow more dense. They threaten to slow you down.",
+                "SheetName": "Random Events",
+                "ColumnID": "15",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Force Your Way",
+                    "Take It Slow"
+                ],
+                "ResultTexts": [
+                    "Your companions swing messily at the large ferns, pushing their way forward through the vegetation. That night, you pick dozens of thick, bloodied needles from your body.",
+                    "The explorers work carefully with their machetes to clear the path with minor injuries. The work is slow but you are assured of their safety."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "health",
+                            1
+                        ]
+                    ],
+                    []
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 66
             },
             {
                 "QuestName": "Search Party A",
                 "QuestText": "As you count your number this morning, none can help notice that you are one short. Someone disappeared in the night.",
                 "SheetName": "Random Events",
-                "ColumnID": "12",
+                "ColumnID": "16",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "camp"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2175,15 +3393,18 @@
                         "death_mutiny_violence"
                     ]
                 ],
-                "ID": 43
+                "ID": 67
             },
             {
                 "QuestName": "Search Party B",
                 "QuestText": "As the rest of you awake, you notice one blanket that remains empty and cold. Someone has disappeared in the night.",
                 "SheetName": "Random Events",
-                "ColumnID": "13",
+                "ColumnID": "17",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "camp"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2218,60 +3439,16 @@
                         "death_mutiny_violence"
                     ]
                 ],
-                "ID": 44
-            },
-            {
-                "QuestName": "Hole In Tree A",
-                "QuestText": "There is a large hole in a large, moss-covered tree. You think you see something glinting within.",
-                "SheetName": "Random Events",
-                "ColumnID": "19",
-                "IsDeathQuest": false,
-                "Style": [],
-                "Conditions": [
-                    [
-                        "doesntHaveTag",
-                        "totem_story"
-                    ]
-                ],
-                "IsStartQuest": false,
-                "ChoiceTexts": [
-                    "Ignore It",
-                    "Reach In"
-                ],
-                "ResultTexts": [
-                    "You leave it alone.",
-                    "You find a strange artifact."
-                ],
-                "Outcomes": [
-                    [],
-                    [
-                        [
-                            "go",
-                            "take_totem"
-                        ],
-                        [
-                            "addTag",
-                            "totem_start"
-                        ],
-                        [
-                            "addTag",
-                            "totem_storyline"
-                        ]
-                    ]
-                ],
-                "DeathTags": [
-                    [],
-                    []
-                ],
-                "ID": 45
+                "ID": 68
             },
             {
                 "QuestName": "Hole in Tree B",
                 "QuestText": "There is a large hole in a large, moss-covered tree. You think you see something glinting within.",
                 "SheetName": "Random Events",
-                "ColumnID": "20",
+                "ColumnID": "23",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2279,7 +3456,7 @@
                     "Reach In"
                 ],
                 "ResultTexts": [
-                    "You leave it alone.",
+                    "You leave it alone. #ignoredsentence#",
                     "You arm becomes covered in ants. They bite you with a thousand burning pincers."
                 ],
                 "Outcomes": [
@@ -2296,15 +3473,16 @@
                     [],
                     []
                 ],
-                "ID": 46
+                "ID": 69
             },
             {
                 "QuestName": "Huge Snake A",
-                "QuestText": "A huge snake uncoils and rears it. It hisses through giant fangs.",
+                "QuestText": "A huge snake uncoils and rears its head. It hisses through giant fangs.",
                 "SheetName": "Random Events",
-                "ColumnID": "21",
+                "ColumnID": "24",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2350,15 +3528,16 @@
                         "death_venom"
                     ]
                 ],
-                "ID": 47
+                "ID": 70
             },
             {
                 "QuestName": "Huge Snake B",
-                "QuestText": "A huge snake uncoils and rears it. It hisses through giant fangs.",
+                "QuestText": "A huge snake uncoils and rears its head. It hisses through giant fangs.",
                 "SheetName": "Random Events",
-                "ColumnID": "22",
+                "ColumnID": "25",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2376,7 +3555,7 @@
                 ],
                 "ResultTexts": [
                     "You jump to the side but are too slow. It sinks its fangs into your flesh and disappears into the brush.",
-                    "You lop off its head with your machete."
+                    "You lop off its head with your machete and roast its flesh in celebration."
                 ],
                 "Outcomes": [
                     [
@@ -2409,15 +3588,16 @@
                     ],
                     []
                 ],
-                "ID": 48
+                "ID": 71
             },
             {
                 "QuestName": "Altar with Offering",
                 "QuestText": "A large altar stands before you, overgrown with vines and moss. Deep carvings etched into the cool stone indicate this is a place of power.",
                 "SheetName": "Random Events",
-                "ColumnID": "25",
+                "ColumnID": "28",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2426,7 +3606,7 @@
                 ],
                 "ResultTexts": [
                     "You pass by the altar without stopping. Your neglect does not go unnoticed.",
-                    "You pray upon the altar. The jungle goes unnaturally silent. Your companions are uneasy about these unfamiliar gods."
+                    "You pray upon the altar. The jungle goes unnaturally silent. Your companions are uneasy about these unfamiliar Gods."
                 ],
                 "Outcomes": [
                     [
@@ -2455,15 +3635,16 @@
                     ],
                     []
                 ],
-                "ID": 49
+                "ID": 72
             },
             {
                 "QuestName": "Offering",
                 "QuestText": "In a clearing you find a strange altar, and upon it an abundance of fresh fruit. You do not know who picked it but they are not here now.",
                 "SheetName": "Random Events",
-                "ColumnID": "27",
+                "ColumnID": "29",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2471,8 +3652,8 @@
                     "Take the Offering"
                 ],
                 "ResultTexts": [
-                    "You command each explorer to add to the offering in an attempt to please the gods.",
-                    "You take the food and risk the wrath of the gods."
+                    "You command each explorer to add to the offering in an attempt to please the Gods.",
+                    "You take the food and risk the wrath of the Gods."
                 ],
                 "Outcomes": [
                     [
@@ -2516,15 +3697,16 @@
                         "death_divine"
                     ]
                 ],
-                "ID": 50
+                "ID": 73
             },
             {
                 "QuestName": "Extreme Heat",
                 "QuestText": "The sun burns through the canopy. Steam rises from the sodden leaves. You feel as if you can barely breathe in the heat. A stagnant pond is nearby.",
                 "SheetName": "Random Events",
-                "ColumnID": "28",
+                "ColumnID": "30",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2556,15 +3738,16 @@
                     ],
                     []
                 ],
-                "ID": 51
+                "ID": 74
             },
             {
                 "QuestName": "Extreme Heat B",
                 "QuestText": "The sun burns through the canopy. Steam rises from the sodden leaves. You feel as if you can barely breathe in the heat. A stagnant pond is nearby.",
                 "SheetName": "Random Events",
-                "ColumnID": "29",
+                "ColumnID": "31",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2605,15 +3788,16 @@
                     ],
                     []
                 ],
-                "ID": 52
+                "ID": 75
             },
             {
                 "QuestName": "Small Creature - good ending",
                 "QuestText": "A small creature with two tails and a curious face approaches you timidly as you eat.",
                 "SheetName": "Random Events",
-                "ColumnID": "31",
+                "ColumnID": "33",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2663,15 +3847,16 @@
                         "death_starve"
                     ]
                 ],
-                "ID": 53
+                "ID": 76
             },
             {
                 "QuestName": "Small Creature - bad ending",
                 "QuestText": "A small creature with two tails and a curious face approaches you timidly as you eat.",
                 "SheetName": "Random Events",
-                "ColumnID": "32",
+                "ColumnID": "34",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2720,15 +3905,16 @@
                         "death_wounded"
                     ]
                 ],
-                "ID": 54
+                "ID": 77
             },
             {
                 "QuestName": "Small Creature Returns",
                 "QuestText": "The curious creature you scared off before has returned, but now there are more. Dozens of little faces peer at you through the jungle flora.",
                 "SheetName": "Random Events",
-                "ColumnID": "33",
+                "ColumnID": "35",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2774,15 +3960,18 @@
                         "death_eaten_little"
                     ]
                 ],
-                "ID": 55
+                "ID": 78
             },
             {
                 "QuestName": "jungle is silent",
                 "QuestText": "You wake in the night to realize the jungle has gone silent.",
                 "SheetName": "Random Events",
-                "ColumnID": "34",
+                "ColumnID": "36",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [
+                    "camp"
+                ],
                 "Conditions": [],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
@@ -2817,7 +4006,361 @@
                         "death_tired"
                     ]
                 ],
-                "ID": 56
+                "ID": 79
+            },
+            {
+                "QuestName": "lost1",
+                "QuestText": "The jungle looks familiar. #lost# The path in front of you forks around a large tree.",
+                "SheetName": "Random Events",
+                "ColumnID": "37",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Left",
+                    "Go Right"
+                ],
+                "ResultTexts": [
+                    "You guess a direction to take and hope that the Gods will set you on the correct path.",
+                    "You guess a direction to take and hope that the Gods will set you on the correct path."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost2"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost3"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 80
+            },
+            {
+                "QuestName": "lost2",
+                "QuestText": "Vines drape across your path in a familiar pattern. #lost# The path in front of you divides up a hill or down toward a stream.",
+                "SheetName": "Random Events",
+                "ColumnID": "38",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Low",
+                    "Go High"
+                ],
+                "ResultTexts": [
+                    "You lead the explorers down toward a small stream, hoping it will lead you to a clear path.",
+                    "The hill is a slow climb covered in exposed roots and slick mud."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost4"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost5"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 81
+            },
+            {
+                "QuestName": "lost3",
+                "QuestText": "Small yellowed sunbeams break through the thick canopy leaves to lighten your path.  #lost#",
+                "SheetName": "Random Events",
+                "ColumnID": "39",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Forward",
+                    "Go Left"
+                ],
+                "ResultTexts": [
+                    "You push forward through the vegetation. Some of the vegetation shows signs of machetes. Yours or someone else's?",
+                    "You take the leftmost path deeper into the labrythine jungle."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost5"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost6"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 82
+            },
+            {
+                "QuestName": "lost4",
+                "QuestText": "Fresh footsteps already scar the mud around the stream. #lost#",
+                "SheetName": "Random Events",
+                "ColumnID": "40",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Right",
+                    "Retrace Steps"
+                ],
+                "ResultTexts": [
+                    "You hike along the stream bed until you find a new clearing.",
+                    "You attempt to retrace your steps without your companions noticing your confusion."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost5"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost3"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 83
+            },
+            {
+                "QuestName": "lost5",
+                "QuestText": "The jungle opens up into a small clearing. The underbrush has already been trampled by men's boots. #lost#",
+                "SheetName": "Random Events",
+                "ColumnID": "41",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Left",
+                    "Go Downhill"
+                ],
+                "ResultTexts": [
+                    "You take the leftmost path and push your way throught he thickening vegetation.",
+                    "You head downhil along the slippery moss-covered slope until the ground evens out again."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost6"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost7"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 84
+            },
+            {
+                "QuestName": "lost6",
+                "QuestText": "The thick jungle provides no clue to your direction. The slick, moss-covered ground slopes downhill to your left, but you can also hack a path forward.",
+                "SheetName": "Random Events",
+                "ColumnID": "42",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Go Downhill",
+                    "Go Forward"
+                ],
+                "ResultTexts": [
+                    "Your boots slip and drag through the loose soil as you head downhill.",
+                    "The jungle seems to go on forever without deviation."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost7"
+                        ],
+                        [
+                            "subtract",
+                            "morale",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost_exit"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 85
+            },
+            {
+                "QuestName": "lost7",
+                "QuestText": "As the ground levels you pause, but the patterns in the trees look all like.",
+                "SheetName": "Random Events",
+                "ColumnID": "43",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Retrace Steps",
+                    "Go Right"
+                ],
+                "ResultTexts": [
+                    "You attempt to retrace your steps but falter. The maze of vine and bark foils your instincts.",
+                    "The expedition follows you but you can see the doubt on their faces."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "lost_exit"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "lost2"
+                        ],
+                        [
+                            "subtract",
+                            "morale",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 86
+            },
+            {
+                "QuestName": "lost_exit",
+                "QuestText": "The jungle ends suddenly at a wide river. The canopy parts and you can see the setting sun. A scout marks the correct direction.",
+                "SheetName": "Random Events",
+                "ColumnID": "44",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "lost_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Continue...",
+                    "Continue..."
+                ],
+                "ResultTexts": [
+                    "After a short rest, you continue on toward the horizon.",
+                    "After a short rest, you continue on toward the horizon."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "removeTag",
+                            "lost_only"
+                        ]
+                    ],
+                    [
+                        [
+                            "removeTag",
+                            "lost_only"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 87
             },
             {
                 "QuestName": "The Magi Unlock",
@@ -2826,6 +4369,7 @@
                 "ColumnID": "1",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -2881,7 +4425,7 @@
                     [],
                     []
                 ],
-                "ID": 57
+                "ID": 88
             },
             {
                 "QuestName": "The Magi Lock",
@@ -2890,6 +4434,7 @@
                 "ColumnID": "2",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2898,6 +4443,11 @@
                     [
                         "lessThan",
                         "morale",
+                        3
+                    ],
+                    [
+                        "greaterThan",
+                        "magi",
                         3
                     ]
                 ],
@@ -2918,10 +4468,6 @@
                             1
                         ],
                         [
-                            "addTag",
-                            "no_magi"
-                        ],
-                        [
                             "removeTag",
                             "has_magi"
                         ]
@@ -2938,7 +4484,7 @@
                     [],
                     []
                 ],
-                "ID": 58
+                "ID": 89
             },
             {
                 "QuestName": "The Magi 1",
@@ -2947,6 +4493,7 @@
                 "ColumnID": "3",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -2972,6 +4519,11 @@
                             "subtract",
                             "luck",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ],
                     [
@@ -2983,6 +4535,11 @@
                             "add",
                             "health",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ]
                 ],
@@ -2990,7 +4547,7 @@
                     [],
                     []
                 ],
-                "ID": 59
+                "ID": 90
             },
             {
                 "QuestName": "The Magi 2",
@@ -2999,6 +4556,7 @@
                 "ColumnID": "4",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3028,6 +4586,11 @@
                             "add",
                             "health",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ],
                     [
@@ -3043,6 +4606,11 @@
                             "subtract",
                             "health",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ]
                 ],
@@ -3050,7 +4618,7 @@
                     [],
                     []
                 ],
-                "ID": 60
+                "ID": 91
             },
             {
                 "QuestName": "The Magi 3",
@@ -3059,6 +4627,7 @@
                 "ColumnID": "5",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3076,7 +4645,7 @@
                     "Accept"
                 ],
                 "ResultTexts": [
-                    "The Magi warns you that not only your life but your soul is as stake.",
+                    "\"It is not just your life, but your very sanity at stake!\"",
                     "Your companions dislike your growing reliance on the Magi."
                 ],
                 "Outcomes": [
@@ -3090,6 +4659,11 @@
                             "subtract",
                             "luck",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ],
                     [
@@ -3102,6 +4676,11 @@
                             "subtract",
                             "morale",
                             1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
                         ]
                     ]
                 ],
@@ -3109,7 +4688,132 @@
                     [],
                     []
                 ],
-                "ID": 61
+                "ID": 92
+            },
+            {
+                "QuestName": "The Magi 4",
+                "QuestText": "The Magi approaches you. \"I had a vision. We must shelter here for three days in prayer.\"",
+                "SheetName": "Decks",
+                "ColumnID": "6",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "has_magi"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Refuse",
+                    "Accept"
+                ],
+                "ResultTexts": [
+                    "\"The Gods will be furious and their wrath is powerful,\" she warns.",
+                    "The explorers make camp as the magi sits in vigil for three days. Her ominous whispers to unfamiliar Gods chill you."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "morale",
+                            1
+                        ],
+                        [
+                            "subtract",
+                            "luck",
+                            2
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "luck",
+                            1
+                        ],
+                        [
+                            "subtract",
+                            "morale",
+                            1
+                        ],
+                        [
+                            "add",
+                            "magi",
+                            1
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    [
+                        "death_blasphemy"
+                    ]
+                ],
+                "ID": 93
+            },
+            {
+                "QuestName": "The Magi 10",
+                "QuestText": "You awake to find the magi hanging from a makeshift noose. Her face is contorted and swollen.",
+                "SheetName": "Decks",
+                "ColumnID": "12",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "has_magi"
+                    ],
+                    [
+                        "greaterThan",
+                        "magi",
+                        5
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave Her",
+                    "Bury Her"
+                ],
+                "ResultTexts": [
+                    "You break camp and leave her behind to be consumed by the jungle. Your spirits are suddenly lifted.",
+                    "No one wishes to touch her body, fearingit is cursed. You bury her yourself before breaking camp. Your spirits are suddenly lifted."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "removeTag",
+                            "has_magi"
+                        ],
+                        [
+                            "add",
+                            "morale",
+                            3
+                        ]
+                    ],
+                    [
+                        [
+                            "removeTag",
+                            "has_magi"
+                        ],
+                        [
+                            "add",
+                            "morale",
+                            2
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 94
             },
             {
                 "QuestName": "Taking an egg",
@@ -3118,6 +4822,7 @@
                 "ColumnID": "1",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -3177,7 +4882,7 @@
                     [],
                     []
                 ],
-                "ID": 62
+                "ID": 95
             },
             {
                 "QuestName": "Taking an egg",
@@ -3186,6 +4891,7 @@
                 "ColumnID": "2",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3203,7 +4909,7 @@
                 ],
                 "ResultTexts": [
                     "You throw the egg into the fire. A tiny screech and then just the crackling of the coals.",
-                    "The egg cracks. A small, scaley creature emerges from its membrane. It cries out. Your companions look worried."
+                    "The egg cracks. A small, scaly creature emerges from its membrane. It cries out. Your companions look worried."
                 ],
                 "Outcomes": [
                     [
@@ -3218,13 +4924,12 @@
                     ],
                     [
                         [
-                            "subtract",
-                            "morale",
-                            1
+                            "removeTag",
+                            "egg1"
                         ],
                         [
-                            "go",
-                            "<take_creature>"
+                            "addTag",
+                            "egg2"
                         ]
                     ]
                 ],
@@ -3234,15 +4939,16 @@
                         "death_jungleparanoia"
                     ]
                 ],
-                "ID": 63
+                "ID": 96
             },
             {
                 "QuestName": "Continued thief",
                 "QuestText": "You thought you found the thief but awake yet again to find rations missing.",
                 "SheetName": "Storylines",
-                "ColumnID": "8",
+                "ColumnID": "7",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3298,15 +5004,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 64
+                "ID": 97
             },
             {
                 "QuestName": "Continued thief",
                 "QuestText": "You still have not found the thief, but yet again you awake to find rations missing from the stockpile.",
                 "SheetName": "Storylines",
-                "ColumnID": "9",
+                "ColumnID": "8",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3362,15 +5069,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 65
+                "ID": 98
             },
             {
                 "QuestName": "Thief among the ranks",
                 "QuestText": "There is a thief among the ranks. Perhaps it is Thom? He walks with a limp and trails behind each day.",
                 "SheetName": "Storylines",
-                "ColumnID": "10",
+                "ColumnID": "9",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3426,15 +5134,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 66
+                "ID": 99
             },
             {
                 "QuestName": "Thief among the ranks",
                 "QuestText": "Thom protests he is not the thief. \"You only want to get rid of me because I slow you down!\"",
                 "SheetName": "Storylines",
-                "ColumnID": "11",
+                "ColumnID": "10",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3518,15 +5227,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 67
+                "ID": 100
             },
             {
                 "QuestName": "Thief among the ranks",
                 "QuestText": "There is a thief among the ranks. Perhaps it is Brenda? She is quiet and keeps herself from the others.",
                 "SheetName": "Storylines",
-                "ColumnID": "12",
+                "ColumnID": "11",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3582,15 +5292,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 68
+                "ID": 101
             },
             {
                 "QuestName": "Thief among the ranks",
                 "QuestText": "Brenda protests she is not the thief. \"I fear the jungle and wish to return home, not sabotage us and keep us here!\"",
                 "SheetName": "Storylines",
-                "ColumnID": "13",
+                "ColumnID": "12",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3674,15 +5385,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 69
+                "ID": 102
             },
             {
                 "QuestName": "Thief among the ranks",
                 "QuestText": "There is a thief among the ranks. Perhaps it is Jurie? You've heard him muttering behind your back, undermining your authority.",
                 "SheetName": "Storylines",
-                "ColumnID": "14",
+                "ColumnID": "13",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3738,15 +5450,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 70
+                "ID": 103
             },
             {
                 "QuestName": "Thief among the ranks",
-                "QuestText": "Jurie protests he is not the thief. \"This witchhunt is yet another decisions of yours that will lead us to ruin!\"",
+                "QuestText": "Jurie protests he is not the thief. \"This witch hunt is yet another decisions of yours that will lead us to ruin!\"",
                 "SheetName": "Storylines",
-                "ColumnID": "15",
+                "ColumnID": "14",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3830,15 +5543,16 @@
                         "death_starve_thief"
                     ]
                 ],
-                "ID": 71
+                "ID": 104
             },
             {
                 "QuestName": "Thief among the ranks - investigate",
                 "QuestText": "Your second in command investigates the source of the theft. \"The thief only strikes when you are on watch...\"",
                 "SheetName": "Storylines",
-                "ColumnID": "16",
+                "ColumnID": "15",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3900,15 +5614,16 @@
                         "death_tired"
                     ]
                 ],
-                "ID": 72
+                "ID": 105
             },
             {
                 "QuestName": "thom comes back to murder",
                 "QuestText": "A scream in the night awakens you. You see Thom, the banished, wielding a machete.",
                 "SheetName": "Storylines",
-                "ColumnID": "17",
+                "ColumnID": "16",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -3967,17 +5682,18 @@
                         "death_wounded"
                     ]
                 ],
-                "ID": 73
+                "ID": 106
             },
             {
                 "QuestName": "A Great Fog rolls in",
                 "QuestText": "A thick fog settles upon the jungle floor. It surrounds you. Shapes become indistinct and dark.",
                 "SheetName": "Storylines",
-                "ColumnID": "20",
+                "ColumnID": "19",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4027,17 +5743,18 @@
                         "death_fog"
                     ]
                 ],
-                "ID": 74
+                "ID": 107
             },
             {
                 "QuestName": "FogStory2",
                 "QuestText": "The noises of the jungle disappear one by one until an unnatural, terrifying silence surrounds you.",
                 "SheetName": "Storylines",
-                "ColumnID": "21",
+                "ColumnID": "20",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4050,7 +5767,7 @@
                     "Wait Here"
                 ],
                 "ResultTexts": [
-                    "shouldnt have xx",
+                    "shouldn't have xx",
                     "blah xx"
                 ],
                 "Outcomes": [
@@ -4075,17 +5792,18 @@
                         "death_fog"
                     ]
                 ],
-                "ID": 75
+                "ID": 108
             },
             {
                 "QuestName": "FogStory3",
                 "QuestText": "voices calling out to you, enticing you xx",
                 "SheetName": "Storylines",
-                "ColumnID": "22",
+                "ColumnID": "21",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4123,17 +5841,18 @@
                         "death_fog"
                     ]
                 ],
-                "ID": 76
+                "ID": 109
             },
             {
                 "QuestName": "FogStory4",
                 "QuestText": "someone goes missing xx",
                 "SheetName": "Storylines",
-                "ColumnID": "23",
+                "ColumnID": "22",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4171,17 +5890,18 @@
                         "death_fog"
                     ]
                 ],
-                "ID": 77
+                "ID": 110
             },
             {
                 "QuestName": "FogStory5",
                 "QuestText": "see your sister in the fog xx",
                 "SheetName": "Storylines",
-                "ColumnID": "24",
+                "ColumnID": "23",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4219,17 +5939,18 @@
                         "death_fog"
                     ]
                 ],
-                "ID": 78
+                "ID": 111
             },
             {
                 "QuestName": "FogStory6",
                 "QuestText": "fog dissipates xx",
                 "SheetName": "Storylines",
-                "ColumnID": "25",
+                "ColumnID": "24",
                 "IsDeathQuest": false,
                 "Style": [
                     "fog"
                 ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4283,15 +6004,98 @@
                     ],
                     []
                 ],
-                "ID": 79
+                "ID": 112
+            },
+            {
+                "QuestName": "caves1",
+                "QuestText": "the cave entrance collapses xx",
+                "SheetName": "Storylines",
+                "ColumnID": "25",
+                "IsDeathQuest": false,
+                "Style": [
+                    "cave"
+                ],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "caves_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "try to dig",
+                    "go deeper"
+                ],
+                "ResultTexts": [
+                    "xx",
+                    "xx"
+                ],
+                "Outcomes": [
+                    [],
+                    []
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 113
+            },
+            {
+                "QuestName": "caves2",
+                "QuestText": "you escape the caves (temp) xx",
+                "SheetName": "Storylines",
+                "ColumnID": "26",
+                "IsDeathQuest": false,
+                "Style": [
+                    "cave"
+                ],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "caves_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "...",
+                    "..."
+                ],
+                "ResultTexts": [
+                    "xx",
+                    "xx"
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "removeTag",
+                            "caves_only"
+                        ]
+                    ],
+                    [
+                        [
+                            "removeTag",
+                            "caves_only"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 114
             },
             {
                 "QuestName": "Wandering through the bogs",
                 "QuestText": "no choice but to move forward into the swamps xx",
                 "SheetName": "Storylines",
-                "ColumnID": "26",
+                "ColumnID": "30",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4341,15 +6145,18 @@
                     [],
                     []
                 ],
-                "ID": 80
+                "ID": 115
             },
             {
                 "QuestName": "bogs1",
                 "QuestText": "move slowly or try to get through quickly xx",
                 "SheetName": "Storylines",
-                "ColumnID": "27",
+                "ColumnID": "31",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4383,15 +6190,18 @@
                     [],
                     []
                 ],
-                "ID": 81
+                "ID": 116
             },
             {
                 "QuestName": "bogs2",
                 "QuestText": "sleep in shifts or walk through the night xx",
                 "SheetName": "Storylines",
-                "ColumnID": "28",
+                "ColumnID": "32",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4425,15 +6235,18 @@
                     [],
                     []
                 ],
-                "ID": 82
+                "ID": 117
             },
             {
                 "QuestName": "bogs3",
                 "QuestText": "strange stirring in the water xx",
                 "SheetName": "Storylines",
-                "ColumnID": "29",
+                "ColumnID": "33",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4467,15 +6280,18 @@
                     [],
                     []
                 ],
-                "ID": 83
+                "ID": 118
             },
             {
                 "QuestName": "bogs4",
                 "QuestText": "acidic water and sulfur smells xx",
                 "SheetName": "Storylines",
-                "ColumnID": "30",
+                "ColumnID": "34",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4509,15 +6325,18 @@
                     [],
                     []
                 ],
-                "ID": 84
+                "ID": 119
             },
             {
                 "QuestName": "bogs5",
                 "QuestText": "The ground becomes firmer under your step as the jungle returns to normal. The air almost tastes sweet.",
                 "SheetName": "Storylines",
-                "ColumnID": "31",
+                "ColumnID": "35",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "swamp"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4551,15 +6370,16 @@
                     [],
                     []
                 ],
-                "ID": 85
+                "ID": 120
             },
             {
                 "QuestName": "Scout A",
                 "QuestText": "The jungle gets denser and denser, blocking your movement. You send one of the explorers to scout the way.",
                 "SheetName": "Storylines",
-                "ColumnID": "32",
+                "ColumnID": "36",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4598,15 +6418,18 @@
                     [],
                     []
                 ],
-                "ID": 86
+                "ID": 121
             },
             {
                 "QuestName": "Dream of Ruins",
                 "QuestText": "One of your companions approaches you in the morning looking feverish. \"I had a dream.\"",
                 "SheetName": "Storylines",
-                "ColumnID": "33",
+                "ColumnID": "37",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "dream"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4645,15 +6468,16 @@
                     [],
                     []
                 ],
-                "ID": 87
+                "ID": 122
             },
             {
                 "QuestName": "take_ruins",
                 "QuestText": "His story of vine-covered ruins - could it be the White City you dreamed of? Or an ill-omen in this savage land?",
                 "SheetName": "Storylines",
-                "ColumnID": "34",
+                "ColumnID": "38",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4699,15 +6523,16 @@
                     [],
                     []
                 ],
-                "ID": 88
+                "ID": 123
             },
             {
                 "QuestName": "Lovecraftian Ruined City",
                 "QuestText": "you reach the ruins, it is not the fabled white-walled city you dream of. it is something different. older. xx",
                 "SheetName": "Storylines",
-                "ColumnID": "35",
+                "ColumnID": "39",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4746,15 +6571,16 @@
                     [],
                     []
                 ],
-                "ID": 89
+                "ID": 124
             },
             {
                 "QuestName": "city_ruins_entrance",
-                "QuestText": "temp ruiins explore xx",
+                "QuestText": "temp ruins explore xx",
                 "SheetName": "Storylines",
-                "ColumnID": "36",
+                "ColumnID": "40",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4788,15 +6614,50 @@
                     [],
                     []
                 ],
-                "ID": 90
+                "ID": 125
+            },
+            {
+                "QuestName": "Madness spreading like sickness",
+                "QuestText": "temp madness xx",
+                "SheetName": "Storylines",
+                "ColumnID": "44",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Continue...",
+                    "Continue..."
+                ],
+                "ResultTexts": [
+                    "temp xx",
+                    "temp xx"
+                ],
+                "Outcomes": [
+                    [],
+                    []
+                ],
+                "DeathTags": [
+                    [
+                        "death_madness"
+                    ],
+                    [
+                        "death_madness"
+                    ]
+                ],
+                "ID": 126
             },
             {
                 "QuestName": "Dreams Unlock",
                 "QuestText": "You dream deeply...",
                 "SheetName": "Storylines",
-                "ColumnID": "48",
+                "ColumnID": "52",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "dream"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "doesntHaveTag",
@@ -4838,15 +6699,18 @@
                     [],
                     []
                 ],
-                "ID": 91
+                "ID": 127
             },
             {
                 "QuestName": "Dreams 1",
                 "QuestText": "You dream deeply...",
                 "SheetName": "Storylines",
-                "ColumnID": "49",
+                "ColumnID": "53",
                 "IsDeathQuest": false,
-                "Style": [],
+                "Style": [
+                    "dream"
+                ],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -4859,8 +6723,8 @@
                     "..."
                 ],
                 "ResultTexts": [
-                    "You find yourself in a Great Hall. The walls glow with ancient incomrehensible runes.",
-                    "You find yourself in a Great Hall. The walls glow with ancient incomrehensible runes."
+                    "You find yourself in a Great Hall. The walls glow with ancient incomprehensible runes.",
+                    "You find yourself in a Great Hall. The walls glow with ancient incomprehensible runes."
                 ],
                 "Outcomes": [
                     [
@@ -4885,18 +6749,23 @@
                     ]
                 ],
                 "DeathTags": [
-                    [],
-                    []
+                    [
+                        "death_dream"
+                    ],
+                    [
+                        "death_dream"
+                    ]
                 ],
-                "ID": 92
+                "ID": 128
             },
             {
                 "QuestName": "Overarching Storyline",
                 "QuestText": "first part of the story",
                 "SheetName": "Storylines",
-                "ColumnID": "63",
+                "ColumnID": "67",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4906,12 +6775,12 @@
                 ],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
-                    "...",
+                    "Continue...",
                     ""
                 ],
                 "ResultTexts": [
                     "...",
-                    "..."
+                    ""
                 ],
                 "Outcomes": [
                     [
@@ -4921,29 +6790,22 @@
                             1
                         ]
                     ],
-                    [
-                        [
-                            "add",
-                            "story",
-                            1
-                        ]
-                    ]
-                ],
-                "DeathTags": [
-                    [
-                        "..."
-                    ],
                     []
                 ],
-                "ID": 93
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 129
             },
             {
                 "QuestName": "Overarching Storyline",
                 "QuestText": "second part of the story",
                 "SheetName": "Storylines",
-                "ColumnID": "64",
+                "ColumnID": "68",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4953,12 +6815,12 @@
                 ],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
-                    "...",
+                    "Continue...",
                     ""
                 ],
                 "ResultTexts": [
                     "...",
-                    "..."
+                    ""
                 ],
                 "Outcomes": [
                     [
@@ -4968,27 +6830,22 @@
                             1
                         ]
                     ],
-                    [
-                        [
-                            "add",
-                            "story",
-                            1
-                        ]
-                    ]
+                    []
                 ],
                 "DeathTags": [
                     [],
                     []
                 ],
-                "ID": 94
+                "ID": 130
             },
             {
                 "QuestName": "Overarching Storyline",
                 "QuestText": "third part of the story",
                 "SheetName": "Storylines",
-                "ColumnID": "65",
+                "ColumnID": "69",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -4998,12 +6855,12 @@
                 ],
                 "IsStartQuest": false,
                 "ChoiceTexts": [
-                    "...",
+                    "Continue...",
                     ""
                 ],
                 "ResultTexts": [
                     "...",
-                    "..."
+                    ""
                 ],
                 "Outcomes": [
                     [
@@ -5013,11 +6870,51 @@
                             1
                         ]
                     ],
+                    []
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 131
+            },
+            {
+                "QuestName": "Flash Flood",
+                "QuestText": "You approach a small canyon cutting through the jungle. It could provide a shortcut.",
+                "SheetName": "Storylines",
+                "ColumnID": "77",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "flashflood_storyline"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Continue Past Stream",
+                    "Follow the Canyon"
+                ],
+                "ResultTexts": [
+                    "You continue past the canyon and into the thick jungle on the other side.",
+                    "You follow the canyon. It grows taller and narrower as you climb, providing a pleasant shade."
+                ],
+                "Outcomes": [
+                    [],
                     [
                         [
-                            "add",
-                            "story",
-                            1
+                            "go",
+                            "flashflood1"
+                        ],
+                        [
+                            "addTag",
+                            "flashflood_only"
+                        ],
+                        [
+                            "addTag",
+                            "flashflood_storyline"
                         ]
                     ]
                 ],
@@ -5025,7 +6922,102 @@
                     [],
                     []
                 ],
-                "ID": 95
+                "ID": 132
+            },
+            {
+                "QuestName": "flashflood1",
+                "QuestText": "You can hear thunder in the distance. A small trickle of water wets your boots.",
+                "SheetName": "Storylines",
+                "ColumnID": "78",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "flashflood_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leave Canyon",
+                    "Continue Uphill"
+                ],
+                "ResultTexts": [
+                    "You climb up the steep, crumbling sides of the canyon, but lose some rations along the way.",
+                    "You continue uphill hoping to find the water's source."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "subtract",
+                            "rations",
+                            1
+                        ],
+                        [
+                            "removeTag",
+                            "flashflood_only"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "flashflood2"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 133
+            },
+            {
+                "QuestName": "flashflood2",
+                "QuestText": "The thunder grows louder until you realize it is not thunder but the sound of rushing water.",
+                "SheetName": "Storylines",
+                "ColumnID": "79",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "flashflood_only"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Flee Up Canyon Walls",
+                    "Flee Downstream"
+                ],
+                "ResultTexts": [
+                    "You attempt to climb the canyon walls but they crumble with every grip, every step.",
+                    "You and your companions turn back and flee down the rocky terrain but you are not fast enough."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "addTag",
+                            "death_flashflood"
+                        ]
+                    ],
+                    [
+                        [
+                            "addTag",
+                            "death_flashflood"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [
+                        "death_flashflood"
+                    ],
+                    [
+                        "death_flashflood"
+                    ]
+                ],
+                "ID": 134
             },
             {
                 "QuestName": "Starvation",
@@ -5034,6 +7026,7 @@
                 "ColumnID": "1",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5067,7 +7060,7 @@
                     [],
                     []
                 ],
-                "ID": 96
+                "ID": 135
             },
             {
                 "QuestName": "Cannibalized",
@@ -5076,6 +7069,7 @@
                 "ColumnID": "2",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5109,7 +7103,7 @@
                     [],
                     []
                 ],
-                "ID": 97
+                "ID": 136
             },
             {
                 "QuestName": "Dream",
@@ -5118,6 +7112,7 @@
                 "ColumnID": "3",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5151,7 +7146,7 @@
                     [],
                     []
                 ],
-                "ID": 98
+                "ID": 137
             },
             {
                 "QuestName": "Paranoid of the Jungle",
@@ -5160,6 +7155,7 @@
                 "ColumnID": "4",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5193,7 +7189,7 @@
                     [],
                     []
                 ],
-                "ID": 99
+                "ID": 138
             },
             {
                 "QuestName": "Death from Starvation w Thief",
@@ -5202,6 +7198,7 @@
                 "ColumnID": "5",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5235,7 +7232,7 @@
                     [],
                     []
                 ],
-                "ID": 100
+                "ID": 139
             },
             {
                 "QuestName": "They Poison You",
@@ -5244,6 +7241,7 @@
                 "ColumnID": "6",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5277,7 +7275,7 @@
                     [],
                     []
                 ],
-                "ID": 101
+                "ID": 140
             },
             {
                 "QuestName": "death_mutiny_leadership",
@@ -5286,6 +7284,7 @@
                 "ColumnID": "7",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5319,7 +7318,7 @@
                     [],
                     []
                 ],
-                "ID": 102
+                "ID": 141
             },
             {
                 "QuestName": "death_mutiny_violence",
@@ -5328,6 +7327,7 @@
                 "ColumnID": "8",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5361,15 +7361,16 @@
                     [],
                     []
                 ],
-                "ID": 103
+                "ID": 142
             },
             {
                 "QuestName": "death_wounded",
-                "QuestText": "you loose too much blood, there's nothing anyone can do. You bleed out into the forest. xx",
+                "QuestText": "you lose too much blood, there's nothing anyone can do. You bleed out into the forest. xx",
                 "SheetName": "Deaths",
                 "ColumnID": "9",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5403,7 +7404,7 @@
                     [],
                     []
                 ],
-                "ID": 104
+                "ID": 143
             },
             {
                 "QuestName": "death_infected",
@@ -5412,6 +7413,7 @@
                 "ColumnID": "10",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5445,7 +7447,7 @@
                     [],
                     []
                 ],
-                "ID": 105
+                "ID": 144
             },
             {
                 "QuestName": "death_venom",
@@ -5454,6 +7456,7 @@
                 "ColumnID": "11",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5487,15 +7490,16 @@
                     [],
                     []
                 ],
-                "ID": 106
+                "ID": 145
             },
             {
                 "QuestName": "death_divine",
-                "QuestText": "The gods no longer hear your prayers as you wander the twisty jungle, lost forever.",
+                "QuestText": "The Gods no longer hear your prayers as you wander the twisty jungle, lost forever.",
                 "SheetName": "Deaths",
                 "ColumnID": "12",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5529,19 +7533,24 @@
                     [],
                     []
                 ],
-                "ID": 107
+                "ID": 146
             },
             {
                 "QuestName": "death_divine",
-                "QuestText": "The vines seem to move on their own, hemming you in, trapping you. You call out to the gods but they no longer listen as the jungle consumes you whole.",
+                "QuestText": "The vines seem to move on their own, hemming you in, trapping you. You call out to the Gods but they no longer listen as the jungle consumes you whole.",
                 "SheetName": "Deaths",
                 "ColumnID": "13",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
                         "death_divine"
+                    ],
+                    [
+                        "hasTag",
+                        "death_vines"
                     ]
                 ],
                 "IsStartQuest": false,
@@ -5571,7 +7580,7 @@
                     [],
                     []
                 ],
-                "ID": 108
+                "ID": 147
             },
             {
                 "QuestName": "Health Death",
@@ -5580,6 +7589,7 @@
                 "ColumnID": "14",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5614,7 +7624,7 @@
                     [],
                     []
                 ],
-                "ID": 109
+                "ID": 148
             },
             {
                 "QuestName": "Health Death Tired",
@@ -5623,6 +7633,7 @@
                 "ColumnID": "15",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5656,7 +7667,7 @@
                     [],
                     []
                 ],
-                "ID": 110
+                "ID": 149
             },
             {
                 "QuestName": "Morale Death",
@@ -5665,6 +7676,7 @@
                 "ColumnID": "16",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5699,7 +7711,7 @@
                     [],
                     []
                 ],
-                "ID": 111
+                "ID": 150
             },
             {
                 "QuestName": "Rations Death",
@@ -5708,6 +7720,7 @@
                 "ColumnID": "17",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5742,15 +7755,16 @@
                     [],
                     []
                 ],
-                "ID": 112
+                "ID": 151
             },
             {
                 "QuestName": "Luck Death",
-                "QuestText": "The gods no longer hear your prayers as you wander the twisty jungle, lost forever.",
+                "QuestText": "The Gods no longer hear your prayers as you wander the twisty jungle, lost forever.",
                 "SheetName": "Deaths",
                 "ColumnID": "18",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "equals",
@@ -5785,7 +7799,7 @@
                     [],
                     []
                 ],
-                "ID": 113
+                "ID": 152
             },
             {
                 "QuestName": "death from food poisoning",
@@ -5794,6 +7808,7 @@
                 "ColumnID": "19",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5827,7 +7842,7 @@
                     [],
                     []
                 ],
-                "ID": 114
+                "ID": 153
             },
             {
                 "QuestName": "Lost in the Fog",
@@ -5836,6 +7851,7 @@
                 "ColumnID": "20",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5869,7 +7885,7 @@
                     [],
                     []
                 ],
-                "ID": 115
+                "ID": 154
             },
             {
                 "QuestName": "death_thom",
@@ -5878,6 +7894,7 @@
                 "ColumnID": "21",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5911,7 +7928,7 @@
                     [],
                     []
                 ],
-                "ID": 116
+                "ID": 155
             },
             {
                 "QuestName": "Generic Death",
@@ -5920,6 +7937,7 @@
                 "ColumnID": "22",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5953,7 +7971,7 @@
                     [],
                     []
                 ],
-                "ID": 117
+                "ID": 156
             },
             {
                 "QuestName": "death_eaten_little",
@@ -5962,6 +7980,7 @@
                 "ColumnID": "23",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -5995,7 +8014,7 @@
                     [],
                     []
                 ],
-                "ID": 118
+                "ID": 157
             },
             {
                 "QuestName": "death_spiderweb",
@@ -6004,6 +8023,7 @@
                 "ColumnID": "24",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6037,7 +8057,7 @@
                     [],
                     []
                 ],
-                "ID": 119
+                "ID": 158
             },
             {
                 "QuestName": "death_blasphemy",
@@ -6046,6 +8066,7 @@
                 "ColumnID": "25",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6079,7 +8100,7 @@
                     [],
                     []
                 ],
-                "ID": 120
+                "ID": 159
             },
             {
                 "QuestName": "death_madness",
@@ -6088,6 +8109,7 @@
                 "ColumnID": "26",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6121,7 +8143,7 @@
                     [],
                     []
                 ],
-                "ID": 121
+                "ID": 160
             },
             {
                 "QuestName": "death_vomit",
@@ -6130,6 +8152,7 @@
                 "ColumnID": "27",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6163,19 +8186,20 @@
                     [],
                     []
                 ],
-                "ID": 122
+                "ID": 161
             },
             {
-                "QuestName": "Lost in the Fog",
-                "QuestText": "You let yourself wander into the fog. It envelopes you. It caresses you. It entombs you as you wander it forever, trapped between the realms of the living and the dead.",
+                "QuestName": "death_flashflood",
+                "QuestText": "You drown in a rush of water. It pummels you into the rock bed. xx",
                 "SheetName": "Deaths",
-                "ColumnID": "QuestName",
+                "ColumnID": "28",
                 "IsDeathQuest": true,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
-                        "death_fog"
+                        "death_flashflood"
                     ]
                 ],
                 "IsStartQuest": false,
@@ -6205,7 +8229,7 @@
                     [],
                     []
                 ],
-                "ID": 123
+                "ID": 162
             },
             {
                 "QuestName": "Start",
@@ -6214,6 +8238,7 @@
                 "ColumnID": "1",
                 "IsDeathQuest": false,
                 "Style": [],
+                "Types": [],
                 "Conditions": [
                     [
                         "hasTag",
@@ -6226,18 +8251,561 @@
                     "We are strong"
                 ],
                 "ResultTexts": [
-                    "No one can know the Gods. But you are strong and your people are hungry for a better life.\n\nYou enter the jungle.",
-                    "You are strong and your people are hungry for a better life. But no one can know the Gods.\n\nYou enter the jungle."
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
                 ],
                 "Outcomes": [
-                    [],
-                    []
+                    [
+                        [
+                            "go",
+                            "StartingStats1"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats1"
+                        ]
+                    ]
                 ],
                 "DeathTags": [
                     [],
                     []
                 ],
-                "ID": 124
+                "ID": 163
+            },
+            {
+                "QuestName": "Start",
+                "QuestText": "It is dawn. You look at your group. They are haggard and tired, but they are ready to follow you.\n\nWill you be able to lead them to the White City?",
+                "SheetName": "Starts",
+                "ColumnID": "2",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "start"
+                    ]
+                ],
+                "IsStartQuest": true,
+                "ChoiceTexts": [
+                    "If it pleases the Gods",
+                    "We are strong"
+                ],
+                "ResultTexts": [
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "StartingStats2"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats2"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 164
+            },
+            {
+                "QuestName": "Start",
+                "QuestText": "It is dawn. You look at your group. They are haggard and tired, but they are ready to follow you.\n\nWill you be able to lead them to the White City?",
+                "SheetName": "Starts",
+                "ColumnID": "3",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "start"
+                    ]
+                ],
+                "IsStartQuest": true,
+                "ChoiceTexts": [
+                    "If it pleases the Gods",
+                    "We are strong"
+                ],
+                "ResultTexts": [
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "StartingStats3"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats3"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 165
+            },
+            {
+                "QuestName": "Start",
+                "QuestText": "It is dawn. You look at your group. They are haggard and tired, but they are ready to follow you.\n\nWill you be able to lead them to the White City?",
+                "SheetName": "Starts",
+                "ColumnID": "4",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "start"
+                    ]
+                ],
+                "IsStartQuest": true,
+                "ChoiceTexts": [
+                    "If it pleases the Gods",
+                    "We are strong"
+                ],
+                "ResultTexts": [
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "StartingStats4"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats4"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 166
+            },
+            {
+                "QuestName": "Start",
+                "QuestText": "It is dawn. You look at your group. They are haggard and tired, but they are ready to follow you.\n\nWill you be able to lead them to the White City?",
+                "SheetName": "Starts",
+                "ColumnID": "5",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "start"
+                    ]
+                ],
+                "IsStartQuest": true,
+                "ChoiceTexts": [
+                    "If it pleases the Gods",
+                    "We are strong"
+                ],
+                "ResultTexts": [
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "StartingStats5"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats5"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 167
+            },
+            {
+                "QuestName": "Start",
+                "QuestText": "It is dawn. You look at your group. They are haggard and tired, but they are ready to follow you.\n\nWill you be able to lead them to the White City?",
+                "SheetName": "Starts",
+                "ColumnID": "6",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "hasTag",
+                        "start"
+                    ]
+                ],
+                "IsStartQuest": true,
+                "ChoiceTexts": [
+                    "If it pleases the Gods",
+                    "We are strong"
+                ],
+                "ResultTexts": [
+                    "No one can know the Gods. But you are strong and your people are hungry for a better life.",
+                    "You are strong and your people are hungry for a better life. But no one can know the Gods."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "go",
+                            "StartingStats6"
+                        ]
+                    ],
+                    [
+                        [
+                            "go",
+                            "StartingStats6"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 168
+            },
+            {
+                "QuestName": "StartingStats1",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "7",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Favor of the Gods",
+                    "Strength and Fortitude"
+                ],
+                "ResultTexts": [
+                    "You and your companions begin the journey with the Gods looking kindly upon you.",
+                    "You and your companions begin the journey with excellent health."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "luck",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "health",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 169
+            },
+            {
+                "QuestName": "StartingStats2",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "8",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Favor of the Gods",
+                    "Leadership"
+                ],
+                "ResultTexts": [
+                    "You and your companions begin the journey with the Gods looking kindly upon you.",
+                    "You lead your companions with great confidence, lifting their spirits as they begin the journey."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "luck",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "morale",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 170
+            },
+            {
+                "QuestName": "StartingStats3",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "9",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Favor of the Gods",
+                    "Extra Rations"
+                ],
+                "ResultTexts": [
+                    "You and your companions begin the journey with the Gods looking kindly upon you.",
+                    "You take extra rations for each of your companions to ward off the trying times ahead."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "luck",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "rations",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 171
+            },
+            {
+                "QuestName": "StartingStats4",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "10",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Strength and Fortitude",
+                    "Leadership"
+                ],
+                "ResultTexts": [
+                    "You and your companions begin the journey with excellent health.",
+                    "You lead your companions with great confidence, lifting their spirits as they begin the journey."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "morale",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 172
+            },
+            {
+                "QuestName": "StartingStats5",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "11",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Strength and Fortitude",
+                    "Extra Rations"
+                ],
+                "ResultTexts": [
+                    "You and your companions begin the journey with excellent health.",
+                    "You take extra rations for each of your companions to ward off the trying times ahead."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "health",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "rations",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 173
+            },
+            {
+                "QuestName": "StartingStats6",
+                "QuestText": "What do you wish to bring with you on your journey into the unexplored jungles ahead?",
+                "SheetName": "Starts",
+                "ColumnID": "12",
+                "IsDeathQuest": false,
+                "Style": [],
+                "Types": [],
+                "Conditions": [
+                    [
+                        "doesntHaveTag",
+                        "started_game"
+                    ]
+                ],
+                "IsStartQuest": false,
+                "ChoiceTexts": [
+                    "Leadership",
+                    "Extra Rations"
+                ],
+                "ResultTexts": [
+                    "You lead your companions with great confidence, lifting their spirits as they begin the journey.",
+                    "You take extra rations for each of your companions to ward off the trying times ahead."
+                ],
+                "Outcomes": [
+                    [
+                        [
+                            "add",
+                            "morale",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ],
+                    [
+                        [
+                            "add",
+                            "rations",
+                            3
+                        ],
+                        [
+                            "addTag",
+                            "started_game"
+                        ]
+                    ]
+                ],
+                "DeathTags": [
+                    [],
+                    []
+                ],
+                "ID": 174
             }
         ],
         "continueButtonText": "Continue...",
@@ -6250,16 +8818,132 @@
                 "scary",
                 "terrifying",
                 "fear-inducing"
+            ],
+            "flavor": [
+                "bitter",
+                "sweet",
+                "sickly sweet",
+                "tangy",
+                "oily",
+                "succulent",
+                "acrid",
+                "musky",
+                "fresh",
+                "floral",
+                "brackish",
+                "bitter sweet",
+                "ripe",
+                "savoury",
+                "spicy",
+                "sour",
+                "acidic"
+            ],
+            "plantpart": [
+                "roots",
+                "leaves",
+                "stem",
+                "herbs",
+                "berries",
+                "fruit",
+                "flesh"
+            ],
+            "tired": [
+                "tired",
+                "weary"
+            ],
+            "thepeople": [
+                "the companions",
+                "your companions",
+                "the explorers",
+                "the group",
+                "the men and women",
+                "the wanderers"
+            ],
+            "foodveg": [
+                "nuts",
+                "fruits",
+                "roots",
+                "tubers",
+                "legumes",
+                "seeds"
+            ],
+            "foodmeat": [
+                "flesh",
+                "worms",
+                "insects",
+                "tree grubs"
+            ],
+            "foodprep": [
+                "salted",
+                "marinaded",
+                "dried",
+                "roasted",
+                "baked",
+                "boiled"
+            ],
+            "huntedfood": [
+                "small lizards",
+                "crunchy arachnids",
+                "an ancient salamander",
+                "a bundle of small fish",
+                "a bundle of fish covered in a hard, chitinous shells"
+            ],
+            "color": [
+                "yellow",
+                "mauve",
+                "lavender",
+                "purple",
+                "blue",
+                "orange",
+                "red",
+                "crimson",
+                "blood-orange",
+                "azure",
+                "bronze-tipped",
+                "bright coral",
+                "deep blue",
+                "gamboge",
+                "indigo",
+                "magenta",
+                "golden",
+                "silvery",
+                "purplish pink",
+                "sanguine",
+                "blue-tinged"
+            ],
+            "ignoredsentence": [
+                "The explorers continue their trek.",
+                "The wanderers march onward through the jungle.",
+                "You lead your companions onward.",
+                "The group continues their endless journey."
+            ],
+            "planttype": [
+                "thick vine",
+                "tree fern",
+                "large palm",
+                "collection of intertwining vines",
+                "cluster of thick bushes"
+            ],
+            "plantadj": [
+                "leathery",
+                "slimey",
+                "thick",
+                "bulbous",
+                "spikey",
+                "thorny",
+                "malleable",
+                "moss-covered"
+            ],
+            "lost": [
+                "You wonder if you have been here before.",
+                "Are you going in circles?",
+                "This is not your first visit here.",
+                "There are no landmarks to guide your path.",
+                "You fear you may be lost."
             ]
         }
     },
-    "warnings": [
-        "Condition uses unknown tag 'totem_story' (quest 'Hole In Tree A' in sheet 'Random Events')",
-        "Go command refers to a quest named '<take_creature>' - there are no known quests with this name. (quest 'Taking an egg' in sheet 'Storylines')",
-        "Condition uses unknown tag 'death_dream' (quest 'Dream' in sheet 'Deaths')",
-        "Condition uses unknown tag 'death_infected' (quest 'death_infected' in sheet 'Deaths')",
-        "Condition uses unknown tag 'death_madness' (quest 'death_madness' in sheet 'Deaths')"
-    ],
+    "warnings": [],
     "success": true,
     "continueButtonText": "Continue...",
     "deathContinueButtonText": "Begin Anew",
@@ -6279,8 +8963,11 @@
         "death_divine",
         "death_cannibalized",
         "infectedwound",
-        "death_infection",
+        "death_infected",
         "death_mutiny_violence",
+        "caves_storyline",
+        "caves_only",
+        "death_vines",
         "thief",
         "thief_story",
         "vomit",
@@ -6291,20 +8978,22 @@
         "cursed",
         "ancientbattlefield2",
         "death_blasphemy",
-        "x",
+        "cavespider_storyline",
+        "cavespider_only",
         "death_spiderweb",
         "totem_start",
-        "totem_storyline",
         "has_totem",
+        "totem_storyline",
         "death_venom",
         "creature_story",
         "creature1",
         "death_eaten_little",
+        "lost_only",
         "magi_storyline",
         "has_magi",
-        "no_magi",
         "egg_storyline",
         "egg1",
+        "egg2",
         "death_jungleparanoia",
         "thief_cont",
         "thief_caught",
@@ -6331,16 +9020,25 @@
         "ruins_storyline",
         "ruins_arrive",
         "ruins_only",
+        "death_madness",
         "dreams1",
         "dreams_story",
-        "dreams2"
+        "dreams2",
+        "death_dream",
+        "flashflood_only",
+        "flashflood_storyline",
+        "death_flashflood",
+        "started_game"
     ],
     "allStats": [
-        "morale",
-        "rations",
+        "miles",
+        "days",
         "health",
         "luck",
+        "morale",
+        "rations",
+        "magi",
         "story"
     ],
-    "retrievedAt": "Sun, 25 Dec 2016 14:16:30 GMT"
+    "retrievedAt": "Sun, 01 Jan 2017 17:19:23 GMT"
 }
