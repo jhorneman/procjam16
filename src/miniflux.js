@@ -8,7 +8,8 @@ export function createStore(_storeSpec, _storeName) {
         storeName: _storeName || '<Unnamed store>',
         addChangeListener: function(callback) { this.addListener(CHANGE_EVENT, callback); },
         removeChangeListener: function(callback) { this.removeListener(CHANGE_EVENT, callback); }
-    }, _storeSpec);
+    }, _storeSpec)
+    .setMaxListeners(20);
 };
 
 export function createStoreMutator(_store, _mutatorSpec) {
