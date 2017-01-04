@@ -50,13 +50,8 @@ body {
     position: absolute;
     margin-left: 20px;
     max-width: 360px;
-    min-height: 360px;
     z-index: 0;
-    font-size: large;
 }
-
-
-
 
 
 /* Stats view */
@@ -102,8 +97,12 @@ body {
 .questView .text {
     padding-top: 140px;
     padding-bottom: 40px;
-    min-height: 200px;
+    min-height: 200px;          /* This makes the buttons appear at the same position underneath the text. */
     font-size: 28px;
+}
+
+.questView .buttonBar {
+    min-height: 380px;          /* This puts the footer underneath the background image. */
 }
 
 .questView button {
@@ -122,8 +121,33 @@ body {
 
 /* Footer */
 
-.newFooter {
+.footer {
+    color: #888;
+    margin: 0 auto;
+    text-align: center;
+    font-size: large;
+}
+
+.footer div.buttonBar {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer .clickableLink:first-child {
+    margin-right: 10px;
+}
+
+.footer a {
+    color: #888;
+}
+
+.footer a:hover {
     color: white;
+}
+
+.footer p {
+    margin-top: 8px;
 }
 
 

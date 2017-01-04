@@ -87,35 +87,27 @@ class App extends Component {
         let leftSidebarView = null;
         let rightSidebarView = null;
         let debugButtons = null;
-        let footerButtons = null;
 
         switch (this.state.uiState) {
         case 'game': {
-            mainView = <GameView showDebugUI={this.state.showDebugUI} />;
-            footerButtons = [
-                <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>,
-                <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
-            ];
+            mainView = <GameView showDebugUI={this.state.showDebugUI} onShowAboutViewClicked={this._onShowAboutViewClicked} />;
             if (this.state.inDevMode) {
                 rightSidebarView = this.state.showDebugUI ? (<Sidebar />) : null;
                 debugButtons = [
-                    <li><ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle debug UI</ClickableLink></li>,
-                    <li><ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink></li>,
-                    <li><ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink></li>,
-                    <li><ClickableLink onClick={this._onClearLSClicked} key='clearls'>Clear local storage</ClickableLink></li>,
+                    <ClickableLink onClick={this._onToggleSidebarClicked}>Toggle debug UI</ClickableLink>,
+                    <ClickableLink onClick={this._onViewQuestsClicked}>View all quests</ClickableLink>,
+                    <ClickableLink onClick={this._onDownloadDataClicked}>Download game data</ClickableLink>,
+                    <ClickableLink onClick={this._onClearLSClicked}>Clear local storage</ClickableLink>,
                 ];
             }
             break;
         }
         case 'about': {
-            mainView = <AboutView />;
-            footerButtons = (
-                <ClickableLink onClick={this._onBackToGameClicked}>Back to the game</ClickableLink>
-            );
+            mainView = <AboutView onBackToGameClicked={this._onBackToGameClicked} />;
             break;
         }
         case 'quests': {
-            debugButtons = (<ClickableLink onClick={this._onBackToGameClicked} key='quests'>Back to the game</ClickableLink>);
+            debugButtons = [<ClickableLink onClick={this._onBackToGameClicked}>Back to the game</ClickableLink>];
             mainView = <DebugQuestList />;
             break;            
         }
@@ -125,19 +117,13 @@ class App extends Component {
         }
         }
 
-        if (this.state.inDevMode) {
+        if (this.state.inDevMode && debugButtons) {
+            debugButtons = debugButtons.map((btn, index) => (<li key={index}>{btn}</li>));
             leftSidebarView = <div className='debug'>
                 <h3>Debug functions</h3>
                 <ul>{debugButtons}</ul>
             </div>;
         }
-
-        // const footer = (<footer>
-        //     <div className='buttonBar'>
-        //         {footerButtons}
-        //     </div>
-        //     <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
-        // </footer>);
 
         return (<div className='flex-container content'>
             <div className='sidebar'>

@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import ClickableLink from './ClickableLink';
+import Footer from './Footer';
 
 
 const aboutViewContent = `
@@ -12,11 +14,19 @@ The content of this game is licensed under the Creative Commons Attribution-NonC
 `;
 
 
-function AboutView() {
+function AboutView(props) {
     return (<div className='aboutView'>
         <ReactMarkdown source={aboutViewContent} />
+        <Footer>
+            <ClickableLink onClick={props.onBackToGameClicked}>Back to the game</ClickableLink>
+        </Footer>
     </div>);
 }
+
+
+AboutView.propTypes = {
+    onBackToGameClicked: React.PropTypes.func.isRequired
+};
 
 
 export default AboutView;

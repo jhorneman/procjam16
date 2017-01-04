@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { GameStore } from '../gameStore';
+import { GameStore, GameStoreMutator } from '../gameStore';
+import ClickableLink from './ClickableLink';
 import QuestView from './QuestView';
 import StatsView from './StatsView';
 import WarningList from './WarningList';
 import DebugNextQuestList from './DebugNextQuestList';
+import Footer from './Footer';
 import { createCanvases, drawBackground } from '../images';
 
 
@@ -21,11 +23,16 @@ class GameView extends Component {
         super(props);
         this.state = getState();
         this._onChange = this._onChange.bind(this);
+        this._onRestartGameClicked = this._onRestartGameClicked.bind(this);
         this._setBackgroundRef = this._setBackgroundRef.bind(this);
     }
 
     _onChange() {
         this.setState(getState());
+    }
+
+    _onRestartGameClicked() {
+        GameStoreMutator.restartGame();
     }
 
     _setBackgroundRef(backgroundEl) {
@@ -56,7 +63,6 @@ class GameView extends Component {
 
         switch (this.state.gameState) {
         case 'uninitialized': {
-            contents = (<p>...</p>);
             break;
         }
         case 'loading': {
@@ -66,14 +72,15 @@ class GameView extends Component {
         case 'playing': {
             contents = [
                 <StatsView key='stats' />,
-                <QuestView key='quest' />,
-                <div className='newFooter'>
-                    <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
-                </div>
+                <QuestView key='quest' />
             ];
             if (this.props.showDebugUI) {
                 contents.push(<DebugNextQuestList key='nextQuests' />);
             }
+            contents.push(<Footer key='footer'>
+                <ClickableLink onClick={this._onRestartGameClicked} key='restart'>Restart the game</ClickableLink>
+                <ClickableLink onClick={this.props.onShowAboutViewClicked} key='about'>About this game</ClickableLink>
+            </Footer>);
             break;
         }
         case 'error': {
@@ -90,15 +97,16 @@ class GameView extends Component {
         }
 
         return (<div>
-            <div id='background' ref={this._setBackgroundRef} />
-            <div id='game'>{contents}</div>
+            <div id='background' key='background' ref={this._setBackgroundRef} />
+            <div id='game' key='game'>{contents}</div>
         </div>);
     }
 }
 
 
 GameView.propTypes = {
-    showDebugUI: React.PropTypes.bool
+    showDebugUI: React.PropTypes.bool,
+    onShowAboutViewClicked: React.PropTypes.func.isRequired
 };
 
 
