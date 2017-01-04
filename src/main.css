@@ -171,6 +171,12 @@ body {
     padding: 0px;
 }
 
+.debug.debugNextQuestList {
+    /* Pull up the next quest list so it's not pushed down by the button bar's min height. */
+    margin-top: -270px;
+    margin-bottom: 40px;
+}
+
 .warningList {
     background: lightred;
 }
