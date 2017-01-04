@@ -209,3 +209,12 @@ button {
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
 }
+
+
+/* Drop the sidebars on narrow screens. Crude but it works. */
+
+@media all and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
