@@ -6,8 +6,8 @@ import { colorSets } from './palettes';
 
 
 const layerNames = ['far', 'mid', 'close'];     // Names must be back to front.
-let imagePaths = {};
-let images = {};
+let imagePaths = {};                            // Paths for all possible images.
+let images = {};                                // null or Image for all possible images.
 
 
 export function prepareImages() {
