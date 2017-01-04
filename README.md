@@ -1,6 +1,6 @@
 # Procjam 16
 
-This is a horror game developed for [Procjam 2016](http://www.procjam.com) by Liz England, Jurie Horneman & Stefan Srb.
+This is a game developed for [Procjam 2016](http://www.procjam.com) by Liz England, Jurie Horneman, and Stefan Srb.
 
 ## Installation
 
