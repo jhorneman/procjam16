@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { GameStore } from '../gameStore';
-import { typeCooldownLimit } from '../constants';
 
 
 function getState() {
