@@ -2,50 +2,8 @@ const backgroundWidth = 1000;
 const backgroundHeight = 800;
 const centerX = backgroundWidth / 2;
 const centerY = backgroundHeight / 2;
+import { colorSets } from './palettes';
 
-const colors = {
-    'jungle': {
-        close: '#36082e',           // Closest layer / outside circle.
-        mid: '#098d76',             // Middle layer.
-        far: '#64e4ac',             // Far layer.
-        background: '#a5febe',      // Background inside circle.
-        gradient: '#e4f5ce'         // Center of gradient inside circle.
-    },
-
-    'fog': {
-        close: '#989fbb',
-        mid: '#989fbb',
-        far: '#a6aac2',
-        background: '#989fbb',
-        gradient: '#e8dbe7'
-    },
-
-    'dream': {
-        close: '#182720',
-        mid: '#395e4d',
-        far: '#8fbba7',
-        background: '#c5dcd1',
-        gradient: '#edcde5'
-    },
-
-    'swamp': {
-        close: '#989fbb',
-        mid: '#989fbb',
-        far: '#a6aac2',
-        background: '#989fbb',
-        gradient: '#f0f3e2'
-    },
-
-    'magic': {
-        close: '#230224',
-        mid: '#995fd6',
-        far: '#995fd6',
-        background: '#b9a9fd',
-        gradient: '#cee5f5'
-    }
-};
-
-const colorTags = ['fog', 'dream', 'swamp', 'magic'];
 
 const layerNames = ['far', 'mid', 'close'];     // Names must be back to front.
 let imagePaths = {};
@@ -153,7 +111,7 @@ function parseStyles(styles) {
     const theme =  isCaveStyle ? 'cave': 'jungle';
 
     let colorSet = 'jungle';
-    for (let colorTag of colorTags) {
+    for (let colorTag of Object.keys(colorSets)) {
         if (styles.find(style => style === colorTag)) {
             colorSet = colorTag;
             break;
@@ -167,7 +125,7 @@ function parseStyles(styles) {
 function _drawBackground(bgCanvas, compositingCanvas, theme, nr, colorSet) {
     const bgContext = bgCanvas.getContext('2d');
     const compositingContext = compositingCanvas.getContext('2d');
-    const currentColors = colors[colorSet];
+    const currentColors = colorSets[colorSet];
 
     // Draw background gradient.
     let radialGradient = bgContext.createRadialGradient(centerX, centerY, 20,
