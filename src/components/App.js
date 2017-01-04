@@ -83,10 +83,10 @@ class App extends Component {
     }
 
     render() {
-        let debugBar = null;
-        let debugButtons = null;
         let mainView = null;
-        let sidebarView = null;
+        let leftSidebarView = null;
+        let rightSidebarView = null;
+        let debugButtons = null;
         let footerButtons = null;
 
         switch (this.state.uiState) {
@@ -97,12 +97,12 @@ class App extends Component {
                 <ClickableLink onClick={this._onShowAboutViewClicked} key='about'>About this game</ClickableLink>,
             ];
             if (this.state.inDevMode) {
-                sidebarView = this.state.showDebugUI ? (<Sidebar />) : null;
+                rightSidebarView = this.state.showDebugUI ? (<Sidebar />) : null;
                 debugButtons = [
-                    <ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle debug UI</ClickableLink>,
-                    <ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink>,
-                    <ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink>,
-                    <ClickableLink onClick={this._onClearLSClicked} key='clearls'>Clear local storage</ClickableLink>,
+                    <li><ClickableLink onClick={this._onToggleSidebarClicked} key='view'>Toggle debug UI</ClickableLink></li>,
+                    <li><ClickableLink onClick={this._onViewQuestsClicked} key='quests'>View all quests</ClickableLink></li>,
+                    <li><ClickableLink onClick={this._onDownloadDataClicked} key='download'>Download game data</ClickableLink></li>,
+                    <li><ClickableLink onClick={this._onClearLSClicked} key='clearls'>Clear local storage</ClickableLink></li>,
                 ];
             }
             break;
@@ -126,29 +126,29 @@ class App extends Component {
         }
 
         if (this.state.inDevMode) {
-            debugBar = <header>
-                Debug Menu
-                {debugButtons}
-            </header>;
+            leftSidebarView = <div className='debug'>
+                <h3>Debug functions</h3>
+                <ul>{debugButtons}</ul>
+            </div>;
         }
 
-        return (<div className='flex-container page'>
-            {debugBar}
-            <div className='flex-container content'>
-                <div className='sidebar' />
-                <div className='flex-container main'>
-                    {mainView}
-                </div>
-                <div className='sidebar'>
-                    {sidebarView}
-                </div>
+        // const footer = (<footer>
+        //     <div className='buttonBar'>
+        //         {footerButtons}
+        //     </div>
+        //     <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
+        // </footer>);
+
+        return (<div className='flex-container content'>
+            <div className='sidebar'>
+                {leftSidebarView}
             </div>
-            <footer>
-                <div className='buttonBar'>
-                    {footerButtons}
-                </div>
-                <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
-            </footer>
+            <div className='main'>
+                {mainView}
+            </div>
+            <div className='sidebar'>
+                {rightSidebarView}
+            </div>
         </div>);
     }
 }

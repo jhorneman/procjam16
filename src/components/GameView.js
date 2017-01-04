@@ -66,7 +66,10 @@ class GameView extends Component {
         case 'playing': {
             contents = [
                 <StatsView key='stats' />,
-                <QuestView key='quest' />
+                <QuestView key='quest' />,
+                <div className='newFooter'>
+                    <p className='copyright'>&copy; 2017 Liz England, Jurie Horneman &amp; Stefan Srb</p>
+                </div>
             ];
             if (this.props.showDebugUI) {
                 contents.push(<DebugNextQuestList key='nextQuests' />);
@@ -86,7 +89,7 @@ class GameView extends Component {
         }
         }
 
-        return (<div id='gameView'>
+        return (<div>
             <div id='background' ref={this._setBackgroundRef} />
             <div id='game'>{contents}</div>
         </div>);
